@@ -386,9 +386,9 @@
     .addons { border-top: 1px solid var(--card-border); }
     .addons-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       background: var(--card-border);
     }
@@ -459,9 +459,9 @@
     .contact { border-top: 1px solid var(--card-border); text-align: center; }
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 0;
-      max-width: 800px;
+      max-width: 560px;
       margin: 0 auto 60px;
       border: 1px solid var(--card-border);
     }
@@ -544,7 +544,7 @@
       .package-card:last-child { border-bottom: none; }
       .package-card.featured { margin: 0; }
 
-      .addons-grid { grid-template-columns: 1fr; }
+      .addons-grid { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr; }
       .contact-item { border-right: none; border-bottom: 1px solid var(--card-border); }
@@ -635,19 +635,23 @@
         <li>Door jamb &amp; glass cleaning</li>
         <li>Exterior plastic dressing</li>
         <li>Paint protection</li>
-        <li>Exterior maintenance detail</li>
+        <li>High-Gloss Paint Sealant</li>
       </ul>
       <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
     </div>
 
     <!-- Standard Detail (featured) -->
     <div class="package-card featured">
-      <div class="badge">Most Booked</div>
+      <div class="badge">Best Value</div>
       <div class="pkg-rule"></div>
-      <p class="pkg-name">Standard Detail</p>
+      <p class="pkg-name">SuperWash</p>
       <p class="pkg-sub">Inside &amp; Out</p>
       <p class="pkg-price-label">Starting at</p>
-      <p class="pkg-price"><sup>$</sup>129<sub>.99</sub></p>
+      <p class="pkg-price" style="position:relative;">
+        <span style="font-size:1rem;color:var(--text-muted);text-decoration:line-through;display:block;margin-bottom:2px;font-family:'Montserrat',sans-serif;letter-spacing:0.05em;">$149.99</span>
+        <sup>$</sup>129<sub>.99</sub>
+        <span style="display:block;font-size:0.6rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:4px;font-family:'Montserrat',sans-serif;">Grand Opening Price</span>
+      </p>
       <div class="pkg-rule-bottom"></div>
       <ul class="pkg-features">
         <li>Hand wash &amp; foam bath treatment</li>
@@ -656,6 +660,7 @@
         <li>Interior surface refresh</li>
         <li>Door jamb &amp; glass cleaning</li>
         <li>Paint protection</li>
+        <li>✨ High-Gloss Paint Sealant</li>
       </ul>
       <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
     </div>
@@ -673,7 +678,7 @@
         <li>Deep interior cleaning</li>
         <li>Dashboard &amp; surface cleaning</li>
         <li>UV protection treatment</li>
-        <li>Window &amp; mirror cleaning</li>
+        <li>Window &amp; Mirror Refresh</li>
         <li>Floor mats &amp; seats</li>
       </ul>
       <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
@@ -700,9 +705,14 @@
       <p class="addon-price">Starting at $49.99</p>
     </div>
     <div class="addon-card">
-      <span class="addon-icon">✦</span>
-      <p class="addon-name">Clay Towel Treatment</p>
-      <p class="addon-price">$50</p>
+      <span class="addon-icon">🧼</span>
+      <p class="addon-name">Shampoo Carpets &amp; Seats</p>
+      <p class="addon-price">Starting at $49.99</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🛡️</span>
+      <p class="addon-name">Advanced 1-Year Ceramic Protection</p>
+      <p class="addon-price">Starting at $59.99</p>
     </div>
   </div>
 </section>
@@ -741,18 +751,13 @@
 <section class="contact" id="contact">
   <p class="section-label fade-up">Get in Touch</p>
   <h2 class="section-title fade-up delay-1">Book Your Detail</h2>
-  <p class="section-sub fade-up delay-2">Ready to restore your vehicle's splendor? Call, text, or find us on Instagram to schedule your appointment.</p>
+  <p class="section-sub fade-up delay-2">Ready to restore your vehicle's splendor? Call or text us to schedule your appointment.</p>
 
   <div class="contact-grid fade-up delay-3">
     <div class="contact-item">
       <p class="contact-label">Call or Text</p>
       <a class="contact-value" href="tel:7135010461">713-501-0461</a>
       <p class="contact-note">Mon – Sun, flexible hours</p>
-    </div>
-    <div class="contact-item">
-      <p class="contact-label">Instagram</p>
-      <a class="contact-value" href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">@esplendordetailing</a>
-      <p class="contact-note">DMs welcome</p>
     </div>
     <div class="contact-item">
       <p class="contact-label">Service Area</p>
