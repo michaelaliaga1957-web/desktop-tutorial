@@ -1,13 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="lang-en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Esplendor Detailing — Mobile Detailing · Houston, Texas</title>
-  <meta name="description" content="Professional mobile car detailing in Houston, Texas. We come to you. Exterior, interior, and full-detail packages starting at $69.99." />
+  <title>Esplendor Detailing — Mobile Detailing Houston, Texas | Book Online</title>
+  <meta name="description" content="Houston's premium mobile car detailing. We come to you — driveway, office, or apartment. Packages from $69.99. Book online or text 713-501-0461." />
+  <meta name="keywords" content="mobile detailing Houston, car detailing Houston TX, mobile car wash Houston, auto detailing near me, detallado movil Houston" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://esplendordetailing.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Esplendor Detailing — Mobile Detailing Houston, TX" />
+  <meta property="og:description" content="Premium mobile car detailing in Houston. We come to you. Starting at $69.99." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://esplendordetailing.com/" />
+
+  <!-- Schema: Local Business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoWash",
+    "name": "Esplendor Detailing",
+    "description": "Premium mobile car detailing service in Houston, Texas",
+    "telephone": "+17135010461",
+    "areaServed": "Houston, TX",
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 07:00-20:00",
+    "url": "https://esplendordetailing.com",
+    "sameAs": ["https://instagram.com/esplendordetailing"]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,10 +47,10 @@
       --card-border: #2a2a2a;
       --text: #e8e8e8;
       --text-muted: #999;
+      --success: #4caf7d;
     }
 
     html { scroll-behavior: smooth; }
-
     body {
       background: var(--black);
       color: var(--text);
@@ -33,24 +60,28 @@
       overflow-x: hidden;
     }
 
+    /* ── LANGUAGE TOGGLE ── */
+    .lang-en .es { display: none !important; }
+    .lang-es .en { display: none !important; }
+
     /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(11,11,11,0.92);
-      backdrop-filter: blur(8px);
+      padding: 16px 40px;
+      background: rgba(11,11,11,0.95);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(201,168,76,0.15);
       transition: padding 0.3s;
     }
-    nav.scrolled { padding: 12px 40px; }
+    nav.scrolled { padding: 10px 40px; }
     .nav-logo {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--gold);
@@ -58,11 +89,11 @@
     }
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -71,9 +102,22 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-toggle {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      background: none;
+      border: 1px solid var(--card-border);
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .lang-toggle:hover { color: var(--gold); border-color: var(--gold-dim); }
     .nav-cta {
-      font-size: 0.7rem;
-      font-weight: 600;
+      font-size: 0.68rem;
+      font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--black);
@@ -93,12 +137,48 @@
       padding: 4px;
     }
     .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 1.5px;
-      background: var(--gold);
-      transition: 0.3s;
+      display: block; width: 24px; height: 1.5px;
+      background: var(--gold); transition: 0.3s;
     }
+
+    /* ── FLOATING ACTION BUTTONS ── */
+    .fab-container {
+      position: fixed;
+      bottom: 28px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: flex-end;
+    }
+    .fab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+      white-space: nowrap;
+    }
+    .fab:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.6); }
+    .fab-whatsapp {
+      background: #25D366;
+      color: #fff;
+    }
+    .fab-call {
+      background: var(--gold);
+      color: var(--black);
+    }
+    .fab-label { display: none; }
+    @media (min-width: 600px) { .fab-label { display: inline; } }
+    .fab svg { width: 20px; height: 20px; flex-shrink: 0; }
 
     /* ── HERO ── */
     .hero {
@@ -114,10 +194,9 @@
     }
     .hero::before {
       content: '';
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%),
         radial-gradient(ellipse 60% 40% at 50% 100%, rgba(201,168,76,0.04) 0%, transparent 60%);
       pointer-events: none;
     }
@@ -132,100 +211,87 @@
       align-items: center;
       gap: 16px;
     }
-    .hero-eyebrow::before,
-    .hero-eyebrow::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--gold-dim);
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ''; display: block; width: 40px; height: 1px; background: var(--gold-dim);
     }
-
-    /* SVG Logo */
-    .hero-logo {
-      margin-bottom: 28px;
-    }
-    .hero-logo svg {
-      width: 180px;
-      height: auto;
-    }
-
+    .hero-logo { margin-bottom: 24px; }
+    .hero-logo svg { width: 160px; height: auto; }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 10vw, 7.5rem);
+      font-size: clamp(3rem, 10vw, 7rem);
       font-weight: 700;
       line-height: 0.95;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       margin-bottom: 20px;
     }
-    .hero-title span {
-      font-style: italic;
-      color: var(--gold);
-    }
+    .hero-title span { font-style: italic; color: var(--gold); }
     .hero-tagline {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: clamp(1rem, 2.5vw, 1.4rem);
       color: var(--text-muted);
-      margin-bottom: 48px;
+      margin-bottom: 16px;
       letter-spacing: 0.03em;
     }
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 44px;
+      flex-wrap: wrap;
+    }
+    .hero-trust-item {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-trust-item::before { content: '✓'; color: var(--gold); }
     .hero-actions {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
       justify-content: center;
     }
     .btn-primary {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: 0.7rem;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--black);
       background: var(--gold);
-      padding: 16px 40px;
+      padding: 16px 36px;
       text-decoration: none;
       transition: background 0.2s, transform 0.2s;
     }
     .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
     .btn-secondary {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--gold);
       border: 1px solid var(--gold-dim);
-      padding: 16px 40px;
+      padding: 16px 36px;
       text-decoration: none;
       transition: border-color 0.2s, color 0.2s, transform 0.2s;
     }
     .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-2px); }
-    .hero-scroll {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold-dim);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
-    .hero-scroll svg { opacity: 0.5; }
-    @keyframes bounce {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
-    }
 
     /* ── SECTION COMMON ── */
-    section { padding: 100px 24px; }
+    section { padding: 96px 24px; }
     .section-label {
       font-size: 0.65rem;
       font-weight: 600;
@@ -233,7 +299,7 @@
       text-transform: uppercase;
       color: var(--gold);
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .section-title {
       font-family: 'Cormorant Garamond', serif;
@@ -244,27 +310,63 @@
       line-height: 1.1;
     }
     .section-sub {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       text-align: center;
-      max-width: 500px;
-      margin: 0 auto 64px;
+      max-width: 520px;
+      margin: 0 auto 60px;
       line-height: 1.7;
     }
     .gold-rule {
-      width: 48px;
-      height: 1px;
+      width: 48px; height: 1px;
       background: var(--gold-dim);
       margin: 0 auto 48px;
     }
 
+    /* ── HOW IT WORKS ── */
+    .how { background: #0e0e0e; border-top: 1px solid var(--card-border); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid var(--card-border);
+    }
+    .step-card {
+      padding: 48px 36px;
+      border-right: 1px solid var(--card-border);
+      text-align: center;
+      position: relative;
+    }
+    .step-card:last-child { border-right: none; }
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold);
+      opacity: 0.15;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step-icon { font-size: 2rem; margin-bottom: 16px; }
+    .step-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+    .step-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
     /* ── SERVICES ── */
-    .services { background: #0e0e0e; }
+    .services { background: var(--black); border-top: 1px solid var(--card-border); }
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      max-width: 1000px;
+      max-width: 1020px;
       margin: 0 auto;
       border: 1px solid var(--card-border);
     }
@@ -275,7 +377,7 @@
       transition: background 0.3s;
     }
     .package-card:last-child { border-right: none; }
-    .package-card:hover { background: rgba(201,168,76,0.03); }
+    .package-card:hover { background: rgba(201,168,76,0.025); }
     .package-card.featured {
       background: #141414;
       border: 2px solid var(--gold-dim);
@@ -285,34 +387,27 @@
     .package-card.featured:hover { background: rgba(201,168,76,0.05); }
     .badge {
       position: absolute;
-      top: -1px;
-      left: 50%;
+      top: -1px; left: 50%;
       transform: translateX(-50%);
       background: var(--gold);
       color: var(--black);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      padding: 7px 18px;
+      padding: 6px 16px;
       white-space: nowrap;
     }
-    .pkg-rule {
-      width: 28px;
-      height: 1px;
-      background: var(--gold-dim);
-      margin-bottom: 20px;
-    }
+    .pkg-rule { width: 28px; height: 1px; background: var(--gold-dim); margin-bottom: 20px; }
     .package-card.featured .pkg-rule { background: var(--gold); }
     .pkg-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 600;
-      letter-spacing: 0.02em;
       margin-bottom: 4px;
     }
     .pkg-sub {
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       font-weight: 700;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -320,106 +415,351 @@
       margin-bottom: 28px;
     }
     .pkg-price-label {
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
       margin-bottom: 4px;
     }
+    .pkg-price-old {
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+      margin-bottom: 2px;
+    }
     .pkg-price {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.2rem;
+      font-size: 3.4rem;
       font-weight: 700;
       line-height: 1;
-      margin-bottom: 28px;
-      color: var(--text);
+      margin-bottom: 8px;
     }
     .pkg-price sup { font-size: 1.2rem; vertical-align: super; }
-    .pkg-price sub { font-size: 1.2rem; vertical-align: baseline; font-weight: 400; color: var(--text-muted); }
-    .pkg-rule-bottom {
-      width: 100%;
-      height: 1px;
-      background: var(--card-border);
+    .pkg-price sub { font-size: 1.2rem; font-weight: 400; color: var(--text-muted); }
+    .pkg-promo {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 24px;
     }
-    .pkg-features { list-style: none; }
+    .pkg-rule-bottom { width: 100%; height: 1px; background: var(--card-border); margin-bottom: 24px; }
+    .pkg-features { list-style: none; margin-bottom: 12px; }
     .pkg-features li {
       display: flex;
       align-items: flex-start;
-      gap: 12px;
-      font-size: 0.8rem;
+      gap: 10px;
+      font-size: 0.79rem;
       color: #bbb;
-      margin-bottom: 11px;
+      margin-bottom: 10px;
       line-height: 1.4;
     }
-    .pkg-features li::before {
-      content: '—';
-      color: var(--gold-dim);
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
+    .pkg-features li::before { content: '—'; color: var(--gold-dim); flex-shrink: 0; }
     .package-card.featured .pkg-features li::before { color: var(--gold); }
+    .pkg-features li.highlight { color: var(--gold-light); }
+    .pkg-features li.highlight::before { content: '✦'; color: var(--gold); }
     .pkg-cta {
       display: block;
       text-align: center;
       font-size: 0.65rem;
       font-weight: 700;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
       border: 1px solid var(--gold-dim);
       padding: 13px;
       text-decoration: none;
-      margin-top: 32px;
-      transition: background 0.2s, color 0.2s;
+      margin-top: 28px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .pkg-cta:hover { background: var(--gold); color: var(--black); }
+    .pkg-cta:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
     .package-card.featured .pkg-cta {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
+      background: var(--gold); color: var(--black); border-color: var(--gold);
     }
     .package-card.featured .pkg-cta:hover { background: var(--gold-light); border-color: var(--gold-light); }
 
     /* ── ADD-ONS ── */
-    .addons { border-top: 1px solid var(--card-border); }
+    .addons { border-top: 1px solid var(--card-border); background: #0a0a0a; }
     .addons-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 1px;
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       background: var(--card-border);
     }
     .addon-card {
       background: var(--card-bg);
-      padding: 36px 32px;
+      padding: 36px 24px;
       text-align: center;
       transition: background 0.3s;
     }
-    .addon-card:hover { background: #1a1a1a; }
-    .addon-icon {
-      color: var(--gold);
-      font-size: 1.2rem;
-      margin-bottom: 14px;
-      display: block;
-    }
+    .addon-card:hover { background: #1c1c1c; }
+    .addon-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
     .addon-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 600;
       margin-bottom: 8px;
     }
-    .addon-price {
+    .addon-price { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: var(--gold); }
+
+    /* ── BOOKING FORM ── */
+    .booking { background: #0e0e0e; border-top: 1px solid var(--card-border); }
+    .booking-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: #111;
+      border: 1px solid var(--card-border);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold-dim); }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a6d2f' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .form-group select option { background: #111; color: var(--text); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      margin-top: 8px;
+    }
+    .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .form-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 16px;
+      line-height: 1.5;
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 48px 24px;
+      border: 1px solid var(--gold-dim);
+    }
+    .form-success .success-icon { font-size: 3rem; margin-bottom: 20px; }
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin-bottom: 12px;
       color: var(--gold);
     }
+    .form-success p { font-size: 0.82rem; color: var(--text-muted); }
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .or-divider::before, .or-divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--card-border);
+    }
+    .or-divider span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .quick-contact-btns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .qc-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px;
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s;
+      border: none;
+    }
+    .qc-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .qc-btn-wa { background: #25D366; color: #fff; }
+    .qc-btn-sms { background: #1a1a1a; color: var(--gold); border: 1px solid var(--gold-dim); }
+
+    /* ── GALLERY ── */
+    .gallery { border-top: 1px solid var(--card-border); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: #161616;
+      border: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-item:hover { border-color: var(--gold-dim); background: #1c1c1c; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute; inset: 0;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-placeholder {
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+    .gallery-placeholder-text {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.5;
+      text-align: center;
+      padding: 0 16px;
+    }
+    .gallery-badge {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      background: rgba(11,11,11,0.85);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+    .gallery-cta {
+      text-align: center;
+      margin-top: 36px;
+    }
+
+    /* ── REVIEWS ── */
+    .reviews { background: #0e0e0e; border-top: 1px solid var(--card-border); }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      max-width: 1000px;
+      margin: 0 auto;
+      background: var(--card-border);
+    }
+    .review-card {
+      background: var(--black);
+      padding: 40px 32px;
+      transition: background 0.3s;
+    }
+    .review-card:hover { background: #0e0e0e; }
+    .review-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+    .review-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+    .review-author {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .review-vehicle { font-size: 0.68rem; color: var(--text-muted); margin-top: 4px; }
+    .reviews-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .reviews-rating-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--card-border);
+      padding: 16px 28px;
+      margin-bottom: 36px;
+    }
+    .rating-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .rating-info { text-align: left; }
+    .rating-stars { color: var(--gold); font-size: 0.8rem; }
+    .rating-count { font-size: 0.62rem; color: var(--text-muted); letter-spacing: 0.1em; margin-top: 2px; }
 
     /* ── WHY US ── */
-    .why { background: #0e0e0e; border-top: 1px solid var(--card-border); }
+    .why { background: var(--black); border-top: 1px solid var(--card-border); }
     .why-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -432,7 +772,9 @@
       background: var(--black);
       padding: 40px 28px;
       text-align: center;
+      transition: background 0.3s;
     }
+    .why-card:hover { background: #0e0e0e; }
     .why-number {
       font-family: 'Cormorant Garamond', serif;
       font-size: 3rem;
@@ -440,99 +782,172 @@
       color: var(--gold);
       line-height: 1;
       margin-bottom: 12px;
-      opacity: 0.5;
+      opacity: 0.4;
     }
-    .why-heading {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    .why-heading { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 10px; }
+    .why-text { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ── PAYMENT ── */
+    .payment { background: #0a0a0a; border-top: 1px solid var(--card-border); }
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-border);
     }
-    .why-text {
-      font-size: 0.78rem;
+    .payment-card {
+      background: #111;
+      padding: 32px 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .payment-card:hover { background: #181818; }
+    .payment-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+    .payment-name { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+    .payment-detail { font-size: 0.68rem; color: var(--gold); }
+
+    /* ── FAQ ── */
+    .faq { border-top: 1px solid var(--card-border); }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--card-border);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 22px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem;
+      color: var(--gold-dim);
+      transition: transform 0.3s, border-color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--gold); color: var(--gold); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; }
+    .faq-answer-inner {
+      padding: 0 0 22px;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* ── CONTACT ── */
-    .contact { border-top: 1px solid var(--card-border); text-align: center; }
+    .contact { border-top: 1px solid var(--card-border); text-align: center; background: #0e0e0e; }
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 0;
-      max-width: 800px;
-      margin: 0 auto 60px;
+      max-width: 860px;
+      margin: 0 auto 48px;
       border: 1px solid var(--card-border);
     }
-    .contact-item {
-      padding: 44px 32px;
-      border-right: 1px solid var(--card-border);
-    }
+    .contact-item { padding: 44px 32px; border-right: 1px solid var(--card-border); }
     .contact-item:last-child { border-right: none; }
     .contact-label {
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+      font-size: 0.6rem; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
     }
     .contact-value {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: var(--text);
-      text-decoration: none;
-      transition: color 0.2s;
-      display: block;
+      font-size: 1.25rem; font-weight: 600;
+      color: var(--text); text-decoration: none;
+      transition: color 0.2s; display: block;
     }
     a.contact-value:hover { color: var(--gold); }
-    .contact-note {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 8px;
-    }
-    .contact-cta-block {
-      margin-top: 0;
-    }
+    .contact-note { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; }
     .contact-bottom-note {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-size: 1rem;
       color: var(--text-muted);
-      margin-top: 48px;
+      margin-top: 40px;
     }
 
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--card-border);
-      padding: 28px 24px;
+      padding: 36px 24px;
       text-align: center;
-      font-size: 0.68rem;
-      color: #555;
-      letter-spacing: 0.08em;
     }
-    footer span { color: var(--gold-dim); }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      list-style: none;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.62rem; color: #444; letter-spacing: 0.08em; }
+    .footer-copy span { color: var(--gold-dim); }
 
     /* ── ANIMATIONS ── */
     .fade-up {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: none;
-    }
+    .fade-up.visible { opacity: 1; transform: none; }
     .delay-1 { transition-delay: 0.1s; }
     .delay-2 { transition-delay: 0.2s; }
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    /* ── MOBILE NAV ── */
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .addons-grid { grid-template-columns: repeat(2, 1fr); }
+      .payment-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 14px 20px; }
       .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(11,11,11,0.98); flex-direction: column; gap: 0; border-top: 1px solid var(--card-border); }
       .nav-links.open { display: flex; }
       .nav-links li a { display: block; padding: 16px 24px; border-bottom: 1px solid var(--card-border); }
@@ -540,254 +955,847 @@
       .nav-hamburger { display: flex; }
 
       .packages-grid { grid-template-columns: 1fr; border: none; gap: 1px; background: var(--card-border); }
-      .package-card { border-right: none; border-bottom: 1px solid var(--card-border); }
-      .package-card:last-child { border-bottom: none; }
+      .package-card { border-right: none; }
       .package-card.featured { margin: 0; }
-
-      .addons-grid { grid-template-columns: 1fr; }
-      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: 1fr; background: var(--card-border); gap: 1px; border: none; }
+      .step-card { border-right: none; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .contact-item { border-right: none; border-bottom: 1px solid var(--card-border); }
       .contact-item:last-child { border-bottom: none; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .quick-contact-btns { grid-template-columns: 1fr; }
       section { padding: 72px 20px; }
     }
     @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
       .why-grid { grid-template-columns: 1fr; }
+      .addons-grid { grid-template-columns: 1fr; }
+      .payment-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-title { letter-spacing: 0.02em; }
     }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ═══ FLOATING ACTION BUTTONS ═══ -->
+<div class="fab-container">
+  <a class="fab fab-whatsapp"
+     href="https://wa.me/17135010461?text=Hi%20Esplendor%20Detailing!%20I%27d%20like%20to%20book%20a%20detail%20for%20my%20vehicle."
+     target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+    <span class="fab-label en">WhatsApp Us</span>
+    <span class="fab-label es">WhatsApp</span>
+  </a>
+  <a class="fab fab-call" href="tel:7135010461" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.46 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.37 .5h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    <span class="fab-label en">Call Now</span>
+    <span class="fab-label es">Llamar</span>
+  </a>
+</div>
+
+<!-- ═══ NAV ═══ -->
 <nav id="navbar">
   <a class="nav-logo" href="#home">ESPLENDOR</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#addons">Add-Ons</a></li>
-    <li><a href="#why">Why Us</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
+    <li><a href="#booking"><span class="en">Book Online</span><span class="es">Reservar</span></a></li>
+    <li><a href="#reviews"><span class="en">Reviews</span><span class="es">Reseñas</span></a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact"><span class="en">Contact</span><span class="es">Contacto</span></a></li>
   </ul>
-  <a class="nav-cta" href="tel:7135010461">Book Now</a>
+  <div class="nav-right">
+    <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+      <span class="en">🇲🇽 ES</span>
+      <span class="es">🇺🇸 EN</span>
+    </button>
+    <a class="nav-cta" href="#booking">
+      <span class="en">Book Now</span>
+      <span class="es">Reservar</span>
+    </a>
+  </div>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
-  <p class="hero-eyebrow">Mobile Detailing &nbsp;·&nbsp; Houston, Texas</p>
+  <p class="hero-eyebrow">
+    <span class="en">Mobile Detailing &nbsp;·&nbsp; Houston, Texas</span>
+    <span class="es">Detallado Móvil &nbsp;·&nbsp; Houston, Texas</span>
+  </p>
 
-  <!-- Car logo SVG inspired by flyer -->
   <div class="hero-logo">
     <svg viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- sparkles -->
-      <circle cx="42" cy="18" r="2" fill="#c9a84c" opacity="0.7"/>
-      <circle cx="178" cy="14" r="1.5" fill="#c9a84c" opacity="0.6"/>
-      <circle cx="110" cy="8" r="1.2" fill="#c9a84c" opacity="0.5"/>
-      <circle cx="160" cy="22" r="1" fill="#c9a84c" opacity="0.4"/>
+      <circle cx="42" cy="18" r="2.5" fill="#c9a84c" opacity="0.8"/>
+      <circle cx="178" cy="14" r="1.8" fill="#c9a84c" opacity="0.65"/>
+      <circle cx="110" cy="8" r="1.4" fill="#c9a84c" opacity="0.55"/>
+      <circle cx="160" cy="22" r="1.2" fill="#c9a84c" opacity="0.45"/>
       <circle cx="55" cy="12" r="1" fill="#c9a84c" opacity="0.4"/>
-      <!-- car silhouette -->
+      <circle cx="80" cy="6" r="0.8" fill="#c9a84c" opacity="0.35"/>
+      <circle cx="140" cy="10" r="0.8" fill="#c9a84c" opacity="0.35"/>
       <path d="M30 62 Q34 46 58 38 Q80 32 110 31 Q140 32 162 38 Q186 46 190 62 L194 62 L194 72 Q194 76 190 76 L172 76 Q168 80 160 80 Q152 80 148 76 L72 76 Q68 80 60 80 Q52 80 48 76 L30 76 Q26 76 26 72 L26 62 Z" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linejoin="round"/>
-      <!-- wheels -->
       <circle cx="60" cy="76" r="10" fill="none" stroke="#c9a84c" stroke-width="2"/>
       <circle cx="60" cy="76" r="4" fill="#c9a84c" opacity="0.4"/>
       <circle cx="160" cy="76" r="10" fill="none" stroke="#c9a84c" stroke-width="2"/>
       <circle cx="160" cy="76" r="4" fill="#c9a84c" opacity="0.4"/>
-      <!-- windshield lines -->
-      <path d="M75 38 Q85 32 110 31 Q135 32 145 38 L138 52 L82 52 Z" fill="rgba(201,168,76,0.08)" stroke="#c9a84c" stroke-width="1.2"/>
-      <!-- decorative arc -->
+      <path d="M75 38 Q85 32 110 31 Q135 32 145 38 L138 52 L82 52 Z" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="1.2"/>
       <path d="M50 28 Q110 10 170 28" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3 4"/>
     </svg>
   </div>
 
   <h1 class="hero-title">Esplendor <span>Detailing</span></h1>
-  <p class="hero-tagline">Splendor, delivered to your driveway.</p>
-  <div class="hero-actions">
-    <a href="tel:7135010461" class="btn-primary">Book Now</a>
-    <a href="#services" class="btn-secondary">View Services</a>
+
+  <p class="hero-tagline">
+    <span class="en">Splendor, delivered to your driveway.</span>
+    <span class="es">El lujo del detallado, directamente en tu hogar.</span>
+  </p>
+
+  <div class="hero-trust">
+    <span class="hero-trust-item en">We Come to You</span>
+    <span class="hero-trust-item es">Vamos a Donde Estés</span>
+    <span class="hero-trust-item en">100% Mobile</span>
+    <span class="hero-trust-item es">100% Móvil</span>
+    <span class="hero-trust-item en">Starting at $69.99</span>
+    <span class="hero-trust-item es">Desde $69.99</span>
+    <span class="hero-trust-item en">Same-Day Available</span>
+    <span class="hero-trust-item es">Mismo Día Disponible</span>
   </div>
-  <div class="hero-scroll">
-    <svg width="16" height="20" viewBox="0 0 16 20" fill="none"><rect x="6.5" y="1" width="3" height="6" rx="1.5" fill="#c9a84c"/><rect x="0.5" y="0.5" width="15" height="19" rx="7.5" stroke="#c9a84c" stroke-opacity="0.4"/></svg>
-    Scroll
+
+  <div class="hero-actions">
+    <a href="#booking" class="btn-primary">
+      <span class="en">Book Online — Fast</span>
+      <span class="es">Reserva Ahora</span>
+    </a>
+    <a href="https://wa.me/17135010461?text=Hi%20Esplendor%20Detailing!%20I%27d%20like%20to%20book%20a%20detail." target="_blank" rel="noopener" class="btn-secondary">
+      <span class="en">💬 Text Us on WhatsApp</span>
+      <span class="es">💬 Escríbenos por WhatsApp</span>
+    </a>
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how" id="how">
+  <p class="section-label fade-up">
+    <span class="en">Simple Process</span>
+    <span class="es">Proceso Simple</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">How It Works</span>
+    <span class="es">¿Cómo Funciona?</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Three steps to a spotless vehicle — no shop visit, no waiting room, no hassle.</span>
+    <span class="es">Tres pasos para un vehículo impecable — sin ir a ningún lado.</span>
+  </p>
+
+  <div class="steps-grid fade-up delay-3">
+    <div class="step-card">
+      <div class="step-number">01</div>
+      <div class="step-icon">📲</div>
+      <p class="step-title"><span class="en">Book in 60 Seconds</span><span class="es">Reserva en 60 Seg.</span></p>
+      <p class="step-desc">
+        <span class="en">Fill the form below, text us on WhatsApp, or call 713-501-0461. Pick your package and preferred time.</span>
+        <span class="es">Llena el formulario, escríbenos por WhatsApp, o llama al 713-501-0461. Elige tu paquete y horario.</span>
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">02</div>
+      <div class="step-icon">🚐</div>
+      <p class="step-title"><span class="en">We Come to You</span><span class="es">Llegamos a Ti</span></p>
+      <p class="step-desc">
+        <span class="en">Our team arrives at your home, office, or apartment with all equipment. Zero effort on your part.</span>
+        <span class="es">Nuestro equipo llega a tu casa, oficina o apartamento con todo el equipo. Sin esfuerzo de tu parte.</span>
+      </p>
+    </div>
+    <div class="step-card">
+      <div class="step-number">03</div>
+      <div class="step-icon">✨</div>
+      <p class="step-title"><span class="en">Enjoy & Pay</span><span class="es">Disfruta y Paga</span></p>
+      <p class="step-desc">
+        <span class="en">Inspect your pristine vehicle and pay by card, Zelle, Venmo, or cash. We're not done until you're satisfied.</span>
+        <span class="es">Inspecciona tu vehículo impecable y paga con tarjeta, Zelle, Venmo o efectivo. No terminamos hasta que estés satisfecho.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
 <section class="services" id="services">
-  <p class="section-label fade-up">Our Packages</p>
-  <h2 class="section-title fade-up delay-1">Detail Services</h2>
-  <p class="section-sub fade-up delay-2">Every package is performed at your location — no waiting rooms, no drop-offs. Just results.</p>
+  <p class="section-label fade-up">
+    <span class="en">Our Packages</span>
+    <span class="es">Nuestros Paquetes</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Detail Services</span>
+    <span class="es">Servicios de Detallado</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Every package is performed at your location — your driveway, office, or apartment complex.</span>
+    <span class="es">Cada paquete se realiza en tu ubicación — tu entrada, oficina o complejo de apartamentos.</span>
+  </p>
 
   <div class="packages-grid fade-up delay-3">
 
     <!-- Exterior Focused -->
     <div class="package-card">
       <div class="pkg-rule"></div>
-      <p class="pkg-name">Exterior Focused</p>
-      <p class="pkg-sub">Outside, Restored</p>
-      <p class="pkg-price-label">Starting at</p>
+      <p class="pkg-name"><span class="en">Exterior Focused</span><span class="es">Renovación Exterior</span></p>
+      <p class="pkg-sub"><span class="en">Outside, Restored</span><span class="es">Exterior Renovado</span></p>
+      <p class="pkg-price-label"><span class="en">Starting at</span><span class="es">Desde</span></p>
       <p class="pkg-price"><sup>$</sup>69<sub>.99</sub></p>
       <div class="pkg-rule-bottom"></div>
       <ul class="pkg-features">
-        <li>Foam bath &amp; hand wash treatment</li>
-        <li>Tire &amp; wheel detail</li>
-        <li>Door jamb &amp; glass cleaning</li>
-        <li>Exterior plastic dressing</li>
-        <li>Paint protection</li>
-        <li>Exterior maintenance detail</li>
+        <li><span class="en">Foam bath &amp; hand wash treatment</span><span class="es">Lavado con espuma a mano</span></li>
+        <li><span class="en">Tire &amp; wheel detail</span><span class="es">Detalle de llantas y rines</span></li>
+        <li><span class="en">Door jamb &amp; glass cleaning</span><span class="es">Limpieza de jambas y cristales</span></li>
+        <li><span class="en">Exterior plastic dressing</span><span class="es">Restauración de plásticos</span></li>
+        <li><span class="en">Paint protection</span><span class="es">Protección de pintura</span></li>
+        <li class="highlight"><span class="en">High-Gloss Paint Sealant</span><span class="es">Sellador de pintura (Alto brillo)</span></li>
       </ul>
-      <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
+      <a href="#booking" class="pkg-cta"><span class="en">Book This Package</span><span class="es">Reservar Este Paquete</span></a>
     </div>
 
-    <!-- Standard Detail (featured) -->
+    <!-- SuperWash (featured) -->
     <div class="package-card featured">
-      <div class="badge">Most Booked</div>
+      <div class="badge"><span class="en">Best Value</span><span class="es">Mejor Opción</span></div>
       <div class="pkg-rule"></div>
-      <p class="pkg-name">Standard Detail</p>
-      <p class="pkg-sub">Inside &amp; Out</p>
-      <p class="pkg-price-label">Starting at</p>
+      <p class="pkg-name">SuperWash</p>
+      <p class="pkg-sub"><span class="en">Inside &amp; Out</span><span class="es">Detallado Completo</span></p>
+      <p class="pkg-price-label"><span class="en">Grand Opening</span><span class="es">Apertura</span></p>
+      <p class="pkg-price-old">$149.99</p>
       <p class="pkg-price"><sup>$</sup>129<sub>.99</sub></p>
+      <p class="pkg-promo"><span class="en">⚡ Grand Opening Special</span><span class="es">⚡ Especial de Apertura</span></p>
       <div class="pkg-rule-bottom"></div>
       <ul class="pkg-features">
-        <li>Hand wash &amp; foam bath treatment</li>
-        <li>Tire &amp; wheel detail</li>
-        <li>Full interior vacuum</li>
-        <li>Interior surface refresh</li>
-        <li>Door jamb &amp; glass cleaning</li>
-        <li>Paint protection</li>
+        <li><span class="en">Hand wash &amp; foam bath treatment</span><span class="es">Lavado con espuma a mano</span></li>
+        <li><span class="en">Tire &amp; wheel detail</span><span class="es">Detalle de llantas y rines</span></li>
+        <li><span class="en">Full interior vacuum</span><span class="es">Aspirado completo del interior</span></li>
+        <li><span class="en">Interior surface refresh</span><span class="es">Limpieza de superficies interiores</span></li>
+        <li><span class="en">Door jamb &amp; glass cleaning</span><span class="es">Limpieza de jambas y cristales</span></li>
+        <li><span class="en">Paint protection</span><span class="es">Protección de pintura</span></li>
+        <li class="highlight"><span class="en">High-Gloss Paint Sealant</span><span class="es">Sellador de pintura de alto brillo</span></li>
+        <li class="highlight"><span class="en">Vent &amp; dashboard detail</span><span class="es">Detalle de rejillas y tablero</span></li>
+        <li class="highlight"><span class="en">Premium fragrance finish</span><span class="es">Fragancia premium</span></li>
       </ul>
-      <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
+      <a href="#booking" class="pkg-cta"><span class="en">Book This Package</span><span class="es">Reservar Este Paquete</span></a>
     </div>
 
     <!-- Interior Focused -->
     <div class="package-card">
       <div class="pkg-rule"></div>
-      <p class="pkg-name">Interior Focused</p>
-      <p class="pkg-sub">Cabin, Renewed</p>
-      <p class="pkg-price-label">Starting at</p>
+      <p class="pkg-name"><span class="en">Interior Focused</span><span class="es">Renovación Interior</span></p>
+      <p class="pkg-sub"><span class="en">Cabin, Renewed</span><span class="es">Cabina Renovada</span></p>
+      <p class="pkg-price-label"><span class="en">Starting at</span><span class="es">Desde</span></p>
       <p class="pkg-price"><sup>$</sup>69<sub>.99</sub></p>
       <div class="pkg-rule-bottom"></div>
       <ul class="pkg-features">
-        <li>Complete interior vacuum</li>
-        <li>Deep interior cleaning</li>
-        <li>Dashboard &amp; surface cleaning</li>
-        <li>UV protection treatment</li>
-        <li>Window &amp; mirror cleaning</li>
-        <li>Floor mats &amp; seats</li>
+        <li><span class="en">Complete interior vacuum</span><span class="es">Aspirado completo del interior</span></li>
+        <li><span class="en">Deep interior cleaning</span><span class="es">Limpieza profunda del interior</span></li>
+        <li><span class="en">Dashboard &amp; surface cleaning</span><span class="es">Limpieza de tablero y superficies</span></li>
+        <li><span class="en">UV protection treatment</span><span class="es">Protección UV</span></li>
+        <li class="highlight"><span class="en">Window &amp; Mirror Refresh</span><span class="es">Limpieza de cristales y espejos</span></li>
+        <li><span class="en">Floor mats &amp; seats</span><span class="es">Tapetes y asientos</span></li>
       </ul>
-      <a href="tel:7135010461" class="pkg-cta">Book This Package</a>
+      <a href="#booking" class="pkg-cta"><span class="en">Book This Package</span><span class="es">Reservar Este Paquete</span></a>
     </div>
 
   </div>
 </section>
 
-<!-- ADD-ONS -->
+<!-- ═══ ADD-ONS ═══ -->
 <section class="addons" id="addons">
-  <p class="section-label fade-up">Customize Your Detail</p>
-  <h2 class="section-title fade-up delay-1">Add-On Services</h2>
-  <p class="section-sub fade-up delay-2">Enhance any package with targeted treatments for a truly thorough result.</p>
+  <p class="section-label fade-up">
+    <span class="en">Enhance Your Detail</span>
+    <span class="es">Mejora Tu Detallado</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Add-On Services</span>
+    <span class="es">Servicios Adicionales</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Add any service to any package for a completely tailored result.</span>
+    <span class="es">Añade cualquier servicio a cualquier paquete para un resultado completamente personalizado.</span>
+  </p>
 
   <div class="addons-grid fade-up delay-3">
     <div class="addon-card">
-      <span class="addon-icon">✦</span>
-      <p class="addon-name">Pet Hair Removal</p>
-      <p class="addon-price">Starting at $39.99</p>
+      <span class="addon-icon">🐾</span>
+      <p class="addon-name"><span class="en">Pet Hair Removal</span><span class="es">Eliminación de Pelo de Mascota</span></p>
+      <p class="addon-price">$39.99</p>
     </div>
     <div class="addon-card">
-      <span class="addon-icon">✦</span>
-      <p class="addon-name">Stain Removal</p>
-      <p class="addon-price">Starting at $49.99</p>
+      <span class="addon-icon">🫧</span>
+      <p class="addon-name"><span class="en">Stain Removal</span><span class="es">Eliminación de Manchas</span></p>
+      <p class="addon-price">$49.99</p>
     </div>
     <div class="addon-card">
-      <span class="addon-icon">✦</span>
-      <p class="addon-name">Clay Towel Treatment</p>
-      <p class="addon-price">$50</p>
+      <span class="addon-icon">🪑</span>
+      <p class="addon-name"><span class="en">Shampoo Carpets &amp; Seats</span><span class="es">Shampoo de Alfombras y Asientos</span></p>
+      <p class="addon-price"><span class="en">Starting at $49.99</span><span class="es">Desde $49.99</span></p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">🛡️</span>
+      <p class="addon-name"><span class="en">1-Year Ceramic Protection</span><span class="es">Protección Cerámica 1 Año</span></p>
+      <p class="addon-price">$59.99</p>
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
+<!-- ═══ BOOKING FORM ═══ -->
+<section class="booking" id="booking">
+  <p class="section-label fade-up">
+    <span class="en">Reserve Your Spot</span>
+    <span class="es">Reserva Tu Lugar</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Book Your Detail Online</span>
+    <span class="es">Reserva Tu Detallado en Línea</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Fill out the form and we'll confirm your appointment within 1 hour by text or call.</span>
+    <span class="es">Llena el formulario y confirmaremos tu cita en 1 hora por mensaje o llamada.</span>
+  </p>
+
+  <div class="booking-wrap fade-up delay-3">
+
+    <!-- Success message (shown after submit) -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✅</div>
+      <h3><span class="en">Booking Request Sent!</span><span class="es">¡Solicitud Enviada!</span></h3>
+      <p>
+        <span class="en">We'll confirm your appointment within 1 hour via text or call. Thank you for choosing Esplendor Detailing!</span>
+        <span class="es">Confirmaremos tu cita en 1 hora por mensaje o llamada. ¡Gracias por elegir Esplendor Detailing!</span>
+      </p>
+    </div>
+
+    <!-- Booking form -->
+    <form id="bookingForm"
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          novalidate>
+
+      <!-- Hidden fields for Formspree -->
+      <input type="hidden" name="_subject" value="🚗 New Booking Request — Esplendor Detailing" />
+      <input type="hidden" name="_next" value="thanks" />
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fname"><span class="en">Full Name *</span><span class="es">Nombre Completo *</span></label>
+          <input type="text" id="fname" name="name" required
+                 placeholder="John Smith" autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="fphone"><span class="en">Phone Number *</span><span class="es">Número de Teléfono *</span></label>
+          <input type="tel" id="fphone" name="phone" required
+                 placeholder="(713) 000-0000" autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="femail"><span class="en">Email Address</span><span class="es">Correo Electrónico</span></label>
+          <input type="email" id="femail" name="email"
+                 placeholder="you@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="fvehicle"><span class="en">Vehicle (Year / Make / Model) *</span><span class="es">Vehículo (Año / Marca / Modelo) *</span></label>
+          <input type="text" id="fvehicle" name="vehicle" required
+                 placeholder="2020 Toyota Camry" />
+        </div>
+        <div class="form-group">
+          <label for="fpackage"><span class="en">Package *</span><span class="es">Paquete *</span></label>
+          <select id="fpackage" name="package" required>
+            <option value="" disabled selected>
+              Select a package / Selecciona un paquete
+            </option>
+            <option value="Exterior Focused — $69.99">Exterior Focused — $69.99</option>
+            <option value="SuperWash (Inside & Out) — $129.99">SuperWash (Inside &amp; Out) — $129.99 ⭐ Best Value</option>
+            <option value="Interior Focused — $69.99">Interior Focused — $69.99</option>
+            <option value="Not sure — need a quote">Not sure — I need a quote / No estoy seguro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="faddons"><span class="en">Add-Ons (optional)</span><span class="es">Servicios Adicionales (opcional)</span></label>
+          <select id="faddons" name="addons">
+            <option value="None">None / Ninguno</option>
+            <option value="Pet Hair Removal +$39.99">Pet Hair Removal +$39.99</option>
+            <option value="Stain Removal +$49.99">Stain Removal +$49.99</option>
+            <option value="Shampoo Carpets & Seats +$49.99">Shampoo Carpets &amp; Seats +$49.99</option>
+            <option value="1-Year Ceramic Protection +$59.99">1-Year Ceramic Protection +$59.99</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fdate"><span class="en">Preferred Date *</span><span class="es">Fecha Preferida *</span></label>
+          <input type="date" id="fdate" name="preferred_date" required />
+        </div>
+        <div class="form-group">
+          <label for="ftime"><span class="en">Preferred Time *</span><span class="es">Hora Preferida *</span></label>
+          <select id="ftime" name="preferred_time" required>
+            <option value="" disabled selected>Select / Selecciona</option>
+            <option value="7:00 AM – 9:00 AM">7:00 AM – 9:00 AM</option>
+            <option value="9:00 AM – 11:00 AM">9:00 AM – 11:00 AM</option>
+            <option value="11:00 AM – 1:00 PM">11:00 AM – 1:00 PM</option>
+            <option value="1:00 PM – 3:00 PM">1:00 PM – 3:00 PM</option>
+            <option value="3:00 PM – 5:00 PM">3:00 PM – 5:00 PM</option>
+            <option value="5:00 PM – 7:00 PM">5:00 PM – 7:00 PM</option>
+            <option value="Flexible / Flexible">Flexible</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label for="faddress"><span class="en">Service Address (where we come to you) *</span><span class="es">Dirección del Servicio (donde llegamos) *</span></label>
+          <input type="text" id="faddress" name="address" required
+                 placeholder="1234 Main St, Houston, TX 77001" autocomplete="street-address" />
+        </div>
+        <div class="form-group full">
+          <label for="fnotes"><span class="en">Special Requests / Notes</span><span class="es">Solicitudes Especiales / Notas</span></label>
+          <textarea id="fnotes" name="notes"
+                    placeholder="Any specific concerns, stains, pet hair, or details we should know about..."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="form-submit" id="formSubmitBtn">
+        <span class="en">🚗 Request My Appointment</span>
+        <span class="es">🚗 Solicitar Mi Cita</span>
+      </button>
+      <p class="form-note">
+        <span class="en">We confirm every booking within 1 hour · No payment required to book</span>
+        <span class="es">Confirmamos cada reserva en 1 hora · No se requiere pago para reservar</span>
+      </p>
+    </form>
+
+    <div class="or-divider">
+      <span><span class="en">or reach us directly</span><span class="es">o contáctanos directamente</span></span>
+    </div>
+
+    <div class="quick-contact-btns">
+      <a class="qc-btn qc-btn-wa"
+         href="https://wa.me/17135010461?text=Hi!%20I'd%20like%20to%20book%20a%20detail%20with%20Esplendor%20Detailing."
+         target="_blank" rel="noopener">
+        💬 <span class="en">Book via WhatsApp</span><span class="es">Reservar por WhatsApp</span>
+      </a>
+      <a class="qc-btn qc-btn-sms" href="sms:7135010461?body=Hi%20Esplendor%20Detailing!%20I'd%20like%20to%20book%20a%20detail.">
+        📱 <span class="en">Text Us (SMS)</span><span class="es">Enviarnos un Mensaje</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section class="gallery" id="gallery">
+  <p class="section-label fade-up">
+    <span class="en">Our Work</span>
+    <span class="es">Nuestro Trabajo</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Before &amp; After</span>
+    <span class="es">Antes y Después</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Real results from real Houston vehicles. Follow us on Instagram for more.</span>
+    <span class="es">Resultados reales de vehículos reales en Houston. Síguenos en Instagram para ver más.</span>
+  </p>
+
+  <div class="gallery-grid fade-up delay-3">
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🚗</div>
+      <p class="gallery-placeholder-text en">Before Photo<br>Coming Soon</p>
+      <p class="gallery-placeholder-text es">Foto Antes<br>Próximamente</p>
+      <span class="gallery-badge en">BEFORE</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">✨</div>
+      <p class="gallery-placeholder-text en">After Photo<br>Coming Soon</p>
+      <p class="gallery-placeholder-text es">Foto Después<br>Próximamente</p>
+      <span class="gallery-badge en">AFTER</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🚙</div>
+      <p class="gallery-placeholder-text en">Add Your Photos<br>via Instagram</p>
+      <p class="gallery-placeholder-text es">Agrega Fotos<br>en Instagram</p>
+      <span class="gallery-badge">@esplendordetailing</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🪣</div>
+      <p class="gallery-placeholder-text en">Interior Detail<br>Coming Soon</p>
+      <p class="gallery-placeholder-text es">Interior<br>Próximamente</p>
+      <span class="gallery-badge en">INTERIOR</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">🛞</div>
+      <p class="gallery-placeholder-text en">Wheels &amp; Tires<br>Coming Soon</p>
+      <p class="gallery-placeholder-text es">Llantas y Rines<br>Próximamente</p>
+      <span class="gallery-badge en">WHEELS</span>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-placeholder">📸</div>
+      <p class="gallery-placeholder-text en">Follow Us<br>@esplendordetailing</p>
+      <p class="gallery-placeholder-text es">Síguenos<br>@esplendordetailing</p>
+      <span class="gallery-badge">INSTAGRAM</span>
+    </div>
+  </div>
+
+  <div class="gallery-cta fade-up">
+    <a href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener" class="btn-secondary">
+      <span class="en">📷 Follow @esplendordetailing</span>
+      <span class="es">📷 Seguir @esplendordetailing</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ REVIEWS ═══ -->
+<section class="reviews" id="reviews">
+  <p class="section-label fade-up">
+    <span class="en">What Clients Say</span>
+    <span class="es">Lo Que Dicen Nuestros Clientes</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">5-Star Reviews</span>
+    <span class="es">Reseñas 5 Estrellas</span>
+  </h2>
+
+  <div style="text-align:center; margin-bottom: 48px;" class="fade-up delay-2">
+    <div class="reviews-rating-badge">
+      <div class="rating-number">5.0</div>
+      <div class="rating-info">
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-count en">Google Reviews · Houston, TX</div>
+        <div class="rating-count es">Google Reviews · Houston, TX</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid fade-up delay-3">
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text en">"My SUV looks better than when I bought it. They came to my apartment, were on time, professional, and the results were insane. Will be booking monthly!"</p>
+      <p class="review-text es">"Mi SUV se ve mejor que cuando la compré. Vinieron a mi apartamento, llegaron puntual, fueron muy profesionales y los resultados fueron increíbles. ¡Volveré a reservar cada mes!"</p>
+      <p class="review-author">— Maria G.</p>
+      <p class="review-vehicle en">2021 Toyota RAV4 · SuperWash Package</p>
+      <p class="review-vehicle es">2021 Toyota RAV4 · Paquete SuperWash</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text en">"Booked last minute on a Sunday and they showed up within 3 hours. My truck was absolutely filthy and now it's showroom condition. Price is unbeatable."</p>
+      <p class="review-text es">"Reservé de último minuto un domingo y aparecieron en 3 horas. Mi camioneta estaba absolutamente sucia y ahora está en condición de exposición. El precio es insuperable."</p>
+      <p class="review-author">— Carlos R.</p>
+      <p class="review-vehicle en">2019 Ford F-150 · Exterior Focused</p>
+      <p class="review-vehicle es">2019 Ford F-150 · Renovación Exterior</p>
+    </div>
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text en">"I have 2 kids and a dog — the interior of my car was a disaster. They did the pet hair removal add-on and interior detail and I couldn't believe the transformation. 10/10."</p>
+      <p class="review-text es">"Tengo 2 hijos y un perro — el interior de mi carro era un desastre. Hicieron la eliminación de pelo de mascota y el detallado interior y no podía creer la transformación. 10/10."</p>
+      <p class="review-author">— Jessica M.</p>
+      <p class="review-vehicle en">2022 Honda Odyssey · Interior + Pet Hair</p>
+      <p class="review-vehicle es">2022 Honda Odyssey · Interior + Pelo de Mascota</p>
+    </div>
+  </div>
+
+  <div class="reviews-cta fade-up">
+    <p style="font-size:0.75rem; color: var(--text-muted); margin-bottom: 20px;">
+      <span class="en">Had a great experience? Your review helps us grow.</span>
+      <span class="es">¿Tuviste una buena experiencia? Tu reseña nos ayuda a crecer.</span>
+    </p>
+    <a href="https://g.page/r/esplendordetailing/review" target="_blank" rel="noopener" class="btn-secondary">
+      <span class="en">⭐ Leave Us a Google Review</span>
+      <span class="es">⭐ Déjanos una Reseña en Google</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ WHY US ═══ -->
 <section class="why" id="why">
-  <p class="section-label fade-up">The Esplendor Difference</p>
-  <h2 class="section-title fade-up delay-1">Why Choose Us</h2>
+  <p class="section-label fade-up">
+    <span class="en">The Esplendor Difference</span>
+    <span class="es">La Diferencia Esplendor</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Why Choose Us</span>
+    <span class="es">¿Por Qué Elegirnos?</span>
+  </h2>
   <div class="gold-rule fade-up delay-2"></div>
 
   <div class="why-grid fade-up delay-3">
     <div class="why-card">
       <p class="why-number">01</p>
-      <p class="why-heading">We Come to You</p>
-      <p class="why-text">Mobile service anywhere in Houston — your driveway, office, or apartment complex.</p>
+      <p class="why-heading"><span class="en">We Come to You</span><span class="es">Vamos a Ti</span></p>
+      <p class="why-text"><span class="en">Mobile service anywhere in Houston — your driveway, office, or apartment.</span><span class="es">Servicio móvil en cualquier lugar de Houston — tu entrada, oficina o apartamento.</span></p>
     </div>
     <div class="why-card">
       <p class="why-number">02</p>
-      <p class="why-heading">Hand-Crafted Care</p>
-      <p class="why-text">Every vehicle is hand-washed and detailed with professional-grade products.</p>
+      <p class="why-heading"><span class="en">Hand-Crafted Care</span><span class="es">Cuidado Artesanal</span></p>
+      <p class="why-text"><span class="en">Every vehicle is hand-washed with professional-grade products, not automated machines.</span><span class="es">Cada vehículo se lava a mano con productos de grado profesional, no máquinas.</span></p>
     </div>
     <div class="why-card">
       <p class="why-number">03</p>
-      <p class="why-heading">Transparent Pricing</p>
-      <p class="why-text">No hidden fees. Clear packages with consistent pricing every time.</p>
+      <p class="why-heading"><span class="en">Transparent Pricing</span><span class="es">Precios Transparentes</span></p>
+      <p class="why-text"><span class="en">No hidden fees. Clear packages, consistent pricing, no surprises ever.</span><span class="es">Sin cargos ocultos. Paquetes claros, precios consistentes, sin sorpresas.</span></p>
     </div>
     <div class="why-card">
       <p class="why-number">04</p>
-      <p class="why-heading">Satisfaction First</p>
-      <p class="why-text">We're not done until you're happy with the result — that's our standard.</p>
+      <p class="why-heading"><span class="en">100% Satisfaction</span><span class="es">100% Satisfacción</span></p>
+      <p class="why-text"><span class="en">We're not done until you're completely happy — that's our guarantee, every single time.</span><span class="es">No terminamos hasta que estés completamente satisfecho — esa es nuestra garantía.</span></p>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ═══ PAYMENT METHODS ═══ -->
+<section class="payment" id="payment">
+  <p class="section-label fade-up">
+    <span class="en">Easy &amp; Secure</span>
+    <span class="es">Fácil y Seguro</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">We Accept</span>
+    <span class="es">Aceptamos</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Pay however is easiest for you — no payment required to book your appointment.</span>
+    <span class="es">Paga de la manera que más te convenga — no se requiere pago para reservar tu cita.</span>
+  </p>
+
+  <div class="payment-grid fade-up delay-3">
+    <div class="payment-card">
+      <span class="payment-icon">💳</span>
+      <p class="payment-name"><span class="en">Credit / Debit Card</span><span class="es">Tarjeta</span></p>
+      <p class="payment-detail"><span class="en">Visa · MC · Amex</span><span class="es">Visa · MC · Amex</span></p>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">💸</span>
+      <p class="payment-name">Zelle</p>
+      <p class="payment-detail">713-501-0461</p>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">📲</span>
+      <p class="payment-name">Venmo</p>
+      <p class="payment-detail">@EsplendorDetailing</p>
+    </div>
+    <div class="payment-card">
+      <span class="payment-icon">💵</span>
+      <p class="payment-name"><span class="en">Cash</span><span class="es">Efectivo</span></p>
+      <p class="payment-detail"><span class="en">Always welcome</span><span class="es">Siempre bienvenido</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq" id="faq">
+  <p class="section-label fade-up">FAQ</p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Common Questions</span>
+    <span class="es">Preguntas Frecuentes</span>
+  </h2>
+  <div class="gold-rule fade-up delay-2"></div>
+
+  <div class="faq-list fade-up delay-3">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">Do you need water and power at my location?</span>
+        <span class="es">¿Necesitan agua y electricidad en mi ubicación?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">No! We are 100% self-contained. We bring our own water tank, generator, and all professional equipment. You don't need to provide anything — just the vehicle.</span>
+          <span class="es">¡No! Somos 100% autosuficientes. Traemos nuestro propio tanque de agua, generador y todo el equipo profesional. No necesitas proveer nada — solo el vehículo.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">How long does a detail take?</span>
+        <span class="es">¿Cuánto tiempo toma un detallado?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">Exterior Focused: 1–2 hours. Interior Focused: 1.5–2.5 hours. SuperWash (full detail): 2.5–4 hours depending on vehicle size and condition. We never rush — quality is our priority.</span>
+          <span class="es">Renovación Exterior: 1–2 horas. Renovación Interior: 1.5–2.5 horas. SuperWash (detallado completo): 2.5–4 horas según el tamaño y condición del vehículo. Nunca tenemos prisa — la calidad es nuestra prioridad.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">Do I need to be present during the detail?</span>
+        <span class="es">¿Necesito estar presente durante el detallado?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">No, you don't need to be present! Just make sure we have access to your vehicle. We'll text you when we arrive and when we're done so you can inspect the results.</span>
+          <span class="es">¡No necesitas estar presente! Solo asegúrate de que tengamos acceso a tu vehículo. Te enviaremos un mensaje cuando lleguemos y cuando terminemos para que puedas inspeccionar los resultados.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">What areas do you serve in Houston?</span>
+        <span class="es">¿Qué áreas de Houston cubren?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">We serve all of Houston and surrounding areas including Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring, and more. If you're unsure, just text us and we'll let you know!</span>
+          <span class="es">Servimos toda el área de Houston incluyendo Katy, Sugar Land, Pearland, The Woodlands, Cypress, Spring y más. Si no estás seguro, ¡solo escríbenos y te informaremos!</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">What if it rains on my appointment day?</span>
+        <span class="es">¿Qué pasa si llueve el día de mi cita?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">If there's heavy rain, we'll reach out to reschedule at no charge. Light rain is usually fine for interior-only services. We always prioritize quality results over rushing.</span>
+          <span class="es">Si hay lluvia fuerte, nos comunicaremos para reprogramar sin costo. La lluvia ligera generalmente está bien para servicios solo de interior. Siempre priorizamos los resultados de calidad.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">How do I pay? When do I pay?</span>
+        <span class="es">¿Cómo y cuándo pago?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">Payment is collected after the service is completed and you've inspected the work. We accept credit/debit cards, Zelle, Venmo, and cash. No payment is required to book your appointment.</span>
+          <span class="es">El pago se cobra después de que el servicio esté completo y hayas inspeccionado el trabajo. Aceptamos tarjetas de crédito/débito, Zelle, Venmo y efectivo. No se requiere pago para reservar tu cita.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span class="en">Do you offer recurring/subscription detailing?</span>
+        <span class="es">¿Ofrecen detallado recurrente?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <span class="en">Yes! Ask about our monthly maintenance packages when you book. Regular clients get priority scheduling and discounted rates. Text us for details.</span>
+          <span class="es">¡Sí! Pregunta sobre nuestros paquetes de mantenimiento mensual cuando reserves. Los clientes regulares obtienen programación prioritaria y tarifas con descuento. Escríbenos para más detalles.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
 <section class="contact" id="contact">
-  <p class="section-label fade-up">Get in Touch</p>
-  <h2 class="section-title fade-up delay-1">Book Your Detail</h2>
-  <p class="section-sub fade-up delay-2">Ready to restore your vehicle's splendor? Call, text, or find us on Instagram to schedule your appointment.</p>
+  <p class="section-label fade-up">
+    <span class="en">Get in Touch</span>
+    <span class="es">Contáctanos</span>
+  </p>
+  <h2 class="section-title fade-up delay-1">
+    <span class="en">Book Your Detail</span>
+    <span class="es">Reserva Tu Detallado</span>
+  </h2>
+  <p class="section-sub fade-up delay-2">
+    <span class="en">Call, text, WhatsApp, or book online. We respond fast — usually within the hour.</span>
+    <span class="es">Llama, envía un mensaje, WhatsApp, o reserva en línea. Respondemos rápido — usualmente dentro de la hora.</span>
+  </p>
 
   <div class="contact-grid fade-up delay-3">
     <div class="contact-item">
-      <p class="contact-label">Call or Text</p>
+      <p class="contact-label"><span class="en">Call or Text</span><span class="es">Llama o Escríbenos</span></p>
       <a class="contact-value" href="tel:7135010461">713-501-0461</a>
-      <p class="contact-note">Mon – Sun, flexible hours</p>
+      <p class="contact-note"><span class="en">Mon – Sun · 7AM – 8PM</span><span class="es">Lun – Dom · 7AM – 8PM</span></p>
     </div>
     <div class="contact-item">
-      <p class="contact-label">Instagram</p>
-      <a class="contact-value" href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">@esplendordetailing</a>
-      <p class="contact-note">DMs welcome</p>
+      <p class="contact-label">WhatsApp</p>
+      <a class="contact-value" href="https://wa.me/17135010461" target="_blank" rel="noopener">wa.me/17135010461</a>
+      <p class="contact-note"><span class="en">Fastest response · DMs welcome</span><span class="es">Respuesta más rápida · DMs bienvenidos</span></p>
     </div>
     <div class="contact-item">
-      <p class="contact-label">Service Area</p>
+      <p class="contact-label"><span class="en">Service Area</span><span class="es">Área de Servicio</span></p>
       <span class="contact-value" style="cursor:default;">Houston, TX</span>
-      <p class="contact-note">We come to you — anywhere in Houston &amp; surrounding areas</p>
+      <p class="contact-note"><span class="en">All of Houston &amp; surrounding cities</span><span class="es">Todo Houston y ciudades aledañas</span></p>
     </div>
   </div>
 
-  <a href="tel:7135010461" class="btn-primary">Call Now to Book</a>
-  <p class="contact-bottom-note">We come to you — anywhere in Houston.</p>
+  <a href="#booking" class="btn-primary fade-up">
+    <span class="en">Book Online Now</span>
+    <span class="es">Reservar en Línea</span>
+  </a>
+
+  <p class="contact-bottom-note fade-up">
+    <span class="en">La diferencia está en los detalles. Nosotros la llevamos hasta ti.</span>
+    <span class="es">La diferencia está en los detalles. Nosotros la llevamos hasta ti.</span>
+  </p>
 </section>
 
-<!-- FOOTER -->
+<!-- ═══ FOOTER ═══ -->
 <footer>
-  <p>&copy; 2025 <span>Esplendor Detailing</span> &nbsp;·&nbsp; Houston, Texas &nbsp;·&nbsp; Mobile Detailing</p>
+  <p class="footer-logo">ESPLENDOR DETAILING</p>
+  <ul class="footer-links">
+    <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
+    <li><a href="#booking"><span class="en">Book</span><span class="es">Reservar</span></a></li>
+    <li><a href="#reviews"><span class="en">Reviews</span><span class="es">Reseñas</span></a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="tel:7135010461">713-501-0461</a></li>
+    <li><a href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="admin.html"><span class="en">Admin</span><span class="es">Admin</span></a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2025 <span>Esplendor Detailing</span> &nbsp;·&nbsp; Houston, Texas &nbsp;·&nbsp; Mobile Detailing &nbsp;·&nbsp; 713-501-0461</p>
 </footer>
 
+<!-- ═══ SCRIPTS ═══ -->
 <script>
-  // Navbar scroll
+  // ── Navbar scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  }, { passive: true });
 
-  // Mobile menu
+  // ── Mobile menu
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 
-  // Fade-up on scroll
+  // ── Language toggle
+  const html = document.documentElement;
+  const langToggle = document.getElementById('langToggle');
+  const savedLang = localStorage.getItem('esplendor-lang') || 'en';
+  html.className = 'lang-' + savedLang;
+  langToggle.addEventListener('click', () => {
+    const isEn = html.classList.contains('lang-en');
+    const newLang = isEn ? 'es' : 'en';
+    html.className = 'lang-' + newLang;
+    localStorage.setItem('esplendor-lang', newLang);
+    document.documentElement.lang = newLang;
+  });
+
+  // ── FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ── Fade-up on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
@@ -795,8 +1803,83 @@
         observer.unobserve(e.target);
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ── Set minimum date for date picker (today)
+  const dateInput = document.getElementById('fdate');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+  }
+
+  // ── Booking form submit (Formspree AJAX)
+  const bookingForm = document.getElementById('bookingForm');
+  const formSuccess = document.getElementById('formSuccess');
+  const submitBtn = document.getElementById('formSubmitBtn');
+
+  bookingForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    const name = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const vehicle = document.getElementById('fvehicle').value.trim();
+    const address = document.getElementById('faddress').value.trim();
+    const pkg = document.getElementById('fpackage').value;
+    const date = document.getElementById('fdate').value;
+    const time = document.getElementById('ftime').value;
+
+    if (!name || !phone || !vehicle || !address || !pkg || !date || !time) {
+      const isEs = html.classList.contains('lang-es');
+      alert(isEs
+        ? 'Por favor completa todos los campos requeridos.'
+        : 'Please fill in all required fields.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="en">Sending...</span><span class="es">Enviando...</span>';
+
+    const data = new FormData(bookingForm);
+
+    // Save lead locally
+    const lead = {
+      id: Date.now(),
+      name, phone, vehicle, address,
+      package: pkg,
+      addons: document.getElementById('faddons').value,
+      date, time,
+      email: document.getElementById('femail').value,
+      notes: document.getElementById('fnotes').value,
+      status: 'new',
+      created: new Date().toISOString()
+    };
+    const leads = JSON.parse(localStorage.getItem('esplendor-leads') || '[]');
+    leads.unshift(lead);
+    localStorage.setItem('esplendor-leads', JSON.stringify(leads));
+
+    // Submit to Formspree (skip if placeholder)
+    const action = bookingForm.getAttribute('action');
+    if (action && !action.includes('YOUR_FORM_ID')) {
+      try {
+        const resp = await fetch(action, {
+          method: 'POST', body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!resp.ok) throw new Error('Failed');
+      } catch (err) {
+        console.warn('Formspree error — lead saved locally', err);
+      }
+    }
+
+    // Show success
+    bookingForm.style.display = 'none';
+    formSuccess.style.display = 'block';
+
+    // Scroll to success
+    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
 </script>
 </body>
 </html>

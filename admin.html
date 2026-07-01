@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Esplendor Detailing — Business Dashboard</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e2c97e;
+      --gold-dim: #8a6d2f;
+      --black: #0b0b0b;
+      --bg: #111;
+      --card: #191919;
+      --border: #2a2a2a;
+      --text: #e8e8e8;
+      --muted: #777;
+      --success: #4caf7d;
+      --warning: #e2a84c;
+      --danger: #e25c5c;
+      --info: #4c9ee2;
+    }
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 32px;
+      padding: 24px;
+    }
+    .login-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+    .login-box {
+      width: 100%;
+      max-width: 360px;
+      border: 1px solid var(--border);
+      padding: 40px 32px;
+    }
+    .login-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .login-box input {
+      width: 100%;
+      background: #0e0e0e;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .login-box input:focus { border-color: var(--gold-dim); }
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .login-btn:hover { background: var(--gold-light); }
+    .login-error {
+      color: var(--danger);
+      font-size: 0.72rem;
+      text-align: center;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ── APP ── */
+    #app { display: none; }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: rgba(11,11,11,0.97);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .topbar-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+    }
+    .topbar-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: var(--gold-dim);
+      color: var(--black);
+      padding: 4px 10px;
+    }
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .topbar-btn {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .topbar-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+    .topbar-btn.primary { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .topbar-btn.primary:hover { background: var(--gold-light); }
+
+    /* ── MAIN LAYOUT ── */
+    .main { padding: 28px; max-width: 1400px; margin: 0 auto; }
+
+    /* ── STATS ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--card);
+      padding: 24px 20px;
+      text-align: center;
+    }
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-tab {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-tab.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
+    .filter-tab:hover:not(.active) { color: var(--gold); border-color: var(--gold-dim); }
+
+    /* ── PIPELINE (Kanban) ── */
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .pipeline-col { }
+    .pipeline-col-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      margin-bottom: 10px;
+      border-left: 2px solid var(--gold-dim);
+    }
+    .pipeline-col-header.status-new { border-color: var(--info); }
+    .pipeline-col-header.status-confirmed { border-color: var(--warning); }
+    .pipeline-col-header.status-inprogress { border-color: var(--gold); }
+    .pipeline-col-header.status-completed { border-color: var(--success); }
+    .pipeline-col-header.status-paid { border-color: #555; }
+    .pipeline-col-name {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .pipeline-col-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .lead-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+    }
+    .lead-card:hover { border-color: var(--gold-dim); background: #202020; }
+    .lead-card-name {
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lead-card-pkg {
+      font-size: 0.65rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lead-card-meta {
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .lead-card-date {
+      font-size: 0.6rem;
+      color: var(--gold-dim);
+      margin-top: 8px;
+      font-weight: 600;
+    }
+    .lead-card-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .lc-btn {
+      flex: 1;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 4px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+    }
+    .lc-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+    .lc-btn.call { color: var(--success); border-color: var(--success); }
+    .lc-btn.call:hover { background: var(--success); color: #000; }
+    .lc-btn.wa { color: #25D366; border-color: #25D366; }
+    .lc-btn.wa:hover { background: #25D366; color: #fff; }
+    .empty-col {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 24px 12px;
+      border: 1px dashed var(--border);
+      opacity: 0.5;
+    }
+
+    /* ── CLIENT TABLE ── */
+    .table-wrap { overflow-x: auto; }
+    .client-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .client-table th {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .client-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #1a1a1a;
+      vertical-align: middle;
+    }
+    .client-table tr:hover td { background: #161616; }
+    .status-pill {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+    }
+    .status-pill.new { background: rgba(76,158,226,0.15); color: var(--info); }
+    .status-pill.confirmed { background: rgba(226,168,76,0.15); color: var(--warning); }
+    .status-pill.inprogress { background: rgba(201,168,76,0.15); color: var(--gold); }
+    .status-pill.completed { background: rgba(76,175,125,0.15); color: var(--success); }
+    .status-pill.paid { background: rgba(100,100,100,0.15); color: #888; }
+    .td-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .td-btn {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .td-btn:hover { color: var(--gold); border-color: var(--gold-dim); }
+    .td-btn.danger:hover { color: var(--danger); border-color: var(--danger); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      display: none;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: #141414;
+      border: 1px solid var(--border);
+      width: 100%;
+      max-width: 600px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .modal-close {
+      background: none; border: none; color: var(--muted);
+      font-size: 1.2rem; cursor: pointer; transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--text); }
+    .modal-body { padding: 24px; }
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .modal-field label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .modal-field input,
+    .modal-field select,
+    .modal-field textarea {
+      width: 100%;
+      background: #0e0e0e;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .modal-field input:focus,
+    .modal-field select:focus,
+    .modal-field textarea:focus { border-color: var(--gold-dim); }
+    .modal-field.full { grid-column: 1 / -1; }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .modal-btn {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .modal-btn.cancel { background: none; border: 1px solid var(--border); color: var(--muted); }
+    .modal-btn.cancel:hover { color: var(--text); border-color: var(--text); }
+    .modal-btn.save { background: var(--gold); color: var(--black); }
+    .modal-btn.save:hover { background: var(--gold-light); }
+
+    /* ── REVENUE ── */
+    .revenue-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .revenue-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+    }
+    .rev-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .rev-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    /* ── QUICK ACTIONS ── */
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .qa-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      display: block;
+    }
+    .qa-card:hover { border-color: var(--gold-dim); background: #1f1f1f; }
+    .qa-icon { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+    .qa-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── TABS ── */
+    .view-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    .view-tab {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 12px 24px;
+      border: none;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s;
+    }
+    .view-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .view-tab:hover:not(.active) { color: var(--text); }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1200px) {
+      .pipeline { grid-template-columns: repeat(3, 1fr); }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .pipeline { grid-template-columns: repeat(2, 1fr); }
+      .quick-actions { grid-template-columns: repeat(2, 1fr); }
+      .revenue-grid { grid-template-columns: 1fr 1fr; }
+      .modal-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .main { padding: 16px; }
+      .pipeline { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .quick-actions { grid-template-columns: 1fr 1fr; }
+      .revenue-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ LOGIN SCREEN ═══ -->
+<div id="loginScreen">
+  <div class="login-logo">ESPLENDOR DETAILING</div>
+  <div class="login-box">
+    <p class="login-title">Business Dashboard · Admin Access</p>
+    <input type="password" id="pwInput" placeholder="Enter password" autocomplete="current-password" />
+    <button class="login-btn" onclick="doLogin()">Access Dashboard</button>
+    <p class="login-error" id="loginError">Incorrect password. Try again.</p>
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div id="app">
+
+  <!-- Top Bar -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-logo">ESPLENDOR</span>
+      <span class="topbar-badge">Business Dashboard</span>
+    </div>
+    <div class="topbar-right">
+      <button class="topbar-btn" onclick="exportCSV()">⬇ Export CSV</button>
+      <button class="topbar-btn primary" onclick="openAddModal()">+ Add Lead</button>
+      <a class="topbar-btn" href="index.html" target="_blank">🌐 Website</a>
+      <button class="topbar-btn" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="main">
+
+    <!-- Stats -->
+    <div class="stats-grid" id="statsGrid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- View Tabs -->
+    <div class="view-tabs">
+      <button class="view-tab active" onclick="showView('pipeline', this)">📋 Pipeline</button>
+      <button class="view-tab" onclick="showView('clients', this)">👥 All Clients</button>
+      <button class="view-tab" onclick="showView('revenue', this)">💰 Revenue</button>
+      <button class="view-tab" onclick="showView('guide', this)">📖 Business Guide</button>
+    </div>
+
+    <!-- Pipeline View -->
+    <div class="view-panel active" id="view-pipeline">
+      <div class="pipeline" id="pipelineBoard">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Clients View -->
+    <div class="view-panel" id="view-clients">
+      <div class="section-header">
+        <span class="section-title">All Leads & Clients</span>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" onclick="filterLeads('all', this)">All</button>
+          <button class="filter-tab" onclick="filterLeads('new', this)">New</button>
+          <button class="filter-tab" onclick="filterLeads('confirmed', this)">Confirmed</button>
+          <button class="filter-tab" onclick="filterLeads('completed', this)">Completed</button>
+          <button class="filter-tab" onclick="filterLeads('paid', this)">Paid</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="client-table" id="clientTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Vehicle</th>
+              <th>Package</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Address</th>
+              <th>Status</th>
+              <th>Value</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="clientTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Revenue View -->
+    <div class="view-panel" id="view-revenue">
+      <div class="revenue-grid" id="revenueGrid">
+        <!-- Populated by JS -->
+      </div>
+      <div class="section-header" style="margin-top: 16px;">
+        <span class="section-title">Revenue by Package</span>
+      </div>
+      <div class="table-wrap">
+        <table class="client-table" id="revenueTable">
+          <thead>
+            <tr>
+              <th>Client</th>
+              <th>Package</th>
+              <th>Add-Ons</th>
+              <th>Date</th>
+              <th>Value</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="revenueTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Guide View -->
+    <div class="view-panel" id="view-guide">
+      <div style="max-width: 780px;">
+        <div style="border: 1px solid var(--border); padding: 36px; margin-bottom: 20px;">
+          <p style="font-size:0.62rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">STEP 1 — YOUR WEBSITE IS LIVE</p>
+          <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; margin-bottom:16px;">Complete Business Setup Checklist</h2>
+          <p style="font-size:0.8rem; color:var(--muted); line-height:1.7; margin-bottom:20px;">Follow this guide to get your first 100 leads as fast as possible. Complete each step in order for maximum impact.</p>
+
+          <div id="guideContent" style="font-size:0.82rem; line-height:1.8;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ ADD/EDIT MODAL ═══ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="modal-title" id="modalTitle">Add New Lead</span>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-grid">
+        <div class="modal-field">
+          <label>Full Name *</label>
+          <input type="text" id="mName" placeholder="John Smith" />
+        </div>
+        <div class="modal-field">
+          <label>Phone *</label>
+          <input type="tel" id="mPhone" placeholder="(713) 000-0000" />
+        </div>
+        <div class="modal-field">
+          <label>Email</label>
+          <input type="email" id="mEmail" placeholder="email@example.com" />
+        </div>
+        <div class="modal-field">
+          <label>Vehicle *</label>
+          <input type="text" id="mVehicle" placeholder="2020 Toyota Camry" />
+        </div>
+        <div class="modal-field">
+          <label>Package *</label>
+          <select id="mPackage">
+            <option value="Exterior Focused — $69.99">Exterior Focused — $69.99</option>
+            <option value="SuperWash (Inside & Out) — $129.99">SuperWash — $129.99</option>
+            <option value="Interior Focused — $69.99">Interior Focused — $69.99</option>
+            <option value="Not sure — need a quote">Quote Needed</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Add-Ons</label>
+          <select id="mAddons">
+            <option value="None">None</option>
+            <option value="Pet Hair Removal +$39.99">Pet Hair Removal +$39.99</option>
+            <option value="Stain Removal +$49.99">Stain Removal +$49.99</option>
+            <option value="Shampoo Carpets & Seats +$49.99">Shampoo Carpets +$49.99</option>
+            <option value="1-Year Ceramic Protection +$59.99">Ceramic Protection +$59.99</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Appointment Date</label>
+          <input type="date" id="mDate" />
+        </div>
+        <div class="modal-field">
+          <label>Appointment Time</label>
+          <select id="mTime">
+            <option value="Flexible">Flexible</option>
+            <option value="7:00 AM – 9:00 AM">7:00 AM – 9:00 AM</option>
+            <option value="9:00 AM – 11:00 AM">9:00 AM – 11:00 AM</option>
+            <option value="11:00 AM – 1:00 PM">11:00 AM – 1:00 PM</option>
+            <option value="1:00 PM – 3:00 PM">1:00 PM – 3:00 PM</option>
+            <option value="3:00 PM – 5:00 PM">3:00 PM – 5:00 PM</option>
+            <option value="5:00 PM – 7:00 PM">5:00 PM – 7:00 PM</option>
+          </select>
+        </div>
+        <div class="modal-field full">
+          <label>Address</label>
+          <input type="text" id="mAddress" placeholder="1234 Main St, Houston TX" />
+        </div>
+        <div class="modal-field">
+          <label>Status</label>
+          <select id="mStatus">
+            <option value="new">New Lead</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="inprogress">In Progress</option>
+            <option value="completed">Completed</option>
+            <option value="paid">Paid ✓</option>
+          </select>
+        </div>
+        <div class="modal-field">
+          <label>Amount Collected ($)</label>
+          <input type="number" id="mAmount" placeholder="0.00" min="0" step="0.01" />
+        </div>
+        <div class="modal-field full">
+          <label>Notes</label>
+          <textarea id="mNotes" rows="3" placeholder="Special requests, vehicle condition, etc."></textarea>
+        </div>
+        <div class="modal-field full">
+          <label>Lead Source</label>
+          <select id="mSource">
+            <option value="Website Form">Website Form</option>
+            <option value="WhatsApp">WhatsApp</option>
+            <option value="Phone Call">Phone Call</option>
+            <option value="Instagram">Instagram DM</option>
+            <option value="Referral">Referral</option>
+            <option value="Nextdoor">Nextdoor</option>
+            <option value="Facebook">Facebook</option>
+            <option value="Flyer">Flyer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-btn cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-btn save" onclick="saveLead()">Save Lead</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── PASSWORD
+const PASS = 'esplendor2025';
+function doLogin() {
+  const pw = document.getElementById('pwInput').value;
+  if (pw === PASS) {
+    sessionStorage.setItem('es-auth', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'block';
+    init();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+  }
+}
+document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+function doLogout() {
+  sessionStorage.removeItem('es-auth');
+  location.reload();
+}
+if (sessionStorage.getItem('es-auth') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+// ── DATA
+function getLeads() {
+  return JSON.parse(localStorage.getItem('esplendor-leads') || '[]');
+}
+function saveLeads(leads) {
+  localStorage.setItem('esplendor-leads', JSON.stringify(leads));
+}
+
+// ── PRICE HELPER
+function getPrice(lead) {
+  if (lead.amount && lead.amount > 0) return parseFloat(lead.amount);
+  const p = (lead.package || '').toLowerCase();
+  let base = 0;
+  if (p.includes('superwash') || p.includes('129')) base = 129.99;
+  else if (p.includes('exterior') || p.includes('interior')) base = 69.99;
+  const a = (lead.addons || '').toLowerCase();
+  if (a.includes('pet hair')) base += 39.99;
+  if (a.includes('stain')) base += 49.99;
+  if (a.includes('shampoo')) base += 49.99;
+  if (a.includes('ceramic')) base += 59.99;
+  return base;
+}
+
+// ── STATUS COLUMNS
+const COLS = [
+  { key: 'new', label: 'New Leads', cls: 'status-new' },
+  { key: 'confirmed', label: 'Confirmed', cls: 'status-confirmed' },
+  { key: 'inprogress', label: 'In Progress', cls: 'status-inprogress' },
+  { key: 'completed', label: 'Completed', cls: 'status-completed' },
+  { key: 'paid', label: 'Paid ✓', cls: 'status-paid' },
+];
+
+function statusLabel(s) {
+  const m = { new: 'New', confirmed: 'Confirmed', inprogress: 'In Progress', completed: 'Completed', paid: 'Paid' };
+  return m[s] || s;
+}
+
+// ── INIT
+function init() {
+  renderStats();
+  renderPipeline();
+  renderClientTable('all');
+  renderRevenue();
+  renderGuide();
+}
+
+// ── STATS
+function renderStats() {
+  const leads = getLeads();
+  const total = leads.length;
+  const newCount = leads.filter(l => l.status === 'new').length;
+  const todayStr = new Date().toISOString().split('T')[0];
+  const todayJobs = leads.filter(l => l.date === todayStr).length;
+  const paid = leads.filter(l => l.status === 'paid');
+  const revenue = paid.reduce((sum, l) => sum + getPrice(l), 0);
+  const thisMonth = leads.filter(l => {
+    const d = l.date || l.created || '';
+    return d.startsWith(new Date().toISOString().slice(0, 7));
+  }).length;
+
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total Leads</div></div>
+    <div class="stat-card"><div class="stat-value">${newCount}</div><div class="stat-label">New / Pending</div></div>
+    <div class="stat-card"><div class="stat-value">${todayJobs}</div><div class="stat-label">Today's Jobs</div></div>
+    <div class="stat-card"><div class="stat-value">${thisMonth}</div><div class="stat-label">This Month</div></div>
+    <div class="stat-card"><div class="stat-value">$${revenue.toFixed(0)}</div><div class="stat-label">Revenue Collected</div></div>
+  `;
+}
+
+// ── PIPELINE
+function renderPipeline() {
+  const leads = getLeads();
+  const board = document.getElementById('pipelineBoard');
+  board.innerHTML = COLS.map(col => {
+    const colLeads = leads.filter(l => (l.status || 'new') === col.key);
+    const cards = colLeads.length ? colLeads.map(l => `
+      <div class="lead-card" onclick="openEditModal(${l.id})">
+        <div class="lead-card-name">${escHtml(l.name)}</div>
+        <div class="lead-card-pkg">${escHtml((l.package || '').split('—')[0].trim())}</div>
+        <div class="lead-card-meta">
+          📱 ${escHtml(l.phone)}<br>
+          🚗 ${escHtml(l.vehicle || '—')}
+        </div>
+        ${l.date ? `<div class="lead-card-date">📅 ${l.date} · ${l.time || ''}</div>` : ''}
+        <div class="lead-card-actions">
+          <a class="lc-btn call" href="tel:${l.phone.replace(/\D/g,'')}">📞</a>
+          <a class="lc-btn wa" href="https://wa.me/1${l.phone.replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(l.name)}!%20This%20is%20Esplendor%20Detailing%20confirming%20your%20appointment." target="_blank">💬</a>
+          <button class="lc-btn" onclick="event.stopPropagation();advanceStatus(${l.id})">Next →</button>
+        </div>
+      </div>
+    `).join('') : '<div class="empty-col">No leads</div>';
+    return `
+      <div class="pipeline-col">
+        <div class="pipeline-col-header ${col.cls}">
+          <span class="pipeline-col-name">${col.label}</span>
+          <span class="pipeline-col-count">${colLeads.length}</span>
+        </div>
+        ${cards}
+      </div>
+    `;
+  }).join('');
+}
+
+function advanceStatus(id) {
+  const leads = getLeads();
+  const l = leads.find(x => x.id === id);
+  if (!l) return;
+  const order = ['new', 'confirmed', 'inprogress', 'completed', 'paid'];
+  const idx = order.indexOf(l.status || 'new');
+  if (idx < order.length - 1) l.status = order[idx + 1];
+  saveLeads(leads);
+  init();
+}
+
+// ── CLIENT TABLE
+let currentFilter = 'all';
+function filterLeads(filter, btn) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  renderClientTable(filter);
+}
+function renderClientTable(filter) {
+  let leads = getLeads();
+  if (filter !== 'all') leads = leads.filter(l => (l.status || 'new') === filter);
+  const tbody = document.getElementById('clientTableBody');
+  if (!leads.length) {
+    tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:32px;color:var(--muted);">No leads yet. Add your first lead or share the website!</td></tr>';
+    return;
+  }
+  tbody.innerHTML = leads.map(l => {
+    const price = getPrice(l);
+    return `
+      <tr>
+        <td style="font-weight:600;">${escHtml(l.name)}</td>
+        <td><a href="tel:${l.phone.replace(/\D/g,'')}" style="color:var(--gold);text-decoration:none;">${escHtml(l.phone)}</a></td>
+        <td style="color:var(--muted);font-size:0.72rem;">${escHtml(l.vehicle || '—')}</td>
+        <td style="font-size:0.72rem;">${escHtml((l.package || '').split('—')[0].trim())}</td>
+        <td style="font-size:0.72rem;white-space:nowrap;">${l.date || '—'}</td>
+        <td style="font-size:0.72rem;">${l.time || '—'}</td>
+        <td style="font-size:0.7rem;color:var(--muted);max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escHtml(l.address || '—')}</td>
+        <td><span class="status-pill ${l.status || 'new'}">${statusLabel(l.status || 'new')}</span></td>
+        <td style="color:var(--gold);font-weight:600;">${price ? '$' + price.toFixed(2) : '—'}</td>
+        <td>
+          <div class="td-actions">
+            <a class="td-btn" href="tel:${l.phone.replace(/\D/g,'')}" title="Call">📞</a>
+            <a class="td-btn" href="https://wa.me/1${l.phone.replace(/\D/g,'')}?text=Hi%20${encodeURIComponent(l.name)}!%20This%20is%20Esplendor%20Detailing." target="_blank" title="WhatsApp">💬</a>
+            <button class="td-btn" onclick="openEditModal(${l.id})">Edit</button>
+            <button class="td-btn danger" onclick="deleteLead(${l.id})">Del</button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function deleteLead(id) {
+  if (!confirm('Delete this lead? This cannot be undone.')) return;
+  const leads = getLeads().filter(l => l.id !== id);
+  saveLeads(leads);
+  init();
+}
+
+// ── REVENUE
+function renderRevenue() {
+  const leads = getLeads();
+  const paid = leads.filter(l => l.status === 'paid');
+  const completed = leads.filter(l => l.status === 'completed' || l.status === 'paid');
+  const totalRev = paid.reduce((s, l) => s + getPrice(l), 0);
+  const avgJob = paid.length ? totalRev / paid.length : 0;
+  const pipeline = leads.filter(l => !['paid'].includes(l.status)).reduce((s,l) => s + getPrice(l), 0);
+
+  document.getElementById('revenueGrid').innerHTML = `
+    <div class="revenue-card"><div class="rev-label">Total Revenue Collected</div><div class="rev-value">$${totalRev.toFixed(2)}</div></div>
+    <div class="revenue-card"><div class="rev-label">Average Job Value</div><div class="rev-value">$${avgJob.toFixed(2)}</div></div>
+    <div class="revenue-card"><div class="rev-label">Pipeline Value</div><div class="rev-value">$${pipeline.toFixed(2)}</div></div>
+  `;
+
+  const tbody = document.getElementById('revenueTableBody');
+  if (!completed.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--muted);">No completed jobs yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = completed.map(l => `
+    <tr>
+      <td style="font-weight:600;">${escHtml(l.name)}</td>
+      <td style="font-size:0.75rem;">${escHtml((l.package || '').split('—')[0].trim())}</td>
+      <td style="font-size:0.72rem;color:var(--muted);">${escHtml(l.addons || 'None')}</td>
+      <td style="font-size:0.72rem;">${l.date || '—'}</td>
+      <td style="color:var(--gold);font-weight:600;">$${getPrice(l).toFixed(2)}</td>
+      <td><span class="status-pill ${l.status}">${statusLabel(l.status)}</span></td>
+    </tr>
+  `).join('');
+}
+
+// ── GUIDE
+function renderGuide() {
+  document.getElementById('guideContent').innerHTML = `
+<style>
+  .guide-step { margin-bottom: 28px; }
+  .guide-step h3 { font-size:0.72rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .guide-step ul { color:var(--muted); padding-left:20px; }
+  .guide-step ul li { margin-bottom:6px; }
+  .guide-step p { color:var(--muted); margin-bottom:8px; }
+  .guide-step .tool { display:inline-block; background:rgba(201,168,76,0.1); color:var(--gold); font-size:0.7rem; padding:3px 10px; margin:2px; }
+  .check { color:var(--success); }
+</style>
+<div class="guide-step">
+  <h3>✅ Step 1 — Activate Online Booking (5 min)</h3>
+  <p>Your website booking form needs a Formspree account to send you emails when customers book.</p>
+  <ul>
+    <li>Go to <strong>formspree.io</strong> → Sign up free with your email</li>
+    <li>Create a new form → Copy your Form ID (looks like: <code>xabcd1234</code>)</li>
+    <li>In <code>index.html</code>, find <code>YOUR_FORM_ID</code> and replace it</li>
+    <li>Test by submitting the booking form on your website</li>
+    <li>You'll get an email for every booking — <strong>respond within 1 hour</strong></li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>🏢 Step 2 — Register Your Business (Same Week)</h3>
+  <ul>
+    <li><strong>Google Business Profile</strong>: maps.google.com/business → Claim "Esplendor Detailing" → Add photos, hours, services</li>
+    <li><strong>Business Name</strong>: File DBA at Harris County Clerk (<strong>countyclerk.harriscountytx.gov</strong>) — ~$20</li>
+    <li><strong>EIN</strong>: Get a free EIN at irs.gov (takes 5 min online)</li>
+    <li><strong>Business Bank Account</strong>: Open at your bank with your DBA + EIN</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>📱 Step 3 — Instagram Setup (Day 1, Most Important)</h3>
+  <ul>
+    <li>Switch to <strong>Business Account</strong> on Instagram</li>
+    <li>Bio: "🚗 Mobile Detailing · Houston TX | We come to YOU | 📞 713-501-0461 | 🔗 Book online ↓"</li>
+    <li><strong>Post EVERY single before/after job</strong> — this is your #1 lead source</li>
+    <li>Use hashtags: #HoustonDetailer #MobileDetailingHouston #HoustonCarDetailing #DetailingHouston</li>
+    <li>Add your website link in bio</li>
+    <li>Post Instagram Reels of the detailing process — goes viral faster than photos</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>💬 Step 4 — WhatsApp Business (Day 1)</h3>
+  <ul>
+    <li>Download <strong>WhatsApp Business</strong> app</li>
+    <li>Set up automated greeting: "Hi! Thanks for contacting Esplendor Detailing 🚗 We'll get back to you within 30 min. To book, share: your name, vehicle, zip code, and preferred date."</li>
+    <li>Set away message for night hours</li>
+    <li>Create Quick Replies for your most common responses</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>⭐ Step 5 — Google Reviews (After Every Job)</h3>
+  <ul>
+    <li>After every detail, text clients: "Thank you [Name]! If you loved the service, a quick Google review helps us hugely: [your Google review link] 🙏"</li>
+    <li>Get your Google review link: Google Business Profile → Get More Reviews</li>
+    <li>Goal: 10 reviews in your first month = huge credibility boost</li>
+    <li>Reviews are your #1 free marketing tool in the detailing industry</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>🏘️ Step 6 — Nextdoor & Facebook (Week 1)</h3>
+  <ul>
+    <li><strong>Nextdoor</strong>: Create a business page → Post in every nearby neighborhood: "Hi neighbors! I just launched Esplendor Detailing — mobile detailing that comes to YOUR driveway. Grand opening: $129.99 full detail (reg. $149.99). Anyone interested?" → Leads pour in</li>
+    <li><strong>Facebook Marketplace</strong>: Post your services under "Services" category in Houston</li>
+    <li><strong>Facebook Groups</strong>: Join "Houston Buy Sell Trade," "Houston Moms," neighborhood groups → Post your offer</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>🚪 Step 7 — Door-to-Door Flyer Blitz (Week 1–2)</h3>
+  <ul>
+    <li>Print 200–500 flyers (use your existing English + Spanish flyers)</li>
+    <li>Target: neighborhoods with newer cars (Katy, Sugar Land, The Heights, Memorial)</li>
+    <li>Hit apartment complexes — one complex can give you 5–10 bookings</li>
+    <li>Hit office parking lots on weekday mornings — leave flyers under wipers</li>
+    <li>Add a QR code to your flyer linking to your website booking page</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>💰 Step 8 — Accept All Payment Methods (Day 1)</h3>
+  <ul>
+    <li><strong>Zelle</strong>: Already linked to your phone — give clients 713-501-0461</li>
+    <li><strong>Venmo</strong>: Create @EsplendorDetailing</li>
+    <li><strong>Cash App</strong>: Create $EsplendorDetailing</li>
+    <li><strong>Cards</strong>: Download <strong>Square</strong> app (free) → Get free card reader → Accept Visa/Mastercard/Amex</li>
+    <li>Never turn away a client because of payment method</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>📅 Step 9 — Google Calendar System</h3>
+  <ul>
+    <li>Use <strong>Google Calendar</strong> (free) for all appointments</li>
+    <li>Create events with: Client name · Address · Package · Phone number</li>
+    <li>Set reminder 24 hours before → Text client to confirm</li>
+    <li>Color code: Yellow = Confirmed, Green = Completed, Blue = Paid</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>🤖 Step 10 — AI Closing System (Auto-Response)</h3>
+  <ul>
+    <li>When someone messages on Instagram/WhatsApp, respond within 5 min using these scripts:</li>
+    <li><strong>Script 1 (Quote request)</strong>: "Hi [Name]! Thanks for reaching out to Esplendor Detailing 🚗 I'd love to detail your [vehicle]! For a [package] it's starting at $[price]. I have availability [date]. Want to lock in a spot? I'll come right to your [home/office]! 💪"</li>
+    <li><strong>Script 2 (Follow-up after no reply, 24hrs)</strong>: "Hey [Name], just following up! Still have spots available this week for your [vehicle]. The full detail is $129.99 — we come to you, no hassle. Want to book?"</li>
+    <li><strong>Script 3 (After the job)</strong>: "Thanks [Name]! Hope your [vehicle] is looking amazing! 🙌 Would love a quick Google review if you have 30 seconds: [link]. And tell a friend — you get $10 off your next detail for every referral! 🤝"</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>🎯 Step 11 — First 100 Leads: Daily Action Plan</h3>
+  <ul>
+    <li><strong>Day 1–3</strong>: Set up Google Business Profile, WhatsApp Business, Instagram business account. Post your first reel. Text 20 people you know.</li>
+    <li><strong>Day 4–7</strong>: Flyer 2 neighborhoods. Post on Nextdoor in 5 neighborhoods. Join 5 Facebook groups and post.</li>
+    <li><strong>Week 2</strong>: Do your first 5–10 jobs. Photograph EVERY single one. Post before/afters daily on Instagram.</li>
+    <li><strong>Week 3–4</strong>: Ask every client for a Google review. Ask for referrals. Offer $10 off for referrals. Repeat flyer drops.</li>
+    <li><strong>Month 2</strong>: Consider $5–10/day Google Local Service Ads (LSAs) — shows your business at top of Google when people search "mobile detailing Houston"</li>
+  </ul>
+</div>
+<div class="guide-step">
+  <h3>📊 Daily Goals (To Hit 2–5 Bookings/Day)</h3>
+  <ul>
+    <li>Send 10 follow-up messages to past leads</li>
+    <li>Post 1 before/after on Instagram</li>
+    <li>Reply to all DMs within 5 minutes</li>
+    <li>Ask every completed client for a review + referral</li>
+    <li>Log every lead in this dashboard</li>
+  </ul>
+</div>
+  `;
+}
+
+// ── MODAL
+let editingId = null;
+
+function openAddModal() {
+  editingId = null;
+  document.getElementById('modalTitle').textContent = 'Add New Lead';
+  ['mName','mPhone','mEmail','mVehicle','mAddress','mNotes','mAmount'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('mPackage').value = 'Exterior Focused — $69.99';
+  document.getElementById('mAddons').value = 'None';
+  document.getElementById('mStatus').value = 'new';
+  document.getElementById('mSource').value = 'Phone Call';
+  document.getElementById('mTime').value = 'Flexible';
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('mDate').value = today;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function openEditModal(id) {
+  const leads = getLeads();
+  const l = leads.find(x => x.id === id);
+  if (!l) return;
+  editingId = id;
+  document.getElementById('modalTitle').textContent = 'Edit Lead — ' + l.name;
+  document.getElementById('mName').value = l.name || '';
+  document.getElementById('mPhone').value = l.phone || '';
+  document.getElementById('mEmail').value = l.email || '';
+  document.getElementById('mVehicle').value = l.vehicle || '';
+  document.getElementById('mAddress').value = l.address || '';
+  document.getElementById('mNotes').value = l.notes || '';
+  document.getElementById('mAmount').value = l.amount || '';
+  document.getElementById('mStatus').value = l.status || 'new';
+  document.getElementById('mDate').value = l.date || '';
+  document.getElementById('mTime').value = l.time || 'Flexible';
+  document.getElementById('mSource').value = l.source || 'Phone Call';
+  // Set package
+  const pkgSel = document.getElementById('mPackage');
+  const pkgMatch = Array.from(pkgSel.options).find(o => o.value === l.package);
+  if (pkgMatch) pkgSel.value = l.package;
+  const addSel = document.getElementById('mAddons');
+  const addMatch = Array.from(addSel.options).find(o => o.value === l.addons);
+  if (addMatch) addSel.value = l.addons;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+});
+
+function saveLead() {
+  const name = document.getElementById('mName').value.trim();
+  const phone = document.getElementById('mPhone').value.trim();
+  if (!name || !phone) { alert('Name and phone are required.'); return; }
+
+  const leads = getLeads();
+  const lead = {
+    id: editingId || Date.now(),
+    name,
+    phone,
+    email: document.getElementById('mEmail').value.trim(),
+    vehicle: document.getElementById('mVehicle').value.trim(),
+    address: document.getElementById('mAddress').value.trim(),
+    package: document.getElementById('mPackage').value,
+    addons: document.getElementById('mAddons').value,
+    date: document.getElementById('mDate').value,
+    time: document.getElementById('mTime').value,
+    status: document.getElementById('mStatus').value,
+    notes: document.getElementById('mNotes').value.trim(),
+    amount: parseFloat(document.getElementById('mAmount').value) || 0,
+    source: document.getElementById('mSource').value,
+    created: editingId ? (leads.find(l => l.id === editingId)?.created || new Date().toISOString()) : new Date().toISOString()
+  };
+
+  if (editingId) {
+    const idx = leads.findIndex(l => l.id === editingId);
+    if (idx >= 0) leads[idx] = lead;
+  } else {
+    leads.unshift(lead);
+  }
+  saveLeads(leads);
+  closeModal();
+  init();
+}
+
+// ── VIEW TABS
+function showView(name, btn) {
+  document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('view-' + name).classList.add('active');
+}
+
+// ── CSV EXPORT
+function exportCSV() {
+  const leads = getLeads();
+  if (!leads.length) { alert('No leads to export.'); return; }
+  const headers = ['Name','Phone','Email','Vehicle','Package','Add-ons','Date','Time','Address','Status','Amount','Source','Notes','Created'];
+  const rows = leads.map(l => [
+    l.name, l.phone, l.email, l.vehicle, l.package, l.addons,
+    l.date, l.time, l.address, l.status, l.amount, l.source, l.notes, l.created
+  ].map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
+  const csv = [headers.join(','), ...rows].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `esplendor-leads-${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── HTML escape
+function escHtml(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── KEYBOARD
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── AUTO-INIT if already logged in
+if (sessionStorage.getItem('es-auth') === '1') init();
+</script>
+</body>
+</html>
