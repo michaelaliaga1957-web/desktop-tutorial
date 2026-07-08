@@ -106,20 +106,47 @@ Formspree free tier allows ~50 submissions/month — monitor volume and upgrade 
 - `admin.html` is publicly served (any visitor can load it) and its password is visible in page source. The real exposure is limited because lead data lives only in the owner's browser, but the password and the internal playbook are public. Treat `admin.html` as *obscured*, not *secured*.
 - Customer PII (name, phone, address) transits Formspree and Google (analytics). No privacy policy page exists yet.
 
-## 9. Operational dependencies (external accounts)
+## 9. Business systems outside the repository
 
+> Source: owner-provided Launch Record PDF (2026-07-08) cross-checked against the repo. Statuses per EVIDENCE-REGISTER.md. Owner: **Michael Aliaga Valle**, sole proprietor.
+
+### Legal & identity
+| Item | Status | Detail |
+|---|---|---|
+| DBA "Esplendor Detailing" | ✅ Filed | Fort Bend County Clerk, file #2026068903, 2026-07-06 |
+| Public business address | ✅ Active | UPS Store PMB: 3418 Hwy 6 South, Suite B, PMB 357, Houston TX 77082 (protects home address; used on GBP, Venmo, Nextdoor) |
+| EIN | ❌ Not yet | Free at irs.gov; prerequisite for business bank account |
+| Business bank account | ❌ Not yet | Blocked on EIN |
+| Business insurance | ⚠ No evidence | Yet ads carry a "LICENSED & INSURED" callout — KNOWN-ISSUES #12 |
+
+### Marketing & acquisition
+| Item | Status | Detail |
+|---|---|---|
+| Google Ads "Mobile Detailing Houston" | ⏸ **Paused** (overdue balance ~$10) | Performance Max, $2/day (cut from $10); 7-day run: 1,680 impr, 16 clicks, $0.63 CPC, $10.05 spent, **0 tracked conversions** (tracking broken — KNOWN-ISSUES #1); advertiser identity verified; 11 headlines / 4 descriptions / 15 images / 4 sitelinks / 2 callouts; strength Average |
+| Google Ads conversion goal | ❌ Misconfigured | Tracks /thanks.html page load, never reached — fix before resuming spend |
+| Google Business Profile | ✅ Verified & optimized | Service-area business (no address shown); 8 services; booking link; hours Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed; **zero reviews** = weak Maps ranking (competitors: DD Auto Spa 375 reviews, Diamond Auto Spa 84) |
+| GA4 | ✅ Live | Property for esplendordetailing.com, tag G-S1FBL7829Z on all pages |
+| Instagram | ✅ Business profile | @esplendordetailing, photos up, linked to GBP; first Reel not yet posted |
+| Nextdoor | ✅ Verified + post live | Persona identity verification (blue check); hyperlocal launch post with $10-off first-timer offer |
+| WhatsApp Business | ✅ Active | 713-501-0461 (migrated personal number); greeting auto-reply for non-contacts only |
+
+### Payments
+| Item | Status | Detail |
+|---|---|---|
+| Square | ✅ Set up / ⚠ bank review outcome unknown | Services mode, Tap to Pay on phone; catalog: SuperWash $49.99, Exterior $69.99, Interior $79.99, Full Detail $129.99, add-ons — **conflicts with website pricing, KNOWN-ISSUES #11** |
+| Venmo | ✅ Live | @ESPLENDORDETAILING business profile (Individual/SSN), logo, description, 6 photos, website + Instagram linked |
+| Zelle | Claimed | Via phone number; unverified |
+| Cash App | ❌ Not set up | Mentioned only in admin guide |
+
+### Infrastructure
 | Service | Purpose | Identifier |
 |---|---|---|
 | GitHub Pages | Hosting | repo `michaelaliaga1957-web/desktop-tutorial` |
-| Domain registrar | esplendordetailing.com DNS | (registrar not recorded — document it) |
-| Formspree | Booking form → email | form `mojokqde` |
-| Google Analytics 4 | Traffic analytics | `G-S1FBL7829Z` |
-| Google Ads | Paid acquisition (implied by conversion event) | account ID not recorded |
-| Google Business Profile | Local SEO / reviews | status unverified (guide Step 2) |
-| Instagram | Organic marketing | @esplendordetailing |
-| WhatsApp Business | Customer comms | 713-501-0461 |
+| Domain registrar | esplendordetailing.com DNS | **still not recorded — ask owner; continuity risk** |
+| Formspree | Booking form → email | form `mojokqde`, free tier |
 
-Items marked "not recorded" should be filled in by the owner — losing access to any of these is a business-continuity risk.
+### Customer journey as it stands
+Discovery (Google search/ad/Maps, Nextdoor, Instagram, referral) → esplendordetailing.com → booking form → Formspree email to owner → owner confirms by call/text within 1 hour → mobile service at customer location → payment (Square Tap to Pay / Venmo / Zelle / cash) → review request (manual; real review link still needed). Repeat/referral loops: not yet built.
 
 ## 10. Related documents
 

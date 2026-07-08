@@ -14,7 +14,9 @@ Production website and business system for **Esplendor Detailing**, a mobile car
 
 ## Documentation
 
-- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — full system map: hosting, integrations, data flows, pricing, dependencies
+- **[docs/BUSINESS-INHERITANCE-REPORT.md](docs/BUSINESS-INHERITANCE-REPORT.md)** — full-company state report: assets, systems, risks, ROI priorities, execution order
+- **[docs/EVIDENCE-REGISTER.md](docs/EVIDENCE-REGISTER.md)** — verification status of every business claim + contradictions log
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — full system map: hosting, integrations, data flows, pricing, dependencies, off-repo business systems
 - **[docs/KNOWN-ISSUES.md](docs/KNOWN-ISSUES.md)** — audited defects and risks, by severity
 - **[docs/ROADMAP.md](docs/ROADMAP.md)** — prioritized improvement plan
 - **[docs/DECISION-LOG.md](docs/DECISION-LOG.md)** — why things are the way they are

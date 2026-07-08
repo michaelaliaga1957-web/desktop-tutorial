@@ -11,6 +11,8 @@
 
 **Fix direction:** Fire `gtag('event', ...)` directly in the form's success handler in `index.html`, or redirect to `/thanks.html` after a successful POST (which also gives customers the richer confirmation page that already exists). Either is a small, low-risk change.
 
+**Update 2026-07-08 (Launch Record):** The Google Ads goal "Book appointment" is configured to track a `/thanks.html` page load and shows **Misconfigured** in Google Ads — consistent with this bug; it will never self-resolve. The campaign (Performance Max, "Mobile Detailing Houston") ran ~7 days with zero conversion signal and is currently **paused on an overdue balance**, so there is no active spend loss today — but this fix is a hard prerequisite before the balance is restored and ads resume. See EVIDENCE-REGISTER C1.
+
 ### 2. The admin CRM cannot receive website leads (localStorage is per-browser)
 **Evidence:** `index.html` saves submitted leads to `localStorage['esplendor-leads']` — in the **customer's** browser. `admin.html` reads the same key — but only from the **owner's** browser. These are different devices; the data never meets.
 
@@ -24,6 +26,8 @@
 **Impact:** Fabricated consumer reviews violate the FTC's Rule on Consumer Reviews and Testimonials (16 CFR Part 465, effective Oct 2024) with civil penalties per violation, and can get the Google Business Profile suspended. This is a legal/business risk, not just a polish issue.
 
 **Fix direction:** Replace with genuinely earned reviews as they come in (the launch guide's Step 5 process), or reframe the section without the "Google Reviews" claim and named attributions until real reviews exist. Also replace the placeholder review link with the real GBP link.
+
+**Update 2026-07-08 (Launch Record):** Confirmed the backdating was deliberate (Phase 02) and that the real Google Business Profile has **zero reviews** — so the website's "5.0 · Google Reviews" badge is checkably false by any customer in one tap. The Launch Record's suggested remedy (reviews from friends/family) would itself violate Google review policy and the FTC rule; earn them from real early customers instead. See EVIDENCE-REGISTER C3.
 
 ## High
 
@@ -49,6 +53,27 @@ Subset of issue #1 but worth tracking separately: even after ads tracking is fix
 ### 7. Pricing duplicated in three places
 `index.html` services section, `index.html` form option values, and `admin.html getPrice()` must be updated together. A missed spot silently corrupts revenue reporting. Documented in ARCHITECTURE.md §5; consider a single JS pricing constant per file at minimum.
 
+### 11. Square catalog pricing conflicts with the website (added 2026-07-08)
+**Evidence:** Launch Record Phase 08 vs index.html. Square: "SuperWash Package $49.99", "Interior Detail $79.99", "Full Detail (Interior + Exterior) $129.99". Website: SuperWash (Inside & Out) $129.99 is the flagship, Interior Focused $69.99.
+
+**Impact:** If "SuperWash" is rung up in Square at $49.99 for a customer who booked the website's $129.99 SuperWash, that's an $80 undercharge on the flagship product. Interior differs by $10 in the other direction. Naming and prices must be reconciled across website, Square, and `admin.html getPrice()` (which prices anything containing "superwash" at $129.99).
+
+**Fix direction:** Owner decides the canonical price list; then update all three surfaces in one pass. If Square's $49.99 SuperWash is a real budget wash tier, decide whether the website should sell it.
+
+### 12. "LICENSED & INSURED" ad callout has no supporting evidence (added 2026-07-08)
+**Evidence:** Launch Record Phase 03 added this callout to the Google Ads campaign. No insurance policy appears anywhere in the record; no license exists (none required for detailing in TX — which also makes "licensed" questionable; a DBA is not a license).
+
+**Impact:** False advertising exposure in paid media; also a Google Ads misrepresentation-policy risk. Additionally, operating a mobile detailing business on customers' vehicles without general liability insurance is itself a major uninsured-loss risk.
+
+**Fix direction:** Verify insurance exists or remove the callout before ads resume. Getting general liability insurance (~$40–60/mo for sole-prop detailing) should be on the owner's short list regardless.
+
+### 13. Business hours inconsistent across surfaces (added 2026-07-08)
+**Evidence:** Website JSON-LD schema says Mon–Sun 07:00–20:00; GBP (per Launch Record Phase 10) says Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed.
+
+**Impact:** Confuses customers and weakens local-SEO consistency signals (Google cross-checks structured data against GBP).
+
+**Fix:** Owner confirms real hours; align site schema, site copy, GBP, and WhatsApp away-message hours.
+
 ## Low
 
 ### 8. Missing site hygiene files
@@ -59,6 +84,9 @@ No `robots.txt`, no `sitemap.xml`, no favicon, no custom 404 page, no privacy po
 
 ### 10. README is still GitHub Desktop tutorial boilerplate
 Cosmetic, but confusing for anyone inheriting the repo. (Addressed in the inheritance-audit branch.)
+
+### 14. admin.html launch guide names the wrong county (added 2026-07-08)
+Guide Step 2 says file the DBA at Harris County; the actual filing is Fort Bend County (#2026068903, 2026-07-06). Historical now, but the guide is the owner's reference document — correct it on next edit of admin.html.
 
 ## Resolved
 

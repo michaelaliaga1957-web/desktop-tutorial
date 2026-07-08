@@ -3,40 +3,71 @@
 > Tracks every claim about the business and its verification status. This is the mechanism that keeps documentation truthful as materials from previous sessions are merged in.
 >
 > **Status definitions:**
-> - **VERIFIED** — confirmed against a primary source I inspected directly (code, live system, account screenshot, export)
-> - **CLAIMED** — asserted by owner or prior-session material, not yet independently confirmed
+> - **VERIFIED** — confirmed against a primary source I inspected directly (code, git history, GitHub API)
+> - **DOCUMENTED** — supported by the owner-provided Launch Record PDF (2026-07-08, 18 pp), which describes screenshots and outcomes; credible but not independently re-verified
+> - **CLAIMED** — asserted without documentary support
 > - **PARTIAL** — exists but incomplete or diverges from its description
-> - **PLANNED** — discussed/designed in a prior session but no evidence of implementation
-> - **CONTRADICTED** — evidence conflicts with the claim (link to details)
+> - **PLANNED** — designed/discussed, no evidence of implementation
+> - **CONTRADICTED** — evidence conflicts with the claim (see Contradictions log)
+>
+> **Primary sources received:**
+> 1. Repository audit, 2026-07-08 (code, git history, GitHub PRs/issues)
+> 2. "Esplendor Detailing — Full Launch Record" PDF, exported 2026-07-08 — session record of the prior Claude Code launch session
 
-## Verified baseline (2026-07-08 audit)
+## Register
 
-| Item | Status | Evidence |
+| Item | Status | Detail / evidence |
 |---|---|---|
-| Website code (index/thanks/admin.html) | VERIFIED | Repo audit — see ARCHITECTURE.md |
-| GitHub Pages + CNAME esplendordetailing.com | VERIFIED (repo side) | `CNAME` file, repo settings imply Pages; live-site serving NOT yet verified (sandbox network policy blocks outbound fetch) |
-| Formspree form `mojokqde` wired into booking form | VERIFIED (code side) | `index.html` form action; email delivery + plan tier unverified |
-| GA4 tag `G-S1FBL7829Z` installed | VERIFIED (code side) | index.html + thanks.html; property access/data unverified |
-| Google Ads conversion event defined | VERIFIED (code side) | thanks.html — **and verified broken**: never fires (KNOWN-ISSUES #1) |
-| Repo history begins 2026-06-17 | VERIFIED | PR #1 merged 2026-06-17; 9 commits total through 2026-07-08; zero GitHub issues; no other branches |
-| Original packaging: "Standard Detail" + "Clay Towel Treatment" add-on, later renamed SuperWash / ceramic | VERIFIED | PR #1 body vs current index.html |
-
-## Claimed, awaiting evidence
-
-| Item | Status | Source | Needed to verify |
-|---|---|---|---|
-| Business registrations (DBA, EIN, bank account) | CLAIMED | Owner (2026-07-08) | Filing confirmations / screenshots |
-| Google Business Profile | CLAIMED | Owner | GBP dashboard screenshot, profile URL |
-| Google Ads campaigns (existence, spend, status) | CLAIMED | Owner; conversion event in code implies setup | Ads dashboard screenshot: campaigns, spend, conversion action config |
-| Marketing infrastructure (branding, flyers, social, advertising) | CLAIMED | Owner | Asset files, account screenshots |
-| Payments setup (Square, Zelle, Venmo, Cash App) | CLAIMED | Owner | Account handles / screenshots |
-| Automations built in prior sessions | CLAIMED | Owner | Exports/config of whatever runs them |
-| Prior-session documentation corpus | CLAIMED | Owner | Exported conversations/files |
-| Domain registrar + DNS config | CLAIMED (domain works per owner) | Owner | Registrar name, DNS records screenshot |
-| Real customer jobs / revenue to date | UNKNOWN | — | Booking emails, payment records |
+| Website code + GitHub Pages + domain | VERIFIED | Repo audit; live serving confirmed by Launch Record screenshots (GBP showing site, ad screenshots) |
+| Owner identity | DOCUMENTED | Michael Aliaga Valle, sole proprietor |
+| DBA "Esplendor Detailing" | DOCUMENTED | Fort Bend County Clerk, file #2026068903, filed 2026-07-06, $14 fee |
+| UPS Store PO Box (public business address) | DOCUMENTED | 3418 Hwy 6 South, Suite B, PMB 357, Houston TX 77082 |
+| Google Ads campaign "Mobile Detailing Houston" | DOCUMENTED | Performance Max, $2/day (cut from $10/day); 7-day results: 1,680 impressions, 16 clicks, $0.63 CPC, $10.05 spent |
+| Google Ads — **currently PAUSED** | DOCUMENTED | Overdue balance ~$9.93 (card declined by $0.07); ads not spending |
+| Google Ads advertiser identity verification | DOCUMENTED | Completed before 2026-08-07 deadline |
+| Google Ads assets | DOCUMENTED | 11 headlines, 4 descriptions, 15 images, 4 sitelinks, 2 callouts ("LICENSED & INSURED", "SAME-DAY APPOINTMENTS"); ad strength Poor→Average |
+| Google Ads conversion goal "Book appointment" | CONTRADICTED | See C1 — configured to track /thanks.html page load, which is never reached |
+| GA4 property + tag installed | VERIFIED (code) + DOCUMENTED (property) | G-S1FBL7829Z on index + thanks |
+| Google Business Profile | DOCUMENTED | Verified badge; hours set (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed); 8 services; booking link; service-area-only business; **zero reviews** |
+| Instagram business profile | DOCUMENTED | @esplendordetailing, business account, work photos, linked to GBP; first Reel NOT done |
+| Nextdoor business page | DOCUMENTED | Persona-verified (SSN), blue checkmark, launch post live with photos |
+| WhatsApp Business | DOCUMENTED | Personal number migrated; greeting auto-reply ON, scoped to "everyone not in address book" |
+| Square account | DOCUMENTED | Services mode, Tap to Pay enabled, service catalog entered; bank account linked, 2–3 day review **status unknown — follow up** |
+| Square service catalog pricing | CONTRADICTED | See C2 — conflicts with website pricing/naming |
+| Venmo business profile | DOCUMENTED | @ESPLENDORDETAILING, Individual/SSN type, logo, description, 6 photos, PO Box address, website + Instagram linked |
+| Zelle | CLAIMED | Via phone number 713-501-0461 (admin guide); no setup evidence |
+| Cash App | PLANNED | Mentioned in admin guide Step 8 only; no evidence it exists |
+| EIN | PLANNED | Listed as still-to-do in Launch Record |
+| Business bank account | PLANNED | Blocked on EIN; still-to-do |
+| Business insurance | **UNKNOWN — no evidence** | ⚠ Yet ads run a "LICENSED & INSURED" callout — see C4 |
+| Website reviews backdated to May/Jun 2026 | VERIFIED | Commit 284fe79 + Launch Record Phase 02: owner requested reviews "look like they were given the past 2 months"; reviews are not from real customers |
+| Completed customer jobs / revenue | UNKNOWN | No evidence of any paid job yet; at least one vehicle detailed (owner's Reel footage). Ask owner |
+| Formspree email delivery | CLAIMED | Form wired (verified in code); no delivery confirmation seen |
+| Domain registrar | UNKNOWN | Still not recorded — business-continuity gap |
 
 ## Contradictions log
 
-*(record any conflict between materials and verified reality here, with links)*
+**C1 — "Conversion tracking works end to end" (Launch Record, Phase 11 + Mission Assessment) — FALSE.**
+The record claims "Every completed booking fires a conversion event to Google Ads" and predicts the "Misconfigured" status "will resolve within 24–48 hours." Verified against code: the conversion fires only on `thanks.html` page load, and the booking form's AJAX handler never navigates there (KNOWN-ISSUES #1). The goal has been Misconfigured since creation and will stay so until fixed. Consequence: the Performance Max campaign ran ~7 days with zero conversion signal. **Must be fixed before the Ads balance is restored.**
 
-- None yet beyond KNOWN-ISSUES #1–#3, which contradict the *implied* claims that conversion tracking works, the dashboard captures website leads, and the site's reviews are real.
+**C2 — Square catalog pricing conflicts with the website.**
+| Item | Website | Square |
+|---|---|---|
+| SuperWash | $129.99 (inside & out, flagship) | **$49.99** ("SuperWash Package") |
+| Interior | $69.99 (Interior Focused) | **$79.99** ("Interior Detail") |
+| Full detail | — (SuperWash *is* the full detail) | $129.99 ("Full Detail (Interior + Exterior)") |
+| Exterior | $69.99 | $69.99 ✓ |
+
+Either Square's "SuperWash Package" is a distinct budget wash tier that the website doesn't sell, or it's a data-entry error that would undercharge the flagship package by $80 at checkout. Owner must reconcile. (KNOWN-ISSUES #11)
+
+**C3 — Website claims "5.0 · Google Reviews" while the actual Google Business Profile has zero reviews.**
+Confirmed on both sides: fabricated backdated reviews on the site (Phase 02, commit 284fe79) vs. GBP with no reviews (Phase 10 — identified there as the #1 Maps-ranking blocker). Any customer who checks Google sees the discrepancy. FTC fake-review rule exposure plus GBP suspension risk. The Launch Record's suggested remedy — reviews from friends and family — also violates Google policy and the FTC rule (undisclosed insider reviews); the safe path is reviews from real early customers.
+
+**C4 — Ads callout "LICENSED & INSURED" has no supporting evidence.**
+No insurance appears anywhere in the record (and no license — none is required for detailing in Texas, but that makes the word "licensed" shaky too; a DBA is a name registration, not a license). If commercial liability insurance doesn't exist, this is a false advertising claim running in paid media. Verify or remove before ads resume.
+
+**C5 — Hours are inconsistent across surfaces.**
+Website JSON-LD schema: Mon–Sun 07:00–20:00. GBP: Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed. One of these is wrong; align all surfaces (site schema, site copy, GBP, WhatsApp away message).
+
+**C6 — admin.html launch guide says DBA at Harris County; actual filing was Fort Bend County.**
+Historical doc error, harmless now, but the guide should match reality since it's the owner's reference.

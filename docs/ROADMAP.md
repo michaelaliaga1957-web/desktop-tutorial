@@ -1,36 +1,48 @@
 # Roadmap
 
-> Last updated: 2026-07-08. Ordered by expected ROI. Re-review at the start of every work session against analytics and KNOWN-ISSUES.md. Completed items move to the bottom with date + commit.
+> Last updated: 2026-07-08 (post Launch Record merge). Ordered by expected ROI, respecting hard dependencies. Re-review at the start of every work session against analytics and KNOWN-ISSUES.md. Completed items move to the bottom with date + commit.
 
-## Now (highest ROI, small effort)
+## Phase A — Before spending another advertising dollar
 
-1. **Fix booking conversion tracking** — fire a GA4 key event + Google Ads conversion on successful form submit (or redirect to the existing `thanks.html`). Unblocks all paid-ads measurement. *(Known Issues #1, #6)*
-2. **Make the reviews section truthful** — remove the "Google Reviews" framing until real reviews exist; fix the placeholder review link with the real Google Business Profile link. Legal risk reduction. *(Known Issues #3)*
-3. **Decide the CRM system of record** — owner decision needed:
-   - **Option A (recommended to start):** Formspree email + manual entry into `admin.html`; document the workflow; zero new infrastructure.
-   - **Option B:** Google Sheets backend via Apps Script (free, shared across devices, keeps the existing dashboard UI as the front-end).
-   - **Option C:** adopt a lightweight hosted CRM and retire the pipeline views in `admin.html`.
-   Record the choice in DECISION-LOG.md before building anything. *(Known Issues #2)*
+Ads are paused on an overdue ~$10 balance. That pause is a free window: everything in this phase should be done **before** the balance is restored.
 
-## Next (after first jobs / first real data)
+1. **Fix conversion tracking** (code) — fire the GA4/Ads conversion on successful form submit (or redirect to thanks.html). Without this, PMax spends blind. *(KNOWN-ISSUES #1, EVIDENCE-REGISTER C1)*
+2. **Reconcile pricing across website ↔ Square ↔ admin.html** (owner decision + code) — resolve the $49.99 vs $129.99 SuperWash conflict before the first Square checkout. *(KNOWN-ISSUES #11, C2)*
+3. **Make the reviews section truthful** (code) — GBP shows zero reviews; the site's "5.0 Google Reviews" badge is one tap away from being caught. Reframe until real reviews exist; fix the placeholder review link. *(KNOWN-ISSUES #3, C3)*
+4. **Verify or remove "LICENSED & INSURED" ad callout** (owner) — and get general liability insurance regardless; it's the bigger risk. *(KNOWN-ISSUES #12, C4)*
+5. **Align hours everywhere** (owner decision + code) — site schema vs GBP conflict. *(KNOWN-ISSUES #13, C5)*
+6. **Test the funnel end-to-end** — submit a real test booking; confirm Formspree email arrives; confirm the conversion event fires (GA4 DebugView).
 
-4. **Real before/after gallery photos** — compressed WebP, lazy-loaded. Strongest conversion asset for a detailing business. *(Known Issues #5)*
-5. **Google Business Profile verification** — the local-SEO flywheel (Maps ranking, real reviews, free leads) depends on it. Follow launch guide Step 2.
-6. **Privacy policy page + site hygiene** — privacy policy (form PII + GA/Ads cookies), favicon, robots.txt, sitemap.xml, custom 404. *(Known Issues #8)*
-7. **Formspree plan check** — upgrade before submission volume hits the free-tier cap. *(Known Issues #9)*
+## Phase B — First customers & proof (owner-led, this month)
 
-## Later (scale-dependent — do not build ahead of need)
+7. **Restore Ads balance and resume** — only after Phase A items 1–4. Consider whether $2/day PMax is worth running at all vs. saving for $10/day; PMax needs conversion volume to learn. Alternative worth pricing: Google Local Services Ads (pay-per-lead) once reviews exist.
+8. **Earn the first 5 real Google reviews** — from genuine early customers (launch discounts are fine; friends/family reviews violate policy). This is the #1 Maps-ranking lever per the prior session's own analysis.
+9. **First Instagram Reel + before/after cadence** — footage already exists; CapCut workflow was already provided. Post every job.
+10. **Real gallery photos on the website** — replace placeholder tiles. *(KNOWN-ISSUES #5)*
+11. **EIN → business bank account** — free, 10 minutes at irs.gov, unblocks clean bookkeeping; then update Venmo/Square tax profiles if desired.
+12. **Confirm Square bank-account review completed** — otherwise card payments can't deposit.
 
-8. **Review-request automation** — post-job SMS/WhatsApp template with the real review link (launch guide Step 5 formalized).
-9. **Booking calendar integration** — availability-aware booking (e.g., Google Calendar–backed) once double-booking or scheduling load becomes a real problem.
-10. **Repeat-business engine** — recurring maintenance reminders (e.g., 6-week wash cadence), simple membership offer. Only valuable once there's a customer base.
-11. **Split CSS/JS out of the single-file pages** — only if the pages start changing frequently enough that the single-file format causes real friction. The current structure is simple and deploys atomically; don't refactor for aesthetics.
+## Phase C — Systematize (after first ~10 jobs)
+
+13. **Decide the CRM system of record** — Formspree email + manual admin.html entry (Option A), Google-Sheets-backed store (Option B), or hosted CRM (Option C). Record in DECISION-LOG before building. *(KNOWN-ISSUES #2)*
+14. **Review-request automation** — post-job SMS/WhatsApp template with the real GBP review link.
+15. **Privacy policy + site hygiene** — privacy page (form PII + GA/Ads), favicon, robots.txt, sitemap.xml, 404. *(KNOWN-ISSUES #8)*
+16. **Formspree plan check** — upgrade before the ~50/month free cap bites. *(KNOWN-ISSUES #9)*
+17. **Correct admin.html guide** (county, review-policy language) on next admin.html edit. *(KNOWN-ISSUES #14)*
+
+## Phase D — Scale (only when volume justifies)
+
+18. Repeat-business engine — maintenance reminders, simple membership.
+19. Booking calendar integration (availability-aware).
+20. Referral program formalization ($10-off structure already floated on Nextdoor).
+21. Consider LLC + separating liability once revenue is real.
 
 ## Principles
 
 - The site works and is live: improve, don't rewrite.
 - No new infrastructure before the decision is recorded in DECISION-LOG.md.
-- Every change that touches the booking flow must be manually tested end-to-end (submit a test booking, confirm the Formspree email arrives, confirm the analytics event fires).
+- Every change touching the booking flow gets an end-to-end manual test (submit → email → analytics event).
+- Marketing claims must be true: no fabricated reviews, no unverifiable badges, no fake urgency.
 
 ## Completed
 
