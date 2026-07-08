@@ -1,5 +1,26 @@
-# Welcome to GitHub Desktop!
+# Esplendor Detailing — esplendordetailing.com
 
-This is your README. READMEs are where you can communicate what your project is and how to use it.
+Production website and business system for **Esplendor Detailing**, a mobile car detailing company in Houston, TX. Static site hosted on GitHub Pages with a custom domain.
 
-Write your name on line 6, save it, and then head back to GitHub Desktop.
+## Files
+
+| File | Purpose |
+|---|---|
+| `index.html` | Bilingual (EN/ES) marketing site + booking form (Formspree) |
+| `thanks.html` | Booking confirmation page (Google Ads conversion event) |
+| `admin.html` | Owner dashboard: lead pipeline, revenue, launch guide |
+| `CNAME` | Custom-domain binding for GitHub Pages — **do not delete** |
+| `docs/` | Living documentation (start here) |
+
+## Documentation
+
+- **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)** — full system map: hosting, integrations, data flows, pricing, dependencies
+- **[docs/KNOWN-ISSUES.md](docs/KNOWN-ISSUES.md)** — audited defects and risks, by severity
+- **[docs/ROADMAP.md](docs/ROADMAP.md)** — prioritized improvement plan
+- **[docs/DECISION-LOG.md](docs/DECISION-LOG.md)** — why things are the way they are
+
+## Deploying
+
+Push to `main` → GitHub Pages publishes automatically. There is no build step; every page is self-contained HTML/CSS/JS.
+
+Before merging anything that touches the booking form: submit a test booking on the live site, confirm the Formspree email arrives, and confirm the analytics event fires.
