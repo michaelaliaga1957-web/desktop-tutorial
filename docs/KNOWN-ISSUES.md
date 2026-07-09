@@ -46,10 +46,10 @@ No `robots.txt`, no `sitemap.xml`, no favicon, no custom 404 page, no privacy po
 ### 10. README is still GitHub Desktop tutorial boilerplate
 Cosmetic, but confusing for anyone inheriting the repo. (Addressed in the inheritance-audit branch.)
 
-### 14. admin.html launch guide names the wrong county (added 2026-07-08)
-Guide Step 2 says file the DBA at Harris County; the actual filing is Fort Bend County (#2026068903, 2026-07-06). Historical now, but the guide is the owner's reference document — correct it on next edit of admin.html.
-
 ## Resolved
+
+### 14. admin.html launch guide named the wrong county — RESOLVED 2026-07-08
+Guide Step 2 updated to the real filing (Fort Bend County Clerk, #2026068903, July 6 2026, marked done). Guide Step 5 also updated with the real GBP review link, replacing the placeholder.
 
 ### 12. "LICENSED & INSURED" ad callout — RESOLVED 2026-07-08 (callout does not exist)
 Owner's Google Ads Assets screenshot shows the account's only callouts are "No Shop Required" and "Same-Day Available" — both truthful. The Launch Record's mention of a "LICENSED & INSURED" callout was outdated or inaccurate; nothing needed removal. Standing rule: no insurance/licensing claims anywhere (ads or website) until a general liability policy exists. Insurance purchase itself remains a Phase B owner item.
