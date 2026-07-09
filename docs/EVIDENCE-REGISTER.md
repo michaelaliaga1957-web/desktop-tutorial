@@ -25,14 +25,14 @@
 | Google Ads campaign "Mobile Detailing Houston" | DOCUMENTED | Performance Max, $2/day (cut from $10/day); 7-day results: 1,680 impressions, 16 clicks, $0.63 CPC, $10.05 spent |
 | Google Ads — **currently PAUSED** | DOCUMENTED | Overdue balance ~$9.93 (card declined by $0.07); ads not spending |
 | Google Ads advertiser identity verification | DOCUMENTED | Completed before 2026-08-07 deadline |
-| Google Ads assets | DOCUMENTED | 11 headlines, 4 descriptions, 15 images, 4 sitelinks, 2 callouts ("LICENSED & INSURED", "SAME-DAY APPOINTMENTS"); ad strength Poor→Average |
+| Google Ads assets | VERIFIED (screenshot 2026-07-08) | Callouts now "No Shop Required" + "Same-Day Available" (both truthful, Eligible, added Jul 2) — **no "LICENSED & INSURED" callout exists**; Launch Record listing was outdated/inaccurate. Optimization score 2.3%; ads "Eligible (limited)" pending balance |
 | Google Ads conversion goal "Book appointment" | FIXED IN CODE 2026-07-08 | Form now redirects to /thanks.html (verified headless-browser test); goal status in Ads UI to be confirmed after deploy + test booking. Ads UI banner "Set up conversion tracking" (screenshot) had confirmed the gap |
 | GA4 property + tag installed | VERIFIED (code) + DOCUMENTED (property) | G-S1FBL7829Z on index + thanks |
-| Google Business Profile | DOCUMENTED | Verified badge; hours set (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed); 8 services; booking link; service-area-only business; **zero reviews** |
+| Google Business Profile | VERIFIED (screenshot 2026-07-08) | Managed profile live on Google; hours Mon–Wed & Fri–Sat 9AM–8PM, Thu 9AM–5PM, Sun closed; 1 customer interaction; **zero reviews**; profile strength partial ("Complete Info" prompt) |
 | Instagram business profile | DOCUMENTED | @esplendordetailing, business account, work photos, linked to GBP; first Reel NOT done |
 | Nextdoor business page | DOCUMENTED | Persona-verified (SSN), blue checkmark, launch post live with photos |
 | WhatsApp Business | DOCUMENTED | Personal number migrated; greeting auto-reply ON, scoped to "everyone not in address book" |
-| Square account | VERIFIED (screenshots 2026-07-08) | Services mode, Tap to Pay; **Square Plus TRIAL, 29 days left — converts to paid unless downgraded**; balance $0.82 with next-day transfer scheduled → bank link working |
+| Square account | VERIFIED (screenshots 2026-07-08) | Services mode, Tap to Pay; **Square Plus TRIAL ends 2026-08-06 → $49/mo unless downgraded to Free before then**; balance $0.82 with next-day transfer → bank link working; fees 2.6%+15¢ tap, 3.3%+30¢ online |
 | Square service catalog pricing | VERIFIED consistent | Screenshot 2026-07-08 matches website exactly; C2 resolved |
 | Venmo business profile | DOCUMENTED | @ESPLENDORDETAILING, Individual/SSN type, logo, description, 6 photos, PO Box address, website + Instagram linked |
 | Zelle | CLAIMED | Via phone number 713-501-0461 (admin guide); no setup evidence |
@@ -56,11 +56,11 @@ Owner-provided Square Service Library screenshot shows the catalog matches the w
 **C3 — Website claims "5.0 · Google Reviews" while the actual Google Business Profile has zero reviews.**
 Confirmed on both sides: fabricated backdated reviews on the site (Phase 02, commit 284fe79) vs. GBP with no reviews (Phase 10 — identified there as the #1 Maps-ranking blocker). Any customer who checks Google sees the discrepancy. FTC fake-review rule exposure plus GBP suspension risk. The Launch Record's suggested remedy — reviews from friends and family — also violates Google policy and the FTC rule (undisclosed insider reviews); the safe path is reviews from real early customers.
 
-**C4 — Ads callout "LICENSED & INSURED" has no supporting evidence.**
-No insurance appears anywhere in the record (and no license — none is required for detailing in Texas, but that makes the word "licensed" shaky too; a DBA is a name registration, not a license). **Owner confirmed 2026-07-08: no insurance exists** (planned once profitable). The callout is therefore a confirmed false claim — remove it in Google Ads before ads resume; re-add when a policy is active.
+**C4 — Ads callout "LICENSED & INSURED" — RESOLVED 2026-07-08 (callout does not exist).**
+Owner's Ads Assets screenshot shows only two callouts: "No Shop Required" and "Same-Day Available" — both truthful. The Launch Record's claim that a "LICENSED & INSURED" callout was added was outdated or inaccurate. No false advertising is present in the account. Standing note: do not add insurance/licensing claims to any ad or the website until a policy actually exists; insurance itself remains on the owner's list once profitable.
 
-**C5 — Hours are inconsistent across surfaces.**
-Website JSON-LD schema: Mon–Sun 07:00–20:00. GBP: Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed. Owner confirmed 2026-07-08 the GBP hours are correct; website JSON-LD update pending (KNOWN-ISSUES #13).
+**C5 — Hours inconsistency — RESOLVED 2026-07-08.**
+GBP screenshot provided the authoritative hours (Mon–Wed & Fri–Sat 9AM–8PM, Thu 9AM–5PM, Sun closed); website JSON-LD updated to match exactly.
 
 **C6 — admin.html launch guide says DBA at Harris County; actual filing was Fort Bend County.**
 Historical doc error, harmless now, but the guide should match reality since it's the owner's reference.
