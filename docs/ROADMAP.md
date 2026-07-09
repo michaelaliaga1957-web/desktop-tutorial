@@ -8,9 +8,9 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 
 1. ~~**Fix conversion tracking**~~ ✅ DONE 2026-07-08 — form redirects to thanks.html; browser-verified. Goes live when merged to main; then submit one test booking and watch the Ads goal leave "Misconfigured."
 2. ~~**Reconcile pricing**~~ ✅ RESOLVED 2026-07-08 — Square catalog verified matching the website (screenshot); SuperWash $129.99 canonical.
-3. **Make the reviews section truthful** (code) — GBP shows zero reviews; the site's "5.0 Google Reviews" badge is one tap away from being caught. Reframe until real reviews exist; fix the placeholder review link. *(KNOWN-ISSUES #3, C3)*
+3. ~~**Make the reviews section truthful**~~ ✅ DONE 2026-07-08 — rebuilt as "The Esplendor Standard" (satisfaction-guarantee commitments, same premium design); fake badge/testimonials/placeholder link removed. Re-introduce a real reviews grid once genuine Google reviews exist.
 4. **Remove "LICENSED & INSURED" ad callout** (owner, 2 min in Ads > Assets > Callouts) — owner confirmed no insurance exists yet; the claim must come down before ads resume. Re-add when insured. *(KNOWN-ISSUES #12, C4)*
-5. **Align hours** (code, pending approval) — GBP hours confirmed correct by owner; update site JSON-LD to match. *(KNOWN-ISSUES #13, C5)*
+5. ~~**Align hours**~~ ✅ DONE 2026-07-08 — stale `openingHours` removed from site schema; GBP is the single source of truth for hours.
 6. **Test the funnel end-to-end** — submit a real test booking; confirm Formspree email arrives; confirm the conversion event fires (GA4 DebugView).
 
 ## Phase B — First customers & proof (owner-led, this month)
