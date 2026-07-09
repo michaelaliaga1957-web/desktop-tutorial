@@ -24,7 +24,7 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 
 ## Phase C — Systematize (after first ~10 jobs)
 
-13. **Decide the CRM system of record** — Formspree email + manual admin.html entry (Option A), Google-Sheets-backed store (Option B), or hosted CRM (Option C). Record in DECISION-LOG before building. *(KNOWN-ISSUES #2)*
+13. **CRM system of record → Google Sheet via Apps Script backend (Option B)** — decided 2026-07-08 (see DECISION-LOG); backend code ready in `tools/booking-backend/`; owner deploys, then website gets wired. Also delivers instant owner notifications + customer confirmation emails, fixing the silent-lead problem discovered today.
 14. **Review-request automation** — post-job SMS/WhatsApp template with the real GBP review link.
 15. **Privacy policy + site hygiene** — privacy page (form PII + GA/Ads), favicon, robots.txt, sitemap.xml, 404. *(KNOWN-ISSUES #8)*
 16. **Formspree plan check** — upgrade before the ~50/month free cap bites. *(KNOWN-ISSUES #9)*

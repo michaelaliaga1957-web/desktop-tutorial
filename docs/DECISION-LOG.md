@@ -7,6 +7,12 @@
 **Why:** The site is live and taking bookings; the highest-risk move on a working system is changing it before understanding it. Two of the top findings (conversion tracking, CRM data flow) also require an owner decision before the right fix is knowable.
 **Rejected:** Fixing the conversion-tracking bug in the same session — small change, but bundling fixes into the audit makes the audit harder to review.
 
+## 2026-07-08 — Booking notifications + customer confirmation: Google Apps Script backend (Option B)
+**Problem:** Owner received no notification for a live form submission (found it silently sitting in the Formspree dashboard), and customers get no automated confirmation of their booking. Both are consequences of the no-backend architecture: Formspree free tier is the only active delivery channel and its notification email wasn't reaching the owner.
+**Decision (recommended, pending owner setup):** Add a Google Apps Script web app bound to a Google Sheet as the booking backend, running alongside Formspree (which becomes backup/archive). One free component provides: instant owner email (+ optional carrier-gateway SMS), branded bilingual customer confirmation email, and a shared Sheet as the CRM system of record — which also resolves the long-standing CRM decision (KNOWN-ISSUES #2, roadmap #13, Option B).
+**Rejected:** Formspree paid plan (~$10/mo) — provides auto-responses and higher caps with zero setup, but recurring cost at pre-revenue stage and doesn't give a queryable datastore. Documented as fallback if the Apps Script path proves unreliable. SMS-to-customer via Twilio rejected for now: cost + A2P registration overhead; the owner personally texts within 1 hour anyway.
+**Implementation:** `tools/booking-backend/Code.gs` + `SETUP.md` committed; website wiring happens once the owner deploys and provides the /exec URL.
+
 ## 2026-07-08 — Conversion tracking fix: redirect to thanks.html (not inline event)
 **Decision:** On successful booking submit, redirect to `/thanks.html` instead of showing the inline success div. The no-JS fallback `_next` now points to the absolute thanks URL.
 **Why:** The Google Ads goal is already configured to read the GA4 event fired on thanks.html page load — redirecting makes the existing configuration work with zero Ads-side changes, and customers get the richer confirmation page (next steps + WhatsApp follow-up) that already existed. Verified in headless Chromium: success, Formspree-outage, and validation paths.
