@@ -11,7 +11,7 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 3. ~~**Make the reviews section truthful**~~ ✅ DONE 2026-07-08 — rebuilt as "The Esplendor Standard" (satisfaction-guarantee commitments, same premium design); fake badge/testimonials/placeholder link removed. Re-introduce a real reviews grid once genuine Google reviews exist.
 4. ~~**Remove "LICENSED & INSURED" ad callout**~~ ✅ RESOLVED 2026-07-08 — Ads screenshot shows the callout never existed / is already gone; current callouts ("No Shop Required", "Same-Day Available") are truthful. Standing rule: no insurance claims until a policy exists.
 5. ~~**Align hours**~~ ✅ DONE 2026-07-08 — site schema now carries the exact GBP hours (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed), verified from owner's GBP screenshot.
-6. **Test the funnel end-to-end** — submit a real test booking; confirm Formspree email arrives; confirm the conversion event fires (GA4 DebugView).
+6. **Test the funnel end-to-end** — submit a real test booking on the live site; expect: owner notification email, customer confirmation email, row in the Bookings sheet, Formspree archive entry, and (24–48 h later) the Ads goal leaving "Misconfigured."
 
 ## Phase B — First customers & proof (owner-led, this month)
 
@@ -24,7 +24,7 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 
 ## Phase C — Systematize (after first ~10 jobs)
 
-13. **CRM system of record → Google Sheet via Apps Script backend (Option B)** — decided 2026-07-08 (see DECISION-LOG); backend code ready in `tools/booking-backend/`; owner deploys, then website gets wired. Also delivers instant owner notifications + customer confirmation emails, fixing the silent-lead problem discovered today.
+13. ~~**CRM system of record → Google Sheet via Apps Script backend**~~ ✅ LIVE 2026-07-08 — owner deployed the web app; website wired (dual-send: backend + Formspree backup); browser-verified. Owner notifications, customer confirmation emails, and Sheet CRM all active. Optional: add carrier SMS gateway for text alerts (one-line config in the script).
 14. **Review-request automation** — post-job SMS/WhatsApp template with the real GBP review link.
 15. **Privacy policy + site hygiene** — privacy page (form PII + GA/Ads), favicon, robots.txt, sitemap.xml, 404. *(KNOWN-ISSUES #8)*
 16. **Formspree plan check** — upgrade before the ~50/month free cap bites. *(KNOWN-ISSUES #9)*
