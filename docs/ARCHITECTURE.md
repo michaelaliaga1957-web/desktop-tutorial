@@ -13,22 +13,28 @@ Esplendor Detailing is a mobile car detailing company serving Houston, TX. Custo
 
 ## 2. High-level architecture
 
-The entire system is a **static website with zero backend**. There is no server, no database, no build step, and no framework. Everything is hand-written HTML/CSS/JS in three files.
+The website is a **static site (GitHub Pages)** with one serverless component: a **Google Apps Script booking backend** running under the owner's Google account. No servers to maintain, no build step, no framework.
 
 ```
 Customer browser
    │
    ├── index.html  (marketing site + booking form, bilingual EN/ES)
-   │      ├── POST → Formspree (form ID: mojokqde) → email notification to owner
+   │      ├── POST → Apps Script backend (owner's account)
+   │      │            ├── appends row → "Esplendor Bookings" Google Sheet (CRM system of record)
+   │      │            ├── emails owner instantly (optional carrier-gateway SMS)
+   │      │            └── emails customer a branded bilingual confirmation
+   │      ├── POST → Formspree (form ID: mojokqde) — backup/archive channel
    │      ├── gtag.js → Google Analytics 4 (G-S1FBL7829Z)
-   │      └── saves lead copy → customer's OWN browser localStorage (see Known Issues #2)
+   │      └── saves lead copy → customer's browser localStorage (tertiary local copy)
+   │      then redirects → thanks.html
    │
-   ├── thanks.html (booking confirmation page + Google Ads conversion event)
-   │      └── ⚠ currently unreachable from the form flow (see Known Issues #1)
+   ├── thanks.html (booking confirmation page — fires the Google Ads conversion event)
    │
-   └── admin.html  (owner-only dashboard: pipeline CRM, revenue, launch guide)
-          └── reads/writes localStorage on the OWNER's browser only
+   └── admin.html  (owner dashboard: optional manual pipeline views + launch guide;
+                    the Google Sheet is the authoritative lead store)
 ```
+
+Backend source lives in `tools/booking-backend/` (Code.gs + SETUP.md); deployed 2026-07-08.
 
 ## 3. Repository & hosting
 
@@ -47,12 +53,12 @@ There are no environment variables, secrets, or third-party build dependencies. 
 ### `index.html` (~78 KB, single file: content + CSS + JS)
 Bilingual (English/Spanish) single-page marketing site. Language toggle persists in `localStorage['esplendor-lang']`; `.lang-en`/`.lang-es` classes on `<html>` show/hide `<span class="en">`/`<span class="es">` pairs.
 
-Sections in order: nav · floating WhatsApp/call buttons · hero (`#home`) · how it works (`#how`) · services (`#services`) · add-ons (`#addons`) · booking form (`#booking`) · gallery (`#gallery`, currently placeholders) · reviews (`#reviews`, hardcoded) · why us (`#why`) · payment (`#payment`) · FAQ (`#faq`) · contact (`#contact`) · footer.
+Sections in order: nav · floating WhatsApp/call buttons · hero (`#home`) · how it works (`#how`) · services (`#services`) · add-ons (`#addons`) · booking form (`#booking`) · gallery (`#gallery`, placeholders until real job photos) · The Esplendor Standard (`#reviews` — satisfaction-guarantee commitments; becomes a real reviews grid once genuine Google reviews exist) · why us (`#why`) · payment (`#payment`) · FAQ (`#faq`) · contact (`#contact`) · footer.
 
 SEO: meta description/keywords, canonical URL, Open Graph tags, JSON-LD `AutoWash` LocalBusiness schema.
 
 ### `thanks.html`
-Standalone booking-confirmation page. `noindex`. Fires GA4 config **plus the Google Ads conversion event `ads_conversion_Book_appointment_1`**. Includes "what happens next" steps and a WhatsApp follow-up button. **Note:** the booking form currently never navigates here — see Known Issues #1.
+Booking-confirmation page. `noindex`. Fires GA4 config **plus the Google Ads conversion event `ads_conversion_Book_appointment_1`**. Includes "what happens next" steps and a WhatsApp follow-up button. The booking form redirects here after every submission (fixed 2026-07-08).
 
 ### `admin.html` (~48 KB)
 Client-side business dashboard, `noindex,nofollow`. Password gate (`esplendor2025`, hardcoded in source — see Known Issues #3) with `sessionStorage` auth flag. Four views:
@@ -86,10 +92,10 @@ Project overview and pointers to this documentation.
 ## 6. Booking / lead flow (as implemented today)
 
 1. Customer fills the form on `index.html#booking` (name, phone, email, vehicle, package, add-ons, date, time window, address, notes). Honeypot field `_gotcha` deters spam bots.
-2. JS intercepts submit (`e.preventDefault()`), validates required fields, saves a lead object into the **customer's** localStorage, then POSTs to `https://formspree.io/f/mojokqde` via fetch.
-3. Formspree emails the owner (subject: "🚗 New Booking Request — Esplendor Detailing").
-4. The page shows an inline success message. (It does **not** redirect to `thanks.html` — the `_next` hidden field is ignored on AJAX submissions.)
-5. Owner confirms by call/text within 1 hour (the promise made on the site) and manually enters the lead into `admin.html`.
+2. JS validates required fields, saves a local lead copy, then POSTs to the **Apps Script backend** (urlencoded, `no-cors`, `keepalive`) and to **Formspree** (backup/archive).
+3. Backend: row appended to the "Esplendor Bookings" Sheet → owner notification email (optional SMS) → customer confirmation email (if email provided). Errors are emailed to the owner — never silent.
+4. Browser redirects to `thanks.html`, which fires the GA4/Google Ads conversion event.
+5. Owner confirms by call/text within 1 hour (the promise made on the site).
 
 **Lead delivery (since 2026-07-08):** primary channel is the Google Apps Script booking backend (owner's account; see `tools/booking-backend/`) — it appends every booking to the "Esplendor Bookings" Google Sheet (CRM system of record), emails the owner instantly, and sends the customer a branded bilingual confirmation email. Formspree remains connected as backup/archive. The admin.html dashboard is an optional manual tool; the Sheet is authoritative.
 
@@ -97,12 +103,12 @@ Formspree free tier allows ~50 submissions/month — monitor volume and upgrade 
 
 ## 7. Analytics & advertising
 
-- **GA4** property `G-S1FBL7829Z` on `index.html` and `thanks.html` (pageviews only; no custom events fire on the actual booking path today).
-- **Google Ads conversion** `ads_conversion_Book_appointment_1` defined only on `thanks.html`, which is currently unreachable → conversion data is not being collected. See Known Issues #1 — this is the single highest-priority fix if any paid ads are running.
+- **GA4** property `G-S1FBL7829Z` on `index.html` and `thanks.html`.
+- **Google Ads conversion** `ads_conversion_Book_appointment_1` fires on every `thanks.html` load, which every booking now reaches (fixed 2026-07-08). The Ads goal "Book appointment" reads this GA4 event.
 
 ## 8. Security & privacy posture
 
-- No backend → minimal attack surface. No customer data is stored server-side by us; Formspree holds submissions per its retention policy.
+- Minimal attack surface: static site + one Apps Script web app (unguessable URL, honeypot-filtered, accepts only booking-shaped fields; worst case spam adds sheet rows). Customer data lives in the owner's Google Sheet, Formspree's archive, and Gmail.
 - `admin.html` is publicly served (any visitor can load it) and its password is visible in page source. The real exposure is limited because lead data lives only in the owner's browser, but the password and the internal playbook are public. Treat `admin.html` as *obscured*, not *secured*.
 - Customer PII (name, phone, address) transits Formspree and Google (analytics). No privacy policy page exists yet.
 
@@ -117,7 +123,7 @@ Formspree free tier allows ~50 submissions/month — monitor volume and upgrade 
 | Public business address | ✅ Active | UPS Store PMB: 3418 Hwy 6 South, Suite B, PMB 357, Houston TX 77082 (protects home address; used on GBP, Venmo, Nextdoor) |
 | EIN | ❌ Not yet | Free at irs.gov; prerequisite for business bank account |
 | Business bank account | ❌ Not yet | Blocked on EIN |
-| Business insurance | ⚠ No evidence | Yet ads carry a "LICENSED & INSURED" callout — KNOWN-ISSUES #12 |
+| Business insurance | ❌ None (owner-confirmed 2026-07-08) | Planned once profitable; no insurance claims allowed in ads/site until then |
 
 ### Marketing & acquisition
 | Item | Status | Detail |
