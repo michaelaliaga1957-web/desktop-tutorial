@@ -45,7 +45,8 @@
 | Formspree email delivery | CLAIMED | Form wired (verified in code); no delivery confirmation seen |
 | Domain registrar | UNKNOWN | Still not recorded — business-continuity gap |
 | GBP review link | VERIFIED (screenshot 2026-07-08) | https://g.page/r/CViSYen6e8RIEBM/review — wired into website CTA + admin guide; QR code available in GBP → Ask for reviews |
-| Live booking confirmation page | VERIFIED (owner screenshot 2026-07-08) | thanks.html reached in production after deploy → redirect + conversion path working live; Formspree email receipt still to be confirmed by owner |
+| Live booking confirmation page | VERIFIED (owner screenshot 2026-07-08) | thanks.html reached in production after deploy → redirect + conversion path working live |
+| Booking backend (Apps Script) | VERIFIED 2026-07-08 | Deployed by owner (Version 1, 9:47 PM); testSystem run confirmed; website wired with dual-send + keepalive; browser test confirms correct fields delivered and Formspree backup intact |
 
 ## Contradictions log
 

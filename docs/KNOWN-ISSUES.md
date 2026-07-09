@@ -4,13 +4,6 @@
 
 ## Critical
 
-### 2. The admin CRM cannot receive website leads (localStorage is per-browser)
-**Evidence:** `index.html` saves submitted leads to `localStorage['esplendor-leads']` — in the **customer's** browser. `admin.html` reads the same key — but only from the **owner's** browser. These are different devices; the data never meets.
-
-**Impact:** The pipeline/revenue dashboard only reflects leads the owner types in manually. If the owner believes the dashboard captures website bookings automatically, leads will be silently missed. The Formspree email is the only real delivery channel.
-
-**Fix direction (pick one, don't build all):** (a) accept manual entry and document it as the workflow; (b) back the CRM with a shared datastore (e.g., Google Sheets via Apps Script endpoint, or a lightweight hosted CRM); (c) use Formspree's dashboard/integrations as the system of record. Decide before building — see ROADMAP.
-
 ## High
 
 ### 4. Admin password is hardcoded in publicly served source
@@ -47,6 +40,10 @@ No `robots.txt`, no `sitemap.xml`, no favicon, no custom 404 page, no privacy po
 Cosmetic, but confusing for anyone inheriting the repo. (Addressed in the inheritance-audit branch.)
 
 ## Resolved
+
+### 2. CRM couldn't receive website leads — RESOLVED 2026-07-08
+Was: leads saved to the customer's localStorage; the owner's admin.html dashboard could never see them; Formspree email was the only channel and its notification wasn't arriving.
+Fix: Google Apps Script booking backend deployed (owner's account, Sheet "Esplendor Bookings"). Every submission now: (1) appends to the Bookings sheet — the CRM system of record, (2) emails the owner instantly, (3) sends the customer a branded bilingual confirmation email. Formspree remains as backup/archive; the localStorage save remains as a tertiary local copy. Wiring browser-verified end-to-end. admin.html's pipeline views remain as an optional manual tool; the Sheet is authoritative.
 
 ### 14. admin.html launch guide named the wrong county — RESOLVED 2026-07-08
 Guide Step 2 updated to the real filing (Fort Bend County Clerk, #2026068903, July 6 2026, marked done). Guide Step 5 also updated with the real GBP review link, replacing the placeholder.

@@ -91,7 +91,7 @@ Project overview and pointers to this documentation.
 4. The page shows an inline success message. (It does **not** redirect to `thanks.html` — the `_next` hidden field is ignored on AJAX submissions.)
 5. Owner confirms by call/text within 1 hour (the promise made on the site) and manually enters the lead into `admin.html`.
 
-**The Formspree email is the only reliable lead-delivery channel.** The admin dashboard only contains leads the owner enters by hand (plus any test submissions made from the owner's own browser).
+**Lead delivery (since 2026-07-08):** primary channel is the Google Apps Script booking backend (owner's account; see `tools/booking-backend/`) — it appends every booking to the "Esplendor Bookings" Google Sheet (CRM system of record), emails the owner instantly, and sends the customer a branded bilingual confirmation email. Formspree remains connected as backup/archive. The admin.html dashboard is an optional manual tool; the Sheet is authoritative.
 
 Formspree free tier allows ~50 submissions/month — monitor volume and upgrade before it becomes a silent lead-loss point.
 

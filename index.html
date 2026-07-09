@@ -1870,7 +1870,24 @@
     leads.unshift(lead);
     localStorage.setItem('esplendor-leads', JSON.stringify(leads));
 
-    // Submit to Formspree (skip if placeholder)
+    // Booking backend: owner notification + customer confirmation email + Sheet CRM.
+    // keepalive lets the request finish even though we navigate away right after;
+    // no-cors because Apps Script doesn't send CORS headers (fire-and-forget).
+    const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxycKp8hseRRL6nvk37ZNqJbd1S_x1mwj4ItWtWUuAyEXO_4NCZIOr6yC0ybtDyLNgSXg/exec';
+    const backendData = new URLSearchParams();
+    data.forEach((value, key) => backendData.append(key, value));
+    try {
+      fetch(BACKEND_URL, {
+        method: 'POST',
+        body: backendData,
+        mode: 'no-cors',
+        keepalive: true
+      }).catch(err => console.warn('Backend error — Formspree backup still has the lead', err));
+    } catch (err) {
+      console.warn('Backend error — Formspree backup still has the lead', err);
+    }
+
+    // Submit to Formspree (backup/archive channel)
     const action = bookingForm.getAttribute('action');
     if (action && !action.includes('YOUR_FORM_ID')) {
       try {
