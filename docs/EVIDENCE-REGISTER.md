@@ -26,22 +26,22 @@
 | Google Ads — **currently PAUSED** | DOCUMENTED | Overdue balance ~$9.93 (card declined by $0.07); ads not spending |
 | Google Ads advertiser identity verification | DOCUMENTED | Completed before 2026-08-07 deadline |
 | Google Ads assets | DOCUMENTED | 11 headlines, 4 descriptions, 15 images, 4 sitelinks, 2 callouts ("LICENSED & INSURED", "SAME-DAY APPOINTMENTS"); ad strength Poor→Average |
-| Google Ads conversion goal "Book appointment" | CONTRADICTED | See C1 — configured to track /thanks.html page load, which is never reached |
+| Google Ads conversion goal "Book appointment" | FIXED IN CODE 2026-07-08 | Form now redirects to /thanks.html (verified headless-browser test); goal status in Ads UI to be confirmed after deploy + test booking. Ads UI banner "Set up conversion tracking" (screenshot) had confirmed the gap |
 | GA4 property + tag installed | VERIFIED (code) + DOCUMENTED (property) | G-S1FBL7829Z on index + thanks |
 | Google Business Profile | DOCUMENTED | Verified badge; hours set (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed); 8 services; booking link; service-area-only business; **zero reviews** |
 | Instagram business profile | DOCUMENTED | @esplendordetailing, business account, work photos, linked to GBP; first Reel NOT done |
 | Nextdoor business page | DOCUMENTED | Persona-verified (SSN), blue checkmark, launch post live with photos |
 | WhatsApp Business | DOCUMENTED | Personal number migrated; greeting auto-reply ON, scoped to "everyone not in address book" |
-| Square account | DOCUMENTED | Services mode, Tap to Pay enabled, service catalog entered; bank account linked, 2–3 day review **status unknown — follow up** |
-| Square service catalog pricing | CONTRADICTED | See C2 — conflicts with website pricing/naming |
+| Square account | VERIFIED (screenshots 2026-07-08) | Services mode, Tap to Pay; **Square Plus TRIAL, 29 days left — converts to paid unless downgraded**; balance $0.82 with next-day transfer scheduled → bank link working |
+| Square service catalog pricing | VERIFIED consistent | Screenshot 2026-07-08 matches website exactly; C2 resolved |
 | Venmo business profile | DOCUMENTED | @ESPLENDORDETAILING, Individual/SSN type, logo, description, 6 photos, PO Box address, website + Instagram linked |
 | Zelle | CLAIMED | Via phone number 713-501-0461 (admin guide); no setup evidence |
 | Cash App | PLANNED | Mentioned in admin guide Step 8 only; no evidence it exists |
 | EIN | PLANNED | Listed as still-to-do in Launch Record |
 | Business bank account | PLANNED | Blocked on EIN; still-to-do |
-| Business insurance | **UNKNOWN — no evidence** | ⚠ Yet ads run a "LICENSED & INSURED" callout — see C4 |
+| Business insurance | **CONFIRMED NONE** (owner, 2026-07-08) | Planned once profitable; ads callout must come down first — see C4 |
 | Website reviews backdated to May/Jun 2026 | VERIFIED | Commit 284fe79 + Launch Record Phase 02: owner requested reviews "look like they were given the past 2 months"; reviews are not from real customers |
-| Completed customer jobs / revenue | UNKNOWN | No evidence of any paid job yet; at least one vehicle detailed (owner's Reel footage). Ask owner |
+| Completed customer jobs / revenue | DOCUMENTED (owner, 2026-07-08) | **2 paid jobs completed** (friends/family); Square net sales still $0.00 → paid via cash/Venmo/Zelle |
 | Formspree email delivery | CLAIMED | Form wired (verified in code); no delivery confirmation seen |
 | Domain registrar | UNKNOWN | Still not recorded — business-continuity gap |
 
@@ -50,24 +50,17 @@
 **C1 — "Conversion tracking works end to end" (Launch Record, Phase 11 + Mission Assessment) — FALSE.**
 The record claims "Every completed booking fires a conversion event to Google Ads" and predicts the "Misconfigured" status "will resolve within 24–48 hours." Verified against code: the conversion fires only on `thanks.html` page load, and the booking form's AJAX handler never navigates there (KNOWN-ISSUES #1). The goal has been Misconfigured since creation and will stay so until fixed. Consequence: the Performance Max campaign ran ~7 days with zero conversion signal. **Must be fixed before the Ads balance is restored.**
 
-**C2 — Square catalog pricing conflicts with the website.**
-| Item | Website | Square |
-|---|---|---|
-| SuperWash | $129.99 (inside & out, flagship) | **$49.99** ("SuperWash Package") |
-| Interior | $69.99 (Interior Focused) | **$79.99** ("Interior Detail") |
-| Full detail | — (SuperWash *is* the full detail) | $129.99 ("Full Detail (Interior + Exterior)") |
-| Exterior | $69.99 | $69.99 ✓ |
-
-Either Square's "SuperWash Package" is a distinct budget wash tier that the website doesn't sell, or it's a data-entry error that would undercharge the flagship package by $80 at checkout. Owner must reconcile. (KNOWN-ISSUES #11)
+**C2 — Square catalog pricing conflicts with the website — RESOLVED 2026-07-08.**
+Owner-provided Square Service Library screenshot shows the catalog matches the website exactly (SuperWash $129.99 / 3h30, Exterior $69.99, Interior $69.99, all four add-ons at website prices). The Launch Record's conflicting listing was outdated. Owner confirmed SuperWash = $129.99 canonical.
 
 **C3 — Website claims "5.0 · Google Reviews" while the actual Google Business Profile has zero reviews.**
 Confirmed on both sides: fabricated backdated reviews on the site (Phase 02, commit 284fe79) vs. GBP with no reviews (Phase 10 — identified there as the #1 Maps-ranking blocker). Any customer who checks Google sees the discrepancy. FTC fake-review rule exposure plus GBP suspension risk. The Launch Record's suggested remedy — reviews from friends and family — also violates Google policy and the FTC rule (undisclosed insider reviews); the safe path is reviews from real early customers.
 
 **C4 — Ads callout "LICENSED & INSURED" has no supporting evidence.**
-No insurance appears anywhere in the record (and no license — none is required for detailing in Texas, but that makes the word "licensed" shaky too; a DBA is a name registration, not a license). If commercial liability insurance doesn't exist, this is a false advertising claim running in paid media. Verify or remove before ads resume.
+No insurance appears anywhere in the record (and no license — none is required for detailing in Texas, but that makes the word "licensed" shaky too; a DBA is a name registration, not a license). **Owner confirmed 2026-07-08: no insurance exists** (planned once profitable). The callout is therefore a confirmed false claim — remove it in Google Ads before ads resume; re-add when a policy is active.
 
 **C5 — Hours are inconsistent across surfaces.**
-Website JSON-LD schema: Mon–Sun 07:00–20:00. GBP: Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed. One of these is wrong; align all surfaces (site schema, site copy, GBP, WhatsApp away message).
+Website JSON-LD schema: Mon–Sun 07:00–20:00. GBP: Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed. Owner confirmed 2026-07-08 the GBP hours are correct; website JSON-LD update pending (KNOWN-ISSUES #13).
 
 **C6 — admin.html launch guide says DBA at Harris County; actual filing was Fort Bend County.**
 Historical doc error, harmless now, but the guide should match reality since it's the owner's reference.

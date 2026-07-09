@@ -1292,7 +1292,7 @@
 
       <!-- Hidden fields for Formspree -->
       <input type="hidden" name="_subject" value="🚗 New Booking Request — Esplendor Detailing" />
-      <input type="hidden" name="_next" value="thanks" />
+      <input type="hidden" name="_next" value="https://esplendordetailing.com/thanks.html" />
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
       <div class="form-grid">
@@ -1881,12 +1881,8 @@
       }
     }
 
-    // Show success
-    bookingForm.style.display = 'none';
-    formSuccess.style.display = 'block';
-
-    // Scroll to success
-    formSuccess.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Confirmation page fires the GA4 / Google Ads conversion event
+    window.location.href = '/thanks.html';
   });
 </script>
 </body>

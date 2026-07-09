@@ -4,15 +4,6 @@
 
 ## Critical
 
-### 1. Google Ads conversion tracking never fires for real bookings
-**Evidence:** `index.html` intercepts form submit with `e.preventDefault()` and shows an inline success `<div>` — it never navigates to `thanks.html`. The hidden field `_next` has value `thanks` (a relative path, which Formspree also ignores on AJAX/fetch submissions). The conversion event `ads_conversion_Book_appointment_1` exists **only** in `thanks.html` (line 11).
-
-**Impact:** If Google Ads campaigns are running, they are receiving zero conversion signal — Smart Bidding cannot optimize and ROAS cannot be measured. GA4 also records no booking event, so the funnel is invisible in analytics.
-
-**Fix direction:** Fire `gtag('event', ...)` directly in the form's success handler in `index.html`, or redirect to `/thanks.html` after a successful POST (which also gives customers the richer confirmation page that already exists). Either is a small, low-risk change.
-
-**Update 2026-07-08 (Launch Record):** The Google Ads goal "Book appointment" is configured to track a `/thanks.html` page load and shows **Misconfigured** in Google Ads — consistent with this bug; it will never self-resolve. The campaign (Performance Max, "Mobile Detailing Houston") ran ~7 days with zero conversion signal and is currently **paused on an overdue balance**, so there is no active spend loss today — but this fix is a hard prerequisite before the balance is restored and ads resume. See EVIDENCE-REGISTER C1.
-
 ### 2. The admin CRM cannot receive website leads (localStorage is per-browser)
 **Evidence:** `index.html` saves submitted leads to `localStorage['esplendor-leads']` — in the **customer's** browser. `admin.html` reads the same key — but only from the **owner's** browser. These are different devices; the data never meets.
 
@@ -53,26 +44,19 @@ Subset of issue #1 but worth tracking separately: even after ads tracking is fix
 ### 7. Pricing duplicated in three places
 `index.html` services section, `index.html` form option values, and `admin.html getPrice()` must be updated together. A missed spot silently corrupts revenue reporting. Documented in ARCHITECTURE.md §5; consider a single JS pricing constant per file at minimum.
 
-### 11. Square catalog pricing conflicts with the website (added 2026-07-08)
-**Evidence:** Launch Record Phase 08 vs index.html. Square: "SuperWash Package $49.99", "Interior Detail $79.99", "Full Detail (Interior + Exterior) $129.99". Website: SuperWash (Inside & Out) $129.99 is the flagship, Interior Focused $69.99.
-
-**Impact:** If "SuperWash" is rung up in Square at $49.99 for a customer who booked the website's $129.99 SuperWash, that's an $80 undercharge on the flagship product. Interior differs by $10 in the other direction. Naming and prices must be reconciled across website, Square, and `admin.html getPrice()` (which prices anything containing "superwash" at $129.99).
-
-**Fix direction:** Owner decides the canonical price list; then update all three surfaces in one pass. If Square's $49.99 SuperWash is a real budget wash tier, decide whether the website should sell it.
-
 ### 12. "LICENSED & INSURED" ad callout has no supporting evidence (added 2026-07-08)
 **Evidence:** Launch Record Phase 03 added this callout to the Google Ads campaign. No insurance policy appears anywhere in the record; no license exists (none required for detailing in TX — which also makes "licensed" questionable; a DBA is not a license).
 
 **Impact:** False advertising exposure in paid media; also a Google Ads misrepresentation-policy risk. Additionally, operating a mobile detailing business on customers' vehicles without general liability insurance is itself a major uninsured-loss risk.
 
-**Fix direction:** Verify insurance exists or remove the callout before ads resume. Getting general liability insurance (~$40–60/mo for sole-prop detailing) should be on the owner's short list regardless.
+**Update 2026-07-08 — owner confirmed: no insurance exists.** The owner plans to buy coverage once the first clients make the business profitable. That makes this issue CONFIRMED, not suspected: the "LICENSED & INSURED" callout is a false claim and **must be removed from the Google Ads campaign before the balance is restored and ads resume** (2-minute edit in Ads > Assets > Callouts). Re-add it the day a general liability policy is active (~$40–60/mo for sole-prop detailing). Until insured, the uninsured-damage risk rides on every job.
 
 ### 13. Business hours inconsistent across surfaces (added 2026-07-08)
 **Evidence:** Website JSON-LD schema says Mon–Sun 07:00–20:00; GBP (per Launch Record Phase 10) says Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed.
 
 **Impact:** Confuses customers and weakens local-SEO consistency signals (Google cross-checks structured data against GBP).
 
-**Fix:** Owner confirms real hours; align site schema, site copy, GBP, and WhatsApp away-message hours.
+**Update 2026-07-08:** Owner confirmed the GBP hours are the intended ones (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed). Remaining work: update the website JSON-LD `openingHours` (currently Mo-Su 07:00-20:00) to match. Small code change, pending approval.
 
 ## Low
 
@@ -90,4 +74,10 @@ Guide Step 2 says file the DBA at Harris County; the actual filing is Fort Bend 
 
 ## Resolved
 
-*(none yet — move items here with the fixing commit hash)*
+### 1. Google Ads conversion tracking never fires for real bookings — RESOLVED 2026-07-08
+Was: the booking form's AJAX handler showed an inline success div and never reached `thanks.html`, so the Ads conversion (`ads_conversion_Book_appointment_1`, fired on thanks.html load) and any GA4 booking signal never occurred; the Ads goal showed "Misconfigured."
+Fix: form now redirects to `/thanks.html` after submission (and the no-JS `_next` field points to the absolute thanks URL). Verified end-to-end in headless Chromium: success path, Formspree-outage path, and validation path all behave correctly.
+Remaining owner step: after the fix is live on main, submit one real test booking and confirm the "Book appointment" goal leaves Misconfigured status in Google Ads (24–48 h) before restoring the ads balance.
+
+### 11. Square catalog pricing conflicts with the website — RESOLVED 2026-07-08 (no longer true)
+Owner-provided Square Service Library screenshot (2026-07-08) shows the catalog now matches the website exactly: SuperWash $129.99 (3 h 30), Exterior Detail $69.99, Interior Detail $69.99, Pet Hair $39.99, Stain $49.99, Shampoo $49.99, Ceramic $59.99. The Launch Record's "$49.99 SuperWash Package / $79.99 Interior / separate Full Detail" listing was outdated or corrected after that session. Owner confirmed SuperWash = $129.99 canonical.
