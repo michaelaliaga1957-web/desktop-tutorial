@@ -9,18 +9,18 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 1. ~~**Fix conversion tracking**~~ ✅ DONE 2026-07-08 — form redirects to thanks.html; browser-verified. Goes live when merged to main; then submit one test booking and watch the Ads goal leave "Misconfigured."
 2. ~~**Reconcile pricing**~~ ✅ RESOLVED 2026-07-08 — Square catalog verified matching the website (screenshot); SuperWash $129.99 canonical.
 3. ~~**Make the reviews section truthful**~~ ✅ DONE 2026-07-08 — rebuilt as "The Esplendor Standard" (satisfaction-guarantee commitments, same premium design); fake badge/testimonials/placeholder link removed. Re-introduce a real reviews grid once genuine Google reviews exist.
-4. **Remove "LICENSED & INSURED" ad callout** (owner, 2 min in Ads > Assets > Callouts) — owner confirmed no insurance exists yet; the claim must come down before ads resume. Re-add when insured. *(KNOWN-ISSUES #12, C4)*
-5. ~~**Align hours**~~ ✅ DONE 2026-07-08 — stale `openingHours` removed from site schema; GBP is the single source of truth for hours.
+4. ~~**Remove "LICENSED & INSURED" ad callout**~~ ✅ RESOLVED 2026-07-08 — Ads screenshot shows the callout never existed / is already gone; current callouts ("No Shop Required", "Same-Day Available") are truthful. Standing rule: no insurance claims until a policy exists.
+5. ~~**Align hours**~~ ✅ DONE 2026-07-08 — site schema now carries the exact GBP hours (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed), verified from owner's GBP screenshot.
 6. **Test the funnel end-to-end** — submit a real test booking; confirm Formspree email arrives; confirm the conversion event fires (GA4 DebugView).
 
 ## Phase B — First customers & proof (owner-led, this month)
 
-7. **Restore Ads balance and resume** — only after Phase A items 1–4. Consider whether $2/day PMax is worth running at all vs. saving for $10/day; PMax needs conversion volume to learn. Alternative worth pricing: Google Local Services Ads (pay-per-lead) once reviews exist.
+7. **Restore Ads balance and resume** — Phase A items all clear as of 2026-07-08; only the owner's live test booking (item 6) remains before this. Consider whether $2/day PMax is worth running at all vs. saving for $10/day; PMax needs conversion volume to learn. Alternative worth pricing: Google Local Services Ads (pay-per-lead) once reviews exist.
 8. **Earn the first 5 real Google reviews** — from genuine early customers (launch discounts are fine; friends/family reviews violate policy). This is the #1 Maps-ranking lever per the prior session's own analysis.
 9. **First Instagram Reel + before/after cadence** — footage already exists; CapCut workflow was already provided. Post every job.
 10. **Real gallery photos on the website** — replace placeholder tiles. *(KNOWN-ISSUES #5)*
 11. **EIN → business bank account** — free, 10 minutes at irs.gov, unblocks clean bookkeeping; then update Venmo/Square tax profiles if desired.
-12. ~~Confirm Square bank review~~ ✅ VERIFIED 2026-07-08 — $0.82 balance with next-day transfer scheduled. **New item: decide on Square Plus before trial ends (~29 days from 2026-07-08)** — it converts to a paid subscription; downgrade to Square Free unless Plus features are actually used.
+12. ~~Confirm Square bank review~~ ✅ VERIFIED 2026-07-08 — $0.82 balance with next-day transfer scheduled. **Decide on Square Plus before trial ends 2026-08-06** — $49/month after trial (verified on Pricing & Subscriptions page); switch to Square Free unless Plus-only features are in real use.
 
 ## Phase C — Systematize (after first ~10 jobs)
 

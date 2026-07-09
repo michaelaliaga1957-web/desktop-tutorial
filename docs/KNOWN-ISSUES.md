@@ -35,13 +35,6 @@ Subset of issue #1 but worth tracking separately: even after ads tracking is fix
 ### 7. Pricing duplicated in three places
 `index.html` services section, `index.html` form option values, and `admin.html getPrice()` must be updated together. A missed spot silently corrupts revenue reporting. Documented in ARCHITECTURE.md §5; consider a single JS pricing constant per file at minimum.
 
-### 12. "LICENSED & INSURED" ad callout has no supporting evidence (added 2026-07-08)
-**Evidence:** Launch Record Phase 03 added this callout to the Google Ads campaign. No insurance policy appears anywhere in the record; no license exists (none required for detailing in TX — which also makes "licensed" questionable; a DBA is not a license).
-
-**Impact:** False advertising exposure in paid media; also a Google Ads misrepresentation-policy risk. Additionally, operating a mobile detailing business on customers' vehicles without general liability insurance is itself a major uninsured-loss risk.
-
-**Update 2026-07-08 — owner confirmed: no insurance exists.** The owner plans to buy coverage once the first clients make the business profitable. That makes this issue CONFIRMED, not suspected: the "LICENSED & INSURED" callout is a false claim and **must be removed from the Google Ads campaign before the balance is restored and ads resume** (2-minute edit in Ads > Assets > Callouts). Re-add it the day a general liability policy is active (~$40–60/mo for sole-prop detailing). Until insured, the uninsured-damage risk rides on every job.
-
 ## Low
 
 ### 8. Missing site hygiene files
@@ -58,12 +51,15 @@ Guide Step 2 says file the DBA at Harris County; the actual filing is Fort Bend 
 
 ## Resolved
 
+### 12. "LICENSED & INSURED" ad callout — RESOLVED 2026-07-08 (callout does not exist)
+Owner's Google Ads Assets screenshot shows the account's only callouts are "No Shop Required" and "Same-Day Available" — both truthful. The Launch Record's mention of a "LICENSED & INSURED" callout was outdated or inaccurate; nothing needed removal. Standing rule: no insurance/licensing claims anywhere (ads or website) until a general liability policy exists. Insurance purchase itself remains a Phase B owner item.
+
 ### 13. Business hours inconsistent across surfaces (added 2026-07-08)
 **Evidence:** Website JSON-LD schema says Mon–Sun 07:00–20:00; GBP (per Launch Record Phase 10) says Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed.
 
 **Impact:** Confuses customers and weakens local-SEO consistency signals (Google cross-checks structured data against GBP).
 
-**RESOLVED 2026-07-08:** Owner updated GBP hours again today (current values live on Google). Since the site's JSON-LD hours were stale-wrong and unfetchable from this environment, `openingHours` was **removed** from the schema — Google Business Profile is now the single source of truth for hours, with nothing to drift out of sync. If the owner supplies the exact hours, they can be re-added to the schema.
+**RESOLVED 2026-07-08:** Owner updated GBP hours again today (current values live on Google). Since the site's JSON-LD hours were stale-wrong and unfetchable from this environment, `openingHours` was **removed** from the schema — Google Business Profile is now the single source of truth for hours, with nothing to drift out of sync. Final update same day: owner provided a GBP screenshot with authoritative hours (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed); `openingHours` re-added to the schema matching GBP exactly.
 
 ### 3. Fabricated "Google Reviews" on the website — RESOLVED 2026-07-08
 Owner approved removal. The reviews section was rebuilt as "The Esplendor Standard" — same premium card design, but the content is now three truthful commitments (treated like our own / inspect before you pay / founding client advantage) under a "100% Satisfaction Guarantee" badge. The fake 5.0 Google Reviews badge, invented testimonials, and placeholder review link are gone; the CTA now links to the business's Google search results. Re-introduce a real reviews grid once genuine Google reviews exist (Phase B).
