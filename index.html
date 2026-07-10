@@ -704,6 +704,30 @@
       text-align: center;
       margin-top: 36px;
     }
+    .gallery-statement {
+      background: linear-gradient(145deg, #141414 0%, #0b0b0b 60%),
+                  radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.10), transparent 60%);
+      text-decoration: none;
+      padding: 24px;
+    }
+    .gallery-statement .gs-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      color: var(--gold);
+      text-align: center;
+      line-height: 1.25;
+    }
+    .gallery-statement .gs-sub {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+      text-align: center;
+    }
+    .gallery-statement:hover .gs-title { color: var(--gold-light); }
 
     /* ── REVIEWS ── */
     .reviews { background: #0e0e0e; border-top: 1px solid var(--card-border); }
@@ -1412,11 +1436,11 @@
 
   <div class="gallery-grid fade-up delay-3">
     <div class="gallery-item">
-      <img src="/assets/gallery/before-rear.webp" alt="Dirty truck floor mat before detailing — Houston mobile detailing" loading="lazy" />
+      <img src="/assets/gallery/before-rear.webp" alt="Truck floor before Esplendor Detailing" loading="lazy" />
       <span class="gallery-badge"><span class="en">Before</span><span class="es">Antes</span></span>
     </div>
     <div class="gallery-item">
-      <img src="/assets/gallery/after-rear.webp" alt="Spotless truck floor after Esplendor Detailing service" loading="lazy" />
+      <img src="/assets/gallery/after-rear.webp" alt="Truck floor restored to spotless after detailing" loading="lazy" />
       <span class="gallery-badge"><span class="en">After</span><span class="es">Después</span></span>
     </div>
     <a class="gallery-item" href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener" style="text-decoration:none;">
@@ -1424,17 +1448,22 @@
       <span class="gallery-badge">@esplendordetailing</span>
     </a>
     <div class="gallery-item">
-      <img src="/assets/gallery/interior-front.webp" alt="Clean truck interior after detailing — seats and dash" loading="lazy" />
-      <span class="gallery-badge"><span class="en">Interior</span><span class="es">Interior</span></span>
+      <img src="/assets/gallery/mats-sun.webp" alt="Restored floor mats finished to showroom condition" loading="lazy" />
+      <span class="gallery-badge"><span class="en">Restored</span><span class="es">Como Nuevo</span></span>
     </div>
     <div class="gallery-item">
-      <img src="/assets/gallery/action-scrub.webp" alt="Deep scrubbing floor mats with drill brush" loading="lazy" />
-      <span class="gallery-badge"><span class="en">Deep Clean</span><span class="es">Limpieza Profunda</span></span>
+      <img src="/assets/gallery/texture.webp" alt="Close-up of deep-cleaned floor mat texture" loading="lazy" />
+      <span class="gallery-badge"><span class="en">Every Detail</span><span class="es">Cada Detalle</span></span>
     </div>
-    <div class="gallery-item">
-      <img src="/assets/gallery/action-wash.webp" alt="Mobile detailing at your driveway — pressure washing in Houston" loading="lazy" />
-      <span class="gallery-badge"><span class="en">We Come To You</span><span class="es">Vamos a Ti</span></span>
-    </div>
+    <a class="gallery-item gallery-statement" href="#booking">
+      <div>
+        <div class="gs-title en">Your vehicle,<br>photographed next.</div>
+        <div class="gs-title es">Tu vehículo,<br>el próximo en brillar.</div>
+        <div class="gs-sub en">Reserve your detail →</div>
+        <div class="gs-sub es">Reserva tu detallado →</div>
+      </div>
+      <span class="gallery-badge"><span class="en">Book Now</span><span class="es">Reservar</span></span>
+    </a>
   </div>
 
   <div class="gallery-cta fade-up">
