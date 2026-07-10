@@ -16,12 +16,16 @@
   <meta name="keywords" content="mobile detailing Houston, car detailing Houston TX, mobile car wash Houston, auto detailing near me, detallado movil Houston" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://esplendordetailing.com/" />
+  <link rel="icon" type="image/webp" href="/assets/brand/logo-square.webp" />
+  <link rel="apple-touch-icon" href="/assets/brand/logo-square.webp" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Esplendor Detailing — Mobile Detailing Houston, TX" />
   <meta property="og:description" content="Premium mobile car detailing in Houston. We come to you. Starting at $69.99." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://esplendordetailing.com/" />
+  <meta property="og:image" content="https://esplendordetailing.com/assets/brand/logo-square.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Schema: Local Business -->
   <script type="application/ld+json">
@@ -222,8 +226,8 @@
     .hero-eyebrow::before, .hero-eyebrow::after {
       content: ''; display: block; width: 40px; height: 1px; background: var(--gold-dim);
     }
-    .hero-logo { margin-bottom: 24px; }
-    .hero-logo svg { width: 160px; height: auto; }
+    .hero-logo { margin-bottom: 20px; }
+    .hero-logo img { width: 240px; max-width: 62vw; height: auto; display: block; }
     .hero-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(3rem, 10vw, 7rem);
@@ -704,6 +708,30 @@
       text-align: center;
       margin-top: 36px;
     }
+    .gallery-statement {
+      background: linear-gradient(145deg, #141414 0%, #0b0b0b 60%),
+                  radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.10), transparent 60%);
+      text-decoration: none;
+      padding: 24px;
+    }
+    .gallery-statement .gs-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+      color: var(--gold);
+      text-align: center;
+      line-height: 1.25;
+    }
+    .gallery-statement .gs-sub {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 10px;
+      text-align: center;
+    }
+    .gallery-statement:hover .gs-title { color: var(--gold-light); }
 
     /* ── REVIEWS ── */
     .reviews { background: #0e0e0e; border-top: 1px solid var(--card-border); }
@@ -1041,22 +1069,7 @@
   </p>
 
   <div class="hero-logo">
-    <svg viewBox="0 0 220 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="42" cy="18" r="2.5" fill="#c9a84c" opacity="0.8"/>
-      <circle cx="178" cy="14" r="1.8" fill="#c9a84c" opacity="0.65"/>
-      <circle cx="110" cy="8" r="1.4" fill="#c9a84c" opacity="0.55"/>
-      <circle cx="160" cy="22" r="1.2" fill="#c9a84c" opacity="0.45"/>
-      <circle cx="55" cy="12" r="1" fill="#c9a84c" opacity="0.4"/>
-      <circle cx="80" cy="6" r="0.8" fill="#c9a84c" opacity="0.35"/>
-      <circle cx="140" cy="10" r="0.8" fill="#c9a84c" opacity="0.35"/>
-      <path d="M30 62 Q34 46 58 38 Q80 32 110 31 Q140 32 162 38 Q186 46 190 62 L194 62 L194 72 Q194 76 190 76 L172 76 Q168 80 160 80 Q152 80 148 76 L72 76 Q68 80 60 80 Q52 80 48 76 L30 76 Q26 76 26 72 L26 62 Z" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linejoin="round"/>
-      <circle cx="60" cy="76" r="10" fill="none" stroke="#c9a84c" stroke-width="2"/>
-      <circle cx="60" cy="76" r="4" fill="#c9a84c" opacity="0.4"/>
-      <circle cx="160" cy="76" r="10" fill="none" stroke="#c9a84c" stroke-width="2"/>
-      <circle cx="160" cy="76" r="4" fill="#c9a84c" opacity="0.4"/>
-      <path d="M75 38 Q85 32 110 31 Q135 32 145 38 L138 52 L82 52 Z" fill="rgba(201,168,76,0.07)" stroke="#c9a84c" stroke-width="1.2"/>
-      <path d="M50 28 Q110 10 170 28" stroke="#c9a84c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3 4"/>
-    </svg>
+    <img src="/assets/brand/emblem.webp" alt="Esplendor Detailing emblem" width="846" height="219" />
   </div>
 
   <h1 class="hero-title">Esplendor <span>Detailing</span></h1>
@@ -1412,41 +1425,34 @@
 
   <div class="gallery-grid fade-up delay-3">
     <div class="gallery-item">
-      <div class="gallery-placeholder">🚗</div>
-      <p class="gallery-placeholder-text en">Before Photo<br>Coming Soon</p>
-      <p class="gallery-placeholder-text es">Foto Antes<br>Próximamente</p>
-      <span class="gallery-badge en">BEFORE</span>
+      <img src="/assets/gallery/before-rear.webp" alt="Truck floor before Esplendor Detailing" loading="lazy" />
+      <span class="gallery-badge"><span class="en">Before</span><span class="es">Antes</span></span>
     </div>
     <div class="gallery-item">
-      <div class="gallery-placeholder">✨</div>
-      <p class="gallery-placeholder-text en">After Photo<br>Coming Soon</p>
-      <p class="gallery-placeholder-text es">Foto Después<br>Próximamente</p>
-      <span class="gallery-badge en">AFTER</span>
+      <img src="/assets/gallery/after-rear.webp" alt="Truck floor restored to spotless after detailing" loading="lazy" />
+      <span class="gallery-badge"><span class="en">After</span><span class="es">Después</span></span>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">🚙</div>
-      <p class="gallery-placeholder-text en">Add Your Photos<br>via Instagram</p>
-      <p class="gallery-placeholder-text es">Agrega Fotos<br>en Instagram</p>
+    <a class="gallery-item" href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener" style="text-decoration:none;">
+      <img src="/assets/gallery/logo.webp" alt="Esplendor Detailing — follow us on Instagram" loading="lazy" />
       <span class="gallery-badge">@esplendordetailing</span>
+    </a>
+    <div class="gallery-item">
+      <img src="/assets/gallery/mats-sun.webp" alt="Restored floor mats finished to showroom condition" loading="lazy" />
+      <span class="gallery-badge"><span class="en">Restored</span><span class="es">Como Nuevo</span></span>
     </div>
     <div class="gallery-item">
-      <div class="gallery-placeholder">🪣</div>
-      <p class="gallery-placeholder-text en">Interior Detail<br>Coming Soon</p>
-      <p class="gallery-placeholder-text es">Interior<br>Próximamente</p>
-      <span class="gallery-badge en">INTERIOR</span>
+      <img src="/assets/gallery/texture.webp" alt="Close-up of deep-cleaned floor mat texture" loading="lazy" />
+      <span class="gallery-badge"><span class="en">Every Detail</span><span class="es">Cada Detalle</span></span>
     </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">🛞</div>
-      <p class="gallery-placeholder-text en">Wheels &amp; Tires<br>Coming Soon</p>
-      <p class="gallery-placeholder-text es">Llantas y Rines<br>Próximamente</p>
-      <span class="gallery-badge en">WHEELS</span>
-    </div>
-    <div class="gallery-item">
-      <div class="gallery-placeholder">📸</div>
-      <p class="gallery-placeholder-text en">Follow Us<br>@esplendordetailing</p>
-      <p class="gallery-placeholder-text es">Síguenos<br>@esplendordetailing</p>
-      <span class="gallery-badge">INSTAGRAM</span>
-    </div>
+    <a class="gallery-item gallery-statement" href="#booking">
+      <div>
+        <div class="gs-title en">Your vehicle,<br>photographed next.</div>
+        <div class="gs-title es">Tu vehículo,<br>el próximo en brillar.</div>
+        <div class="gs-sub en">Reserve your detail →</div>
+        <div class="gs-sub es">Reserva tu detallado →</div>
+      </div>
+      <span class="gallery-badge"><span class="en">Book Now</span><span class="es">Reservar</span></span>
+    </a>
   </div>
 
   <div class="gallery-cta fade-up">
