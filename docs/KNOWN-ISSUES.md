@@ -30,9 +30,6 @@ Subset of issue #1 but worth tracking separately: even after ads tracking is fix
 
 ## Low
 
-### 8. Missing site hygiene files
-No `robots.txt`, no `sitemap.xml`, no favicon, no custom 404 page, no privacy policy. Each is small; the privacy policy matters most since the form collects PII and analytics/ads cookies are in use.
-
 ### 9. Formspree free-tier submission cap
 ~50 submissions/month on the free plan. At target volume (2–5 bookings/day per the launch guide) this will be exceeded — upgrade before it silently drops leads.
 
@@ -40,6 +37,9 @@ No `robots.txt`, no `sitemap.xml`, no favicon, no custom 404 page, no privacy po
 Cosmetic, but confusing for anyone inheriting the repo. (Addressed in the inheritance-audit branch.)
 
 ## Resolved
+
+### 8. Site hygiene files — RESOLVED 2026-07-10 (Esplendor 2.0)
+Added robots.txt, sitemap.xml, a branded bilingual-labelled privacy policy (privacy.html, linked in footer), a branded custom 404.html, and FAQPage JSON-LD schema on the homepage. Favicon/og:image were added earlier with the logo. Also fixed the contact-section hours copy (was "Mon–Sun 7AM–8PM", now matches GBP).
 
 ### 2. CRM couldn't receive website leads — RESOLVED 2026-07-08
 Was: leads saved to the customer's localStorage; the owner's admin.html dashboard could never see them; Formspree email was the only channel and its notification wasn't arriving.
