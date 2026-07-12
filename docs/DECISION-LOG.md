@@ -13,6 +13,13 @@
 **Rejected:** Formspree paid plan (~$10/mo) — provides auto-responses and higher caps with zero setup, but recurring cost at pre-revenue stage and doesn't give a queryable datastore. Documented as fallback if the Apps Script path proves unreliable. SMS-to-customer via Twilio rejected for now: cost + A2P registration overhead; the owner personally texts within 1 hour anyway.
 **Implementation:** `tools/booking-backend/Code.gs` + `SETUP.md` committed; website wiring happens once the owner deploys and provides the /exec URL.
 
+## 2026-07-10 — Local presence: DLR-style footer, not separate city pages
+**Context:** Studied competitor DLR Detail (dlrdetail.com). Their edge is per-city landing pages + a footer with a Google map and locations list.
+**First attempt (reverted):** Built 8 city landing pages (/katy/, /houston/, ...). Owner clarified he only wanted a single DLR-style footer section, not separate pages.
+**Decision:** Removed the city pages; built one footer with a Service Areas list (8 cities as text), Site Links, Company links, an embedded Google Map that opens the GBP listing, a service-area blurb, and a large faded "Esplendor" watermark. Sitemap reset to home + privacy.
+**Why it's fine:** No harm done (nothing was merged live before the correction); the city-page approach remains valid for later if organic SEO becomes a priority — it lives in git history (commit 42ee0e7).
+**Lesson recorded:** Confirm scope on "build like X" requests before mass-generating; owner wanted the visual element, not the architecture.
+
 ## 2026-07-08 — Conversion tracking fix: redirect to thanks.html (not inline event)
 **Decision:** On successful booking submit, redirect to `/thanks.html` instead of showing the inline success div. The no-JS fallback `_next` now points to the absolute thanks URL.
 **Why:** The Google Ads goal is already configured to read the GA4 event fired on thanks.html page load — redirecting makes the existing configuration work with zero Ads-side changes, and customers get the richer confirmation page (next steps + WhatsApp follow-up) that already existed. Verified in headless Chromium: success, Formspree-outage, and validation paths.

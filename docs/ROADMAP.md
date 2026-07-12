@@ -36,6 +36,7 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 > 2.0 turns the foundation into revenue systems, highest-ROI first.
 
 - ✅ **Trust & SEO layer** (DONE 2026-07-10) — privacy, robots, sitemap, 404, FAQ schema, favicon/og, hours fix. Lifts organic ranking + ad quality score.
+- ✅ **DLR-style footer** (DONE 2026-07-10) — service-areas list, embedded Google map linking to GBP, service-area blurb, faded brand watermark. (City landing pages were built then reverted per owner; approach kept in git history 42ee0e7 for future SEO push.)
 - **Review engine** (NEXT) — automated post-job review request via Apps Script + a live on-site reviews display that fills in as real Google reviews arrive.
 - **Owner analytics dashboard** — reads the Bookings Sheet: leads by source, revenue, avg ticket, conversion & repeat rate.
 - **Referral system** — trackable $10-off codes tied into booking + Sheet.
