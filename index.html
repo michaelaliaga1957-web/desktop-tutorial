@@ -949,37 +949,106 @@
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--card-border);
-      padding: 36px 24px;
-      text-align: center;
+      padding: 56px 24px 28px;
+      overflow: hidden;
     }
-    .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, auto) 1fr;
+      gap: 40px 56px;
+      max-width: 1100px;
+      margin: 0 auto 24px;
+      align-items: start;
+    }
+    .footer-col h4 {
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      color: var(--gold);
-      margin-bottom: 20px;
-    }
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      list-style: none;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .footer-links a {
-      font-size: 0.62rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      color: var(--text);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--gold-dim);
+      display: inline-block;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 9px; }
+    .footer-col a, .footer-col span.item {
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-links a:hover { color: var(--gold); }
-    .footer-copy { font-size: 0.62rem; color: #444; letter-spacing: 0.08em; }
+    .footer-col a:hover { color: var(--gold); }
+    .footer-map {
+      justify-self: end;
+      width: 100%;
+      max-width: 420px;
+    }
+    .footer-map iframe {
+      width: 100%;
+      height: 260px;
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      display: block;
+      background: #161616;
+    }
+    .footer-map-note {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .footer-map-note a { color: var(--gold-dim); text-decoration: none; }
+    .footer-map-note a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 30px auto 0;
+      flex-wrap: wrap;
+    }
+    .footer-watermark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: clamp(3.2rem, 11vw, 9rem);
+      line-height: 0.9;
+      letter-spacing: 0.01em;
+      background: linear-gradient(180deg, #2e2a20 0%, #0d0d0d 90%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .footer-biz { text-align: right; }
+    .footer-biz .biz-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .footer-biz .biz-hours { font-size: 0.74rem; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-biz .biz-social a {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 16px;
+    }
+    .footer-biz .biz-social a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.62rem; color: #444; letter-spacing: 0.08em; text-align: center; margin-top: 26px; }
     .footer-copy span { color: var(--gold-dim); }
+    .footer-copy a { color: var(--gold-dim); text-decoration: none; }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-map { justify-self: stretch; max-width: none; grid-column: 1 / -1; }
+      .footer-bottom { flex-direction: column; align-items: center; text-align: center; }
+      .footer-biz { text-align: center; }
+      .footer-biz .biz-social a { margin: 0 8px; }
+      .footer-watermark { white-space: normal; text-align: center; }
+    }
 
     /* ── ANIMATIONS ── */
     .fade-up {
@@ -1777,31 +1846,76 @@
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
-  <p class="footer-logo">ESPLENDOR DETAILING</p>
-  <ul class="footer-links">
-    <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
-    <li><a href="#booking"><span class="en">Book</span><span class="es">Reservar</span></a></li>
-    <li><a href="#reviews"><span class="en">Our Promise</span><span class="es">Compromiso</span></a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="tel:7135010461">713-501-0461</a></li>
-    <li><a href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="/privacy.html"><span class="en">Privacy</span><span class="es">Privacidad</span></a></li>
-    <li><a href="admin.html"><span class="en">Admin</span><span class="es">Admin</span></a></li>
-  </ul>
-  <p style="font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:8px 0 12px">
-    <span class="en">Service Areas</span><span class="es">Áreas de Servicio</span>
-  </p>
-  <ul style="list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;max-width:640px;margin:0 auto 22px;padding:0">
-    <li><a href="/katy/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Katy, TX</a></li>
-    <li><a href="/houston/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Houston, TX</a></li>
-    <li><a href="/sugar-land/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Sugar Land, TX</a></li>
-    <li><a href="/cypress/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Cypress, TX</a></li>
-    <li><a href="/richmond/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Richmond, TX</a></li>
-    <li><a href="/sienna/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Sienna, TX</a></li>
-    <li><a href="/pearland/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Pearland, TX</a></li>
-    <li><a href="/missouri-city/" style="font-size:.72rem;color:var(--text-muted);text-decoration:none">Missouri City, TX</a></li>
-  </ul>
-  <p class="footer-copy">&copy; 2026 <span>Esplendor Detailing</span> &nbsp;·&nbsp; Houston, Texas &nbsp;·&nbsp; Mobile Detailing &nbsp;·&nbsp; 713-501-0461</p>
+  <div class="footer-grid">
+
+    <div class="footer-col">
+      <h4><span class="en">Service Areas</span><span class="es">Áreas de Servicio</span></h4>
+      <ul>
+        <li><span class="item">Houston, TX</span></li>
+        <li><span class="item">Sugar Land, TX</span></li>
+        <li><span class="item">Katy, TX</span></li>
+        <li><span class="item">Cypress, TX</span></li>
+        <li><span class="item">Richmond, TX</span></li>
+        <li><span class="item">Sienna, TX</span></li>
+        <li><span class="item">Pearland, TX</span></li>
+        <li><span class="item">Missouri City, TX</span></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4><span class="en">Site Links</span><span class="es">Enlaces</span></h4>
+      <ul>
+        <li><a href="#services"><span class="en">Services</span><span class="es">Servicios</span></a></li>
+        <li><a href="#booking"><span class="en">Book Online</span><span class="es">Reservar</span></a></li>
+        <li><a href="#gallery"><span class="en">The Experience</span><span class="es">La Experiencia</span></a></li>
+        <li><a href="#reviews"><span class="en">Our Promise</span><span class="es">Compromiso</span></a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="/privacy.html"><span class="en">Privacy Policy</span><span class="es">Privacidad</span></a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4><span class="en">Company</span><span class="es">Compañía</span></h4>
+      <ul>
+        <li><a href="tel:7135010461"><span class="en">Call or Text Us</span><span class="es">Llama o Escríbenos</span></a></li>
+        <li><a href="https://wa.me/17135010461" target="_blank" rel="noopener">WhatsApp</a></li>
+        <li><a href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://g.page/r/CViSYen6e8RIEBM/review" target="_blank" rel="noopener"><span class="en">Leave a Review</span><span class="es">Deja una Reseña</span></a></li>
+        <li><a href="admin.html">Admin</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-map">
+      <iframe
+        src="https://maps.google.com/maps?q=Esplendor%20Detailing%2C%20Houston%2C%20TX&z=10&output=embed"
+        title="Esplendor Detailing service area map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+      <p class="footer-map-note">
+        <span class="en">Proudly serving greater Houston — we come to you across the southwest metro, from Katy to Pearland. <a href="https://www.google.com/maps/search/Esplendor+Detailing+Houston+TX" target="_blank" rel="noopener">Find us on Google Maps →</a></span>
+        <span class="es">Sirviendo con orgullo el área de Houston — vamos a ti por todo el suroeste, desde Katy hasta Pearland. <a href="https://www.google.com/maps/search/Esplendor+Detailing+Houston+TX" target="_blank" rel="noopener">Encuéntranos en Google Maps →</a></span>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-watermark" aria-hidden="true">Esplendor</div>
+    <div class="footer-biz">
+      <p class="biz-name">Esplendor Detailing</p>
+      <p class="biz-hours">
+        <span class="en">Mon – Sat · 9 AM – 8 PM (Thu til 5) · Sun Closed</span>
+        <span class="es">Lun – Sáb · 9 AM – 8 PM (Jue hasta 5) · Dom Cerrado</span>
+      </p>
+      <p class="biz-social">
+        <a href="https://instagram.com/esplendordetailing" target="_blank" rel="noopener">📷 Instagram</a>
+        <a href="https://wa.me/17135010461" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </p>
+    </div>
+  </div>
+
+  <p class="footer-copy">&copy; 2026 <span>Esplendor Detailing</span> &nbsp;·&nbsp; Houston, Texas &nbsp;·&nbsp; Mobile Detailing &nbsp;·&nbsp; <a href="tel:7135010461">713-501-0461</a></p>
 </footer>
 
 <!-- ═══ SCRIPTS ═══ -->
