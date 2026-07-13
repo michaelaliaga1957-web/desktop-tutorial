@@ -985,14 +985,40 @@
       width: 100%;
       max-width: 420px;
     }
+    .footer-map-card {
+      position: relative;
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.2s;
+    }
+    .footer-map-card:hover { border-color: var(--gold-dim); }
     .footer-map iframe {
       width: 100%;
       height: 260px;
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
       display: block;
       background: #161616;
+      border: 0;
+      pointer-events: none;
     }
+    .footer-map-overlay {
+      position: absolute;
+      bottom: 12px; left: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(11,11,11,0.9);
+      border: 1px solid var(--gold-dim);
+      color: var(--gold);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-map-card:hover .footer-map-overlay { background: var(--gold); color: var(--black); }
     .footer-map-note {
       font-size: 0.68rem;
       color: var(--text-muted);
@@ -1886,15 +1912,18 @@
     </div>
 
     <div class="footer-map">
-      <iframe
-        src="https://maps.google.com/maps?q=Esplendor%20Detailing%2C%20Houston%2C%20TX&z=10&output=embed"
-        title="Esplendor Detailing service area map"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen></iframe>
+      <a class="footer-map-card" href="https://maps.app.goo.gl/7moGd6uh8BDydqhu6" target="_blank" rel="noopener" aria-label="View Esplendor Detailing on Google Maps">
+        <iframe
+          src="https://maps.google.com/maps?q=Esplendor%20Detailing%2C%20Houston%2C%20TX&z=10&output=embed"
+          title="Esplendor Detailing service area map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          tabindex="-1"></iframe>
+        <span class="footer-map-overlay">📍 <span class="en">View on Google Maps</span><span class="es">Ver en Google Maps</span></span>
+      </a>
       <p class="footer-map-note">
-        <span class="en">Proudly serving greater Houston — we come to you across the southwest metro, from Katy to Pearland. <a href="https://www.google.com/maps/search/Esplendor+Detailing+Houston+TX" target="_blank" rel="noopener">Find us on Google Maps →</a></span>
-        <span class="es">Sirviendo con orgullo el área de Houston — vamos a ti por todo el suroeste, desde Katy hasta Pearland. <a href="https://www.google.com/maps/search/Esplendor+Detailing+Houston+TX" target="_blank" rel="noopener">Encuéntranos en Google Maps →</a></span>
+        <span class="en">Proudly serving greater Houston — we come to you across the southwest metro, from Katy to Pearland.</span>
+        <span class="es">Sirviendo con orgullo el área de Houston — vamos a ti por todo el suroeste, desde Katy hasta Pearland.</span>
       </p>
     </div>
 
