@@ -288,6 +288,53 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+    /* ── FOUNDING OFFER ── */
+    .hero-offer {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 auto 28px;
+      padding: 10px 20px;
+      border: 1px solid var(--gold-dim);
+      border-radius: 40px;
+      background: rgba(201,168,76,0.06);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .hero-offer:hover { background: rgba(201,168,76,0.14); border-color: var(--gold); }
+    .hero-offer b { color: #fff; font-weight: 700; }
+    .booking-offer {
+      max-width: 640px;
+      margin: 0 auto 36px;
+      text-align: center;
+      padding: 26px 28px;
+      border: 1px solid var(--gold-dim);
+      background: linear-gradient(145deg, rgba(201,168,76,0.08), rgba(201,168,76,0.02));
+    }
+    .bo-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    .bo-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .bo-sub { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -1202,6 +1249,11 @@
     <span class="hero-trust-item es">Mismo Día Disponible</span>
   </div>
 
+  <a href="#booking" class="hero-offer">
+    <span class="en">✦ Founding Client Offer — <b>$25 off</b> your first detail</span>
+    <span class="es">✦ Oferta Cliente Fundador — <b>$25</b> en tu primer detallado</span>
+  </a>
+
   <div class="hero-actions">
     <a href="#booking" class="btn-primary">
       <span class="en">Book Online — Fast</span>
@@ -1396,6 +1448,15 @@
     <span class="en">Fill out the form and we'll confirm your appointment within 1 hour by text or call.</span>
     <span class="es">Llena el formulario y confirmaremos tu cita en 1 hora por mensaje o llamada.</span>
   </p>
+
+  <div class="booking-offer fade-up delay-2">
+    <span class="bo-badge"><span class="en">Founding Client Offer</span><span class="es">Oferta Cliente Fundador</span></span>
+    <div class="bo-headline"><span class="en">$25 off your first detail</span><span class="es">$25 de descuento en tu primer detallado</span></div>
+    <p class="bo-sub">
+      <span class="en">We're new to Houston and earning our reputation one driveway at a time. Our first <strong style="color:#e8e8e8">25 clients</strong> get founding pricing — just mention this offer when we confirm. All we ask in return is your honest review.</span>
+      <span class="es">Somos nuevos en Houston y nos ganamos nuestra reputación un garaje a la vez. Nuestros primeros <strong style="color:#e8e8e8">25 clientes</strong> reciben precio de fundador — solo menciona esta oferta al confirmar. A cambio solo pedimos tu reseña honesta.</span>
+    </p>
+  </div>
 
   <div class="booking-wrap fade-up delay-3">
 
