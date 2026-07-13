@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--gold:#c9a84c;--gold-light:#e2c97e;--gold-dim:#8a6d2f;--black:#0b0b0b}
+  html,body{width:1200px;height:1800px}
+  body{background:radial-gradient(ellipse 90% 50% at 50% 22%,rgba(201,168,76,0.10),transparent 60%),#0b0b0b;color:#e8e8e8;font-family:'Montserrat',sans-serif;padding:80px 64px 64px;display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:space-between}
+  .emblem{width:360px;margin-bottom:6px}
+  .eyebrow{font-size:22px;font-weight:700;letter-spacing:10px;text-transform:uppercase;color:var(--gold);margin:8px 0 22px}
+  h1{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:104px;line-height:0.92;text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+  h1 i{color:var(--gold);font-style:italic}
+  .tagline{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:#bbb;margin-bottom:30px}
+  .offer{border:2px solid var(--gold-dim);background:linear-gradient(145deg,rgba(201,168,76,0.12),rgba(201,168,76,0.03));padding:26px 40px;margin-bottom:34px;width:100%}
+  .offer .lead{font-size:22px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+  .offer .big{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:58px;color:var(--gold-light);line-height:1}
+  .offer .small{font-size:20px;color:#aaa;margin-top:8px}
+  .prices{display:flex;justify-content:center;gap:18px;width:100%;margin-bottom:34px}
+  .pcard{flex:1;border:1px solid #2a2a2a;background:#141414;padding:22px 10px}
+  .pcard .n{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--gold);margin-bottom:4px}
+  .pcard .p{font-size:34px;font-weight:800}
+  .qrrow{display:flex;align-items:center;gap:34px;width:100%;justify-content:center;margin-bottom:30px}
+  .qr{width:300px;height:300px;background:#fff;padding:16px;border-radius:8px}
+  .qr img{width:100%;height:100%;display:block}
+  .qrtext{text-align:left;max-width:420px}
+  .qrtext .s{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:40px;color:var(--gold-light);line-height:1.1;margin-bottom:12px}
+  .qrtext .u{font-size:26px;font-weight:700;letter-spacing:1px;color:#e8e8e8}
+  .contact{display:flex;flex-direction:column;gap:6px;margin-bottom:24px}
+  .phone{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:64px;color:#fff;letter-spacing:2px}
+  .sub{font-size:24px;color:var(--gold);font-weight:600;letter-spacing:3px}
+  .areas{font-size:19px;color:#888;letter-spacing:1px;line-height:1.6;border-top:1px solid #2a2a2a;padding-top:26px;width:100%}
+  .ig{color:var(--gold);font-weight:700}
+  .es .en-only{display:none}.en .es-only{display:none}
+</style>
+</head>
+<body class="en">
+  <img class="emblem" src="/assets/brand/emblem.webp" alt="" />
+  <div class="eyebrow"><span class="en-only">Houston, Texas</span><span class="es-only">Houston, Texas</span></div>
+  <h1><span class="en-only">Mobile<br>Detailing</span><span class="es-only">Detallado<br>Móvil</span></h1>
+  <p class="tagline"><span class="en-only">We come to you — driveway, office, anywhere.</span><span class="es-only">Vamos a ti — tu casa, oficina, donde sea.</span></p>
+
+  <div class="offer">
+    <div class="lead"><span class="en-only">Founding Client Offer</span><span class="es-only">Oferta Cliente Fundador</span></div>
+    <div class="big"><span class="en-only">$25 off your first detail</span><span class="es-only">$25 de descuento tu primer detallado</span></div>
+    <div class="small"><span class="en-only">Limited to our first 25 Houston clients</span><span class="es-only">Solo nuestros primeros 25 clientes en Houston</span></div>
+  </div>
+
+  <div class="prices">
+    <div class="pcard"><div class="n"><span class="en-only">Exterior</span><span class="es-only">Exterior</span></div><div class="p">$69.99</div></div>
+    <div class="pcard" style="border-color:var(--gold-dim)"><div class="n">SuperWash</div><div class="p">$129.99</div></div>
+    <div class="pcard"><div class="n"><span class="en-only">Interior</span><span class="es-only">Interior</span></div><div class="p">$69.99</div></div>
+  </div>
+
+  <div class="qrrow">
+    <div class="qr"><img src="/assets/print/qr.png" alt="Scan to book" /></div>
+    <div class="qrtext">
+      <div class="s"><span class="en-only">Scan to book<br>in 60 seconds</span><span class="es-only">Escanea para<br>reservar en 60 seg</span></div>
+      <div class="u">esplendordetailing.com</div>
+    </div>
+  </div>
+
+  <div class="contact">
+    <div class="sub"><span class="en-only">Call or Text · We reply fast</span><span class="es-only">Llama o Escribe · Respondemos rápido</span></div>
+    <div class="phone">713-501-0461</div>
+  </div>
+
+  <div class="areas">
+    <span class="en-only">Serving Houston · Sugar Land · Katy · Cypress · Richmond · Sienna · Pearland · Missouri City</span>
+    <span class="es-only">Sirviendo Houston · Sugar Land · Katy · Cypress · Richmond · Sienna · Pearland · Missouri City</span>
+    <br><span class="ig">@esplendordetailing</span>
+  </div>
+</body>
+</html>
