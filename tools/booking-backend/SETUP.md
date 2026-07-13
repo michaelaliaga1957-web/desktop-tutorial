@@ -21,6 +21,22 @@ Formspree stays connected as a backup archive. Nothing about the website's curre
    → **Deploy** → copy the **Web app URL** (ends in `/exec`).
 7. **Send that URL to Claude** — the website gets wired to it (one small edit), and the system goes live.
 
+## Review Engine (added 2026-07-10) — how to turn jobs into reviews
+
+The script now auto-sends a branded "leave us a review" email to any customer once you mark their job done. To activate it:
+
+1. **Update the code:** open your Apps Script (Extensions → Apps Script), select all, delete, and paste the latest `Code.gs` again. Click **save**. *(No web-app redeploy needed — the review features run from the Sheet, not the web endpoint.)*
+2. **Reload the spreadsheet tab.** A new **"⭐ Esplendor"** menu appears at the top.
+3. **Preview it:** ⭐ Esplendor → **Preview review email (to me)** — you'll get the exact email customers receive.
+
+**Daily use — how you generate reviews:**
+- After a job, in the Bookings sheet set that row's **Status** to `Paid` (or `Completed`/`Done`).
+- Then either click **⭐ Esplendor → Send pending review requests**, or let it run automatically (next step). The customer gets the review email; the "Review Sent" column stamps the date so nobody is ever asked twice.
+
+**Fully automate it (optional, 1 minute):** In Apps Script, left sidebar → **Triggers** (⏰ icon) → **Add Trigger** → choose function `processReviewRequests`, event source **Time-driven**, **Hour timer**, **Every hour** → Save. Now review requests go out on their own within an hour of you marking a job Paid — you never touch it again.
+
+> Only customers who gave an email get the automated request. For phone-only customers, text them the link yourself: https://g.page/r/CViSYen6e8RIEBM/review
+
 ## Notes
 
 - The URL is long and unguessable; the form's honeypot field filters bots. Worst case, spam creates a sheet row.

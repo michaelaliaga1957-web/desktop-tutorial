@@ -37,7 +37,8 @@ Ads are paused on an overdue ~$10 balance. That pause is a free window: everythi
 
 - ✅ **Trust & SEO layer** (DONE 2026-07-10) — privacy, robots, sitemap, 404, FAQ schema, favicon/og, hours fix. Lifts organic ranking + ad quality score.
 - ✅ **DLR-style footer** (DONE 2026-07-10) — service-areas list, embedded Google map linking to GBP, service-area blurb, faded brand watermark. (City landing pages were built then reverted per owner; approach kept in git history 42ee0e7 for future SEO push.)
-- **Review engine** (NEXT) — automated post-job review request via Apps Script + a live on-site reviews display that fills in as real Google reviews arrive.
+- ✅ **Review engine** (BUILT 2026-07-10) — Apps Script now auto-sends a branded review-request email when a job is marked Paid/Completed in the Bookings sheet (menu + optional hourly trigger; "Review Sent" column prevents double-asks). Owner action: paste updated Code.gs + reload sheet + optionally add the hourly trigger (SETUP.md). On-site live reviews grid still to follow once real reviews exist.
+- ✅ **Founding Client Offer** (SHIPPED 2026-07-10) — $25-off first-detail hero badge + booking callout; feeds the review engine via built-in review ask.
 - **Owner analytics dashboard** — reads the Bookings Sheet: leads by source, revenue, avg ticket, conversion & repeat rate.
 - **Referral system** — trackable $10-off codes tied into booking + Sheet.
 - **Lifecycle automation** — appointment reminders + 6-week "time for a refresh" repeat-business nudges.
