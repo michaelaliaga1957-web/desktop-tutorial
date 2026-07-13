@@ -34,7 +34,7 @@ New leads come in by form (you get the email), text, WhatsApp, or DM. Reply FAST
 > Hi [Name]! Just following up — I have a couple openings left [day/day]. With the founding offer it's $[discounted price], and you don't pay until you're thrilled. Want me to book you in?
 
 **+3 days (last touch):**
-> Hey [Name], I'll stop bugging you 😄 — but the $25 founding offer is still good if you'd like to grab it. Text me anytime: 713-501-0461.
+> Hey [Name], I'll stop bugging you 😄 — but the $25 SuperWash founding offer is still good if you'd like to grab it. Text me anytime: 713-501-0461.
 
 ---
 

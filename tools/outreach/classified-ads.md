@@ -15,7 +15,7 @@ Post these on free marketplaces. Refresh/repost weekly (listings sink fast). Att
 > ⭐ SuperWash (full inside & out) — $129.99
 > Add-ons: pet hair, stain removal, carpet shampoo, ceramic protection.
 >
-> ✨ FOUNDING OFFER: $25 off your first detail (first 25 clients).
+> ✨ FOUNDING OFFER: $25 off your first SuperWash (full detail) (first 25 clients).
 > No payment to book. You don't pay until you've inspected the work.
 > Bilingual service · English & Español.
 >
@@ -44,7 +44,7 @@ Post these on free marketplaces. Refresh/repost weekly (listings sink fast). Att
 > - SuperWash (full inside & out) — $129.99
 > - Add-ons: pet hair removal, stain removal, carpet/seat shampoo, 1-yr ceramic protection
 >
-> FOUNDING OFFER: $25 off your first detail (first 25 clients). No payment to book; pay only after you inspect the work. English & Español.
+> FOUNDING OFFER: $25 off your first SuperWash (full detail) (first 25 clients). No payment to book; pay only after you inspect the work. English & Español.
 >
 > Book online: esplendordetailing.com
 > Call/text: 713-501-0461

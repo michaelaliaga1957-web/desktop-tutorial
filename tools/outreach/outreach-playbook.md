@@ -23,7 +23,7 @@ Track everything: the flyer QR links to `esplendordetailing.com/?utm_source=flye
 >
 > Not a car wash. Not a machine. Just one guy who takes real pride in his work, at your door.
 >
-> To celebrate the launch, my **first 25 neighbors get $25 off their first detail.** Packages start at $69.99.
+> To celebrate the launch, my **first 25 neighbors get $25 off their first SuperWash (full detail).** Packages start at $69.99.
 >
 > Book in 60 seconds at **esplendordetailing.com** or text me directly at **713-501-0461**. Would mean the world to have your support 🙏
 
