@@ -19,7 +19,7 @@ GBP is your #1 free discovery channel. Every improvement raises your Maps rankin
 ## Google Posts (Create → Add update / Offer — post one per week)
 
 **POST 1 — Offer (make it an "Offer" type post):**
-> 🚗 **Founding Client Offer — $25 off your first detail!**
+> 🚗 **Founding Client Offer — $25 off your first SuperWash (full detail)!**
 > We're a new Houston mobile detailer bringing premium service right to your driveway. Our first 25 clients get founding pricing. Packages from $69.99, we come to you, and you don't pay until you're thrilled. Book online or text 713-501-0461.
 > *Button: Book online → esplendordetailing.com/#booking*
 

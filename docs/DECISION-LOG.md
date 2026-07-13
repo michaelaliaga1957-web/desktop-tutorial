@@ -16,7 +16,7 @@
 ## 2026-07-10 — Co-founder mode: build-first. Shipped Founding Client Offer
 **Mandate change:** Owner redefined role from consultant to technical co-founder — execute, don't recommend; ship continuously; assume approval for anything legal/ethical/financially-responsible/measurable.
 **Bottleneck targeted:** Trust gap — a 0-review business gives strangers no reason to be first. **Metric:** booking rate + close rate.
-**Built & shipped:** "Founding Client Offer — $25 off your first detail, first 25 Houston clients, in exchange for an honest review." Hero badge + booking-section callout, bilingual. Reframes newness as ground-floor exclusivity and bakes in the review ask (feeds the review engine). Numbers ($25 / 25 clients) are trivially editable in index.html.
+**Built & shipped:** "Founding Client Offer — $25 off your first SuperWash (full detail), first 25 Houston clients, in exchange for an honest review." Hero badge + booking-section callout, bilingual. Reframes newness as ground-floor exclusivity and bakes in the review ask (feeds the review engine). Numbers ($25 / 25 clients) are trivially editable in index.html.
 **Why this first:** Fully in-house (no third-party setup), deployable immediately, lifts a named metric for every visitor, and manufactures the first jobs that generate the reviews everything else depends on.
 **Next loop:** Review engine (Apps Script upgrade — owner redeploys once) to systematize the review generation this offer promises.
 
