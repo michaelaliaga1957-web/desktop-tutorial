@@ -560,7 +560,7 @@
     .addons { border-top: 1px solid var(--card-border); background: #0a0a0a; }
     .addons-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1px;
       max-width: 1000px;
       margin: 0 auto;
@@ -1431,6 +1431,11 @@
       <p class="addon-name"><span class="en">1-Year Ceramic Protection</span><span class="es">Protección Cerámica 1 Año</span></p>
       <p class="addon-price">$59.99</p>
     </div>
+    <div class="addon-card">
+      <span class="addon-icon">💨</span>
+      <p class="addon-name"><span class="en">Deep Steam Refresh</span><span class="es">Renovación a Vapor Profundo</span></p>
+      <p class="addon-price">$39.99</p>
+    </div>
   </div>
 </section>
 
@@ -1522,6 +1527,7 @@
             <option value="Stain Removal +$49.99">Stain Removal +$49.99</option>
             <option value="Shampoo Carpets & Seats +$49.99">Shampoo Carpets &amp; Seats +$49.99</option>
             <option value="1-Year Ceramic Protection +$59.99">1-Year Ceramic Protection +$59.99</option>
+            <option value="Deep Steam Refresh +$39.99">Deep Steam Refresh +$39.99</option>
           </select>
         </div>
         <div class="form-group">
