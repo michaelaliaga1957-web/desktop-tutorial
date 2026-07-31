@@ -134,7 +134,7 @@ function sendCustomerConfirmation(lead) {
     '<p style="color:#444;line-height:1.6;">Need to change anything or reach us sooner?<br>' +
     '📞 Call or text <a href="tel:' + BUSINESS_PHONE.replace(/-/g,'') + '" style="color:#8a6d2f;font-weight:bold;">' + BUSINESS_PHONE + '</a>' +
     ' &nbsp;·&nbsp; 💬 <a href="' + WHATSAPP_LINK + '" style="color:#8a6d2f;font-weight:bold;">WhatsApp</a></p>' +
-    '<p style="color:#444;line-height:1.6;">Remember: <b>no payment until after you inspect the finished work.</b></p>' +
+    '<p style="color:#444;line-height:1.6;">We\'ll text you when we\'re on our way. Just have the vehicle accessible and we\'ll do the rest. 🚗</p>' +
   '</div>' +
   '<div style="background:#f6f3ec;padding:16px;text-align:center;color:#8a6d2f;font-size:11px;letter-spacing:2px;">ESPLENDOR DETAILING · WE COME TO YOU</div>' +
 '</div>';
