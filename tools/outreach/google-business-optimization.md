@@ -4,7 +4,7 @@ GBP is your #1 free discovery channel. Every improvement raises your Maps rankin
 
 ## ✅ Completion checklist (business.google.com → Edit profile)
 - [ ] **Categories** — Primary: `Car detailing service`. Add secondary: `Auto detailing shop`, `Car wash`, `Mobile hairdresser`... no — use: `Auto detailing shop`, `Car wash`. More categories = more searches you appear in.
-- [ ] **Services** — add every one with a price + description: Exterior Detail $69.99, Interior Detail $69.99, SuperWash Full Detail $129.99, Pet Hair Removal $39.99, Stain Removal $49.99, Carpet & Seat Shampoo $49.99, 1-Year Ceramic Protection $59.99.
+- [ ] **Services** — add every one with a price + description: Exterior Detail $69.99, Interior Detail $69.99, SuperWash Full Detail $149.99, Pet Hair Removal $39.99, Stain Removal $49.99, Carpet & Seat Shampoo $49.99, 1-Year Ceramic Protection $59.99.
 - [ ] **Service areas** — add all 8: Houston, Sugar Land, Katy, Cypress, Richmond, Sienna, Pearland, Missouri City.
 - [ ] **Description** (750 chars) — paste the one below.
 - [ ] **Photos** — upload 10+: your logo, your work (the mats/interior shots), your setup/equipment, you working (face optional). Businesses with 10+ photos get far more calls. Add new photos weekly.
