@@ -740,7 +740,7 @@
           <label>Package *</label>
           <select id="mPackage">
             <option value="Exterior Focused — $69.99">Exterior Focused — $69.99</option>
-            <option value="SuperWash (Inside & Out) — $129.99">SuperWash — $129.99</option>
+            <option value="SuperWash (Inside & Out) — $149.99">SuperWash — $149.99</option>
             <option value="Interior Focused — $69.99">Interior Focused — $69.99</option>
             <option value="Not sure — need a quote">Quote Needed</option>
           </select>
@@ -853,7 +853,8 @@ function getPrice(lead) {
   if (lead.amount && lead.amount > 0) return parseFloat(lead.amount);
   const p = (lead.package || '').toLowerCase();
   let base = 0;
-  if (p.includes('superwash') || p.includes('129')) base = 129.99;
+  if (p.includes('124')) base = 124.99;
+  else if (p.includes('superwash') || p.includes('149') || p.includes('129')) base = 149.99;
   else if (p.includes('exterior') || p.includes('interior')) base = 69.99;
   const a = (lead.addons || '').toLowerCase();
   if (a.includes('pet hair')) base += 39.99;
@@ -1099,7 +1100,7 @@ function renderGuide() {
 <div class="guide-step">
   <h3>🏘️ Step 6 — Nextdoor & Facebook (Week 1)</h3>
   <ul>
-    <li><strong>Nextdoor</strong>: Create a business page → Post in every nearby neighborhood: "Hi neighbors! I just launched Esplendor Detailing — mobile detailing that comes to YOUR driveway. Grand opening: $129.99 full detail (reg. $149.99). Anyone interested?" → Leads pour in</li>
+    <li><strong>Nextdoor</strong>: Create a business page → Post in every nearby neighborhood: "Hi neighbors! I just launched Esplendor Detailing — mobile detailing that comes to YOUR driveway. Founding offer: $25 off your first full detail — just $124.99 (reg. $149.99). Anyone interested?" → Leads pour in</li>
     <li><strong>Facebook Marketplace</strong>: Post your services under "Services" category in Houston</li>
     <li><strong>Facebook Groups</strong>: Join "Houston Buy Sell Trade," "Houston Moms," neighborhood groups → Post your offer</li>
   </ul>
@@ -1138,7 +1139,7 @@ function renderGuide() {
   <ul>
     <li>When someone messages on Instagram/WhatsApp, respond within 5 min using these scripts:</li>
     <li><strong>Script 1 (Quote request)</strong>: "Hi [Name]! Thanks for reaching out to Esplendor Detailing 🚗 I'd love to detail your [vehicle]! For a [package] it's starting at $[price]. I have availability [date]. Want to lock in a spot? I'll come right to your [home/office]! 💪"</li>
-    <li><strong>Script 2 (Follow-up after no reply, 24hrs)</strong>: "Hey [Name], just following up! Still have spots available this week for your [vehicle]. The full detail is $129.99 — we come to you, no hassle. Want to book?"</li>
+    <li><strong>Script 2 (Follow-up after no reply, 24hrs)</strong>: "Hey [Name], just following up! Still have spots available this week for your [vehicle]. The full detail is $149.99, and new clients get $25 off — we come to you, no hassle. Want to book?"</li>
     <li><strong>Script 3 (After the job)</strong>: "Thanks [Name]! Hope your [vehicle] is looking amazing! 🙌 Would love a quick Google review if you have 30 seconds: [link]. And tell a friend — you get $10 off your next detail for every referral! 🤝"</li>
   </ul>
 </div>

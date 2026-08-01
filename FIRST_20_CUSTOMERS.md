@@ -81,7 +81,7 @@ Ranked by probability of producing a paying customer FAST. Focus is the **top 4*
 | Objection | Rebuttal (use in DMs/calls) |
 |---|---|
 | "You have no reviews yet." | "You're right — we just launched, which is exactly why you get founding pricing ($25 off). You don't pay a cent until you've inspected the work and you're thrilled." |
-| "How much?" | "$69.99 exterior or interior, $129.99 full SuperWash — and I come to you, no hidden fees. Which vehicle?" (Always answer price fast, then pivot to booking.) |
+| "How much?" | "$69.99 exterior or interior, $149.99 full SuperWash ($25 off your first, so $124.99) — and I come to you, no hidden fees. Which vehicle?" (Always answer price fast, then pivot to booking.) |
 | "I'll think about it." | "Totally — want me to hold a spot for [day]? No payment to book, and I confirm within the hour." |
 | "Do I need to provide water/power?" | "Nope — I'm 100% self-contained. Just the keys and the car." |
 

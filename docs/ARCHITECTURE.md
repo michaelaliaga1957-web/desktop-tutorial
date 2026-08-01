@@ -81,13 +81,14 @@ Project overview and pointers to this documentation.
 |---|---|
 | Exterior Focused | $69.99 |
 | Interior Focused | $69.99 |
-| SuperWash (inside & out) | $129.99 |
+| SuperWash (inside & out) | $149.99 reg · $124.99 founding ($25 off first) |
 | Add-on: Pet Hair Removal | +$39.99 |
 | Add-on: Stain Removal | +$49.99 |
 | Add-on: Shampoo Carpets & Seats | +$49.99 |
 | Add-on: 1-Year Ceramic Protection | +$59.99 |
+| Add-on: Deep Steam Refresh | +$39.99 |
 
-⚠ Pricing is duplicated in three places: the services section, the booking form `<option>` values, and `admin.html getPrice()`. Any price change must update all three.
+⚠ Pricing is duplicated across the services section, the booking form `<option>` values, `admin.html getPrice()`, AND the outreach templates in `tools/outreach/` — plus off-repo in Square, Google Business Profile, and live listings. Any price change must update all of them (see DECISION-LOG 2026-08-01).
 
 ## 6. Booking / lead flow (as implemented today)
 

@@ -2,6 +2,12 @@
 
 > Record significant technical and business decisions here: what was decided, why, and what was rejected. Newest first.
 
+## 2026-08-01 — SuperWash reprice: $149.99 regular / $124.99 founding
+**Decision:** Raised SuperWash from a flat $129.99 "Grand Opening Special" to **$149.99 regular**, with the Founding Client $25-off bringing first-timers to **$124.99**. Removed the "Grand Opening Special" framing; the card now shows ~~$149.99~~ → $124.99 anchored on the $25 founding discount. Also added a **Deep Steam Refresh add-on ($39.99)** and a soft **distance/travel fee** for the outer service area.
+**Why:** At $129.99 the full detail netted ~$105 before gas + products — not sustainable, especially on distant jobs. $149.99 restores margin on repeat customers while keeping a comparable intro price for founding clients.
+**Updated in-repo:** index.html (package card + booking option), admin.html (getPrice + lead form + scripts), outreach templates (classified-ads, facebook-groups-guide, google-business-optimization, flyer.html, FIRST_20_CUSTOMERS), Code.gs test data, ARCHITECTURE pricing table.
+**Owner action (off-repo):** update **Square catalog**, **Google Business Profile** services, and any **live marketplace listings** to $149.99; add Google Ads price assets at new prices; reprint flyers. (Reopens the Square⇄website price-sync that was resolved 2026-07-08.)
+
 ## 2026-07-08 — Inheritance audit: document before modifying
 **Decision:** First engineering session produces documentation only (ARCHITECTURE, KNOWN-ISSUES, ROADMAP, this log). No functional changes to the live site until the audit is reviewed by the owner.
 **Why:** The site is live and taking bookings; the highest-risk move on a working system is changing it before understanding it. Two of the top findings (conversion tracking, CRM data flow) also require an owner decision before the right fix is knowable.
@@ -34,7 +40,7 @@
 **Known trade-offs (documented, accepted):** thanks.html is English-only (Spanish-language users get an English confirmation — future improvement); the conversion also fires on direct/refresh visits to thanks.html (inherent to page-load-based goals; page is noindex, low risk).
 
 ## 2026-07-08 — Owner decisions recorded
-- **SuperWash canonical price: $129.99** (website is source of truth; Square verified matching).
+- **SuperWash canonical price: $129.99** (website is source of truth; Square verified matching). *(Superseded 2026-08-01 → $149.99 regular / $124.99 founding — see top entry.)*
 - **GBP hours are the intended hours** (Mon–Wed & Fri–Sat 9–8, Thu 9–5, Sun closed); site schema to be aligned.
 - **Insurance deferred until first profitable clients** (owner's call). Engineering position on record: the "LICENSED & INSURED" ad callout must come down until then, and liability exposure rides on every uninsured job — revisit as soon as cash flow allows.
 - **2 paid jobs completed to date** (friends/family), paid outside Square.
