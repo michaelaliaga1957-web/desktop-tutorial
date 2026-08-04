@@ -2091,6 +2091,41 @@
     dateInput.setAttribute('min', today);
   }
 
+  // ── Dynamic time slots: duration depends on package + add-on
+  // SuperWash (inside & out) = 3 hours. Interior/Exterior = 2 hours,
+  // but bump to 3 hours when any add-on is selected.
+  var SLOTS_2H = ['7:00 AM – 9:00 AM','9:00 AM – 11:00 AM','11:00 AM – 1:00 PM','1:00 PM – 3:00 PM','3:00 PM – 5:00 PM','5:00 PM – 7:00 PM'];
+  var SLOTS_3H = ['7:00 AM – 10:00 AM','10:00 AM – 1:00 PM','1:00 PM – 4:00 PM','4:00 PM – 7:00 PM'];
+  function updateTimeSlots() {
+    var pkgSel = document.getElementById('fpackage');
+    var addSel = document.getElementById('faddons');
+    var timeSel = document.getElementById('ftime');
+    if (!pkgSel || !timeSel) return;
+    var pkg = pkgSel.value || '';
+    var addon = addSel ? (addSel.value || 'None') : 'None';
+    var hasAddon = addon && addon !== 'None';
+    var need3h = pkg.indexOf('SuperWash') !== -1 ||
+      ((pkg.indexOf('Interior') !== -1 || pkg.indexOf('Exterior') !== -1) && hasAddon);
+    var slots = need3h ? SLOTS_3H : SLOTS_2H;
+    var prev = timeSel.value;
+    timeSel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = ''; ph.disabled = true; ph.selected = true; ph.textContent = 'Select / Selecciona';
+    timeSel.appendChild(ph);
+    slots.forEach(function(s){ var o = document.createElement('option'); o.value = s; o.textContent = s; timeSel.appendChild(o); });
+    var flex = document.createElement('option');
+    flex.value = 'Flexible / Flexible'; flex.textContent = 'Flexible';
+    timeSel.appendChild(flex);
+    if (prev && Array.prototype.some.call(timeSel.options, function(o){ return o.value === prev; })) {
+      timeSel.value = prev;
+    }
+  }
+  var _pkgEl = document.getElementById('fpackage');
+  var _addEl = document.getElementById('faddons');
+  if (_pkgEl) _pkgEl.addEventListener('change', updateTimeSlots);
+  if (_addEl) _addEl.addEventListener('change', updateTimeSlots);
+  updateTimeSlots();
+
   // ── Booking form submit (Formspree AJAX)
   const bookingForm = document.getElementById('bookingForm');
   const formSuccess = document.getElementById('formSuccess');
