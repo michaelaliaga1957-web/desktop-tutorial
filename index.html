@@ -2062,8 +2062,13 @@
   // ── Language toggle
   const html = document.documentElement;
   const langToggle = document.getElementById('langToggle');
-  const savedLang = localStorage.getItem('esplendor-lang') || 'en';
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  const savedLang = (urlLang === 'es' || urlLang === 'en')
+    ? urlLang
+    : (localStorage.getItem('esplendor-lang') || 'en');
   html.className = 'lang-' + savedLang;
+  document.documentElement.lang = savedLang;
+  if (urlLang === 'es' || urlLang === 'en') localStorage.setItem('esplendor-lang', savedLang);
   langToggle.addEventListener('click', () => {
     const isEn = html.classList.contains('lang-en');
     const newLang = isEn ? 'es' : 'en';
