@@ -2069,6 +2069,20 @@
   html.className = 'lang-' + savedLang;
   document.documentElement.lang = savedLang;
   if (urlLang === 'es' || urlLang === 'en') localStorage.setItem('esplendor-lang', savedLang);
+
+  // ── Capture campaign source (business-card QR, flyer, etc.) for lead attribution
+  (function () {
+    var p = new URLSearchParams(location.search);
+    if (p.get('utm_source')) {
+      try {
+        localStorage.setItem('esplendor-utm', JSON.stringify({
+          source: p.get('utm_source') || '',
+          campaign: p.get('utm_campaign') || '',
+          ts: new Date().toISOString()
+        }));
+      } catch (e) {}
+    }
+  })();
   langToggle.addEventListener('click', () => {
     const isEn = html.classList.contains('lang-en');
     const newLang = isEn ? 'es' : 'en';
@@ -2170,6 +2184,14 @@
 
     const data = new FormData(bookingForm);
 
+    // Attribute the lead's source (card / flyer / etc.) so it shows in your inbox + Sheet
+    let _utm = {};
+    try { _utm = JSON.parse(localStorage.getItem('esplendor-utm') || '{}'); } catch (e) {}
+    const _p = new URLSearchParams(location.search);
+    const leadSource = _p.get('utm_source') || _utm.source || 'website';
+    const leadCampaign = _p.get('utm_campaign') || _utm.campaign || '';
+    data.append('source', leadSource + (leadCampaign ? ' / ' + leadCampaign : ''));
+
     // Save lead locally
     const lead = {
       id: Date.now(),
@@ -2179,6 +2201,7 @@
       date, time,
       email: document.getElementById('femail').value,
       notes: document.getElementById('fnotes').value,
+      source: leadSource + (leadCampaign ? ' / ' + leadCampaign : ''),
       status: 'new',
       created: new Date().toISOString()
     };

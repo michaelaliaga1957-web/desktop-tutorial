@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Esplendor Detailing — Book</title>
+<!--
+  BUSINESS-CARD SMART LINK  (esplendordetailing.com/card)
+  This is the destination encoded in the printed business-card QR code.
+  It instantly forwards to the booking section with UTM tracking attached.
+
+  WHY THIS EXISTS: the printed QR points here, NOT directly at the homepage.
+  That means you can change WHERE the card sends people at any time by editing
+  the DEST line below — WITHOUT reprinting a single card. (Free "dynamic" QR.)
+
+  To repoint later, change DEST (e.g. to a seasonal offer page). Keep the UTM.
+-->
+<script>
+  (function () {
+    var DEST = '/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking';
+    // Preserve the language if the scanner previously chose Spanish.
+    try {
+      if (localStorage.getItem('esplendor-lang') === 'es') {
+        DEST = '/?lang=es&utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking';
+      }
+    } catch (e) {}
+    location.replace(DEST);
+  })();
+</script>
+<meta http-equiv="refresh" content="0; url=/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking" />
+<style>
+  html,body{margin:0;height:100%;background:#0b0b0b;color:#c9a84c;
+    font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;}
+  .m{text-align:center;letter-spacing:3px;font-size:14px}
+</style>
+</head>
+<body>
+  <div class="m">ESPLENDOR DETAILING<br><span style="font-size:11px;color:#8a6d2f;letter-spacing:2px;">Taking you to booking…</span>
+  <noscript><br><a style="color:#e2c97e" href="/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking">Tap here to book</a></noscript></div>
+</body>
+</html>
