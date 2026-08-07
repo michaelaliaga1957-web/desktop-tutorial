@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Esplendor Detailing — Mobile Detailing, We Come to You</title>
+<!-- Google Analytics (same property as the site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1FBL7829Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S1FBL7829Z');
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{ --gold:#c9a84c; --gold-lt:#e6cf88; --gold-dk:#a9862f; --black:#0b0b0b; --ink:#111; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ background:var(--black); color:#fff; font-family:'Montserrat',sans-serif;
+    -webkit-font-smoothing:antialiased; min-height:100%; }
+  body{ background:radial-gradient(120% 60% at 50% 0%, #1a1a1a 0%, #0b0b0b 55%); }
+  .wrap{ max-width:520px; margin:0 auto; padding:32px 24px 48px; text-align:center; }
+  .emblem{ width:180px; margin:6px auto 4px; display:block; }
+  .word{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:30px; letter-spacing:8px; color:#d8bd70; padding-left:8px; }
+  .sub{ font-size:10px; letter-spacing:5px; color:var(--gold-lt); text-transform:uppercase; margin-top:4px; }
+  .rule{ width:60px; height:1px; background:var(--gold-dk); margin:22px auto; }
+  h1{ font-family:'Cormorant Garamond',serif; font-weight:600; font-size:40px; line-height:1.05; margin-top:8px; }
+  h1 em{ font-style:italic; color:var(--gold-lt); }
+  .lead{ font-size:15px; color:#cfc7b5; line-height:1.6; margin-top:14px; }
+  .variant{ margin:26px auto 0; border:1px solid var(--gold-dk); background:rgba(201,168,76,0.08);
+    border-radius:12px; padding:20px 22px; max-width:420px; }
+  .variant .vtag{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gold-dk); font-weight:600; }
+  .variant .vbig{ font-family:'Cormorant Garamond',serif; font-size:30px; color:#fff; margin-top:6px; line-height:1.1; }
+  .variant .vbig b{ color:var(--gold-lt); }
+  .variant .vsmall{ font-size:12.5px; color:#b9b1a0; margin-top:8px; line-height:1.5; }
+  .cta{ display:block; margin:26px auto 0; max-width:420px; background:var(--gold); color:#1a1400;
+    font-weight:700; font-size:18px; letter-spacing:0.5px; text-decoration:none; padding:17px 20px; border-radius:12px; }
+  .cta:hover{ background:var(--gold-lt); }
+  .stars{ color:var(--gold-lt); letter-spacing:3px; font-size:15px; }
+  .secondary{ margin-top:16px; font-size:13.5px; color:#a49a82; }
+  .secondary a{ color:var(--gold-lt); text-decoration:none; font-weight:600; }
+  .trustrow{ margin-top:26px; font-size:11.5px; color:#8f8672; letter-spacing:0.5px; line-height:1.7; }
+  .trustrow b{ color:#d8cfa8; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="emblem" src="/assets/brand/emblem.webp" alt="Esplendor Detailing" />
+    <div class="word">ESPLENDOR</div>
+    <div class="sub">Detailing</div>
+
+    <div class="rule"></div>
+
+    <h1>Mobile detailing,<br><em>we come to you.</em></h1>
+    <p class="lead">Premium hand detailing at your home or work — we bring our own water &amp; power. You just hand us the keys.</p>
+
+    <div class="variant" id="variant">
+      <!-- filled by JS based on which sign was scanned -->
+    </div>
+
+    <a class="cta" id="cta" href="#">Book in 60 seconds →</a>
+
+    <div class="secondary">Prefer to talk? <a id="tel" href="tel:+17135010461">Text or call 713-501-0461</a></div>
+
+    <div class="trustrow">
+      <span class="stars">★★★★★</span> &nbsp;<b>5-Star Rated</b> across Greater Houston<br>
+      We come to you · Hand-detailed, never rushed · English &amp; Spanish
+    </div>
+  </div>
+
+<script>
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var variant = (p.get('utm_content') || p.get('v') || 'trust').toLowerCase();
+    if (variant !== 'offer' && variant !== 'trust') variant = 'trust';
+
+    // Carry campaign attribution through to the booking form so the lead is tagged.
+    var q = 'utm_source=aframe&utm_medium=sign&utm_campaign=aframe_2026&utm_content=' + variant;
+    var lang = '';
+    try { if (localStorage.getItem('esplendor-lang') === 'es') lang = 'lang=es&'; } catch (e) {}
+    document.getElementById('cta').setAttribute('href', '/?' + lang + q + '#booking');
+
+    var box = document.getElementById('variant');
+    if (variant === 'offer') {
+      box.innerHTML =
+        '<div class="vtag">New-Client Offer</div>' +
+        '<div class="vbig"><b>$25 off</b> your first detail</div>' +
+        '<div class="vsmall">Applied when we confirm your first SuperWash (inside &amp; out). Book below to lock it in.</div>';
+    } else {
+      box.innerHTML =
+        '<div class="vtag">Trusted in Houston</div>' +
+        '<div class="vbig"><span class="stars">★★★★★</span><br>Detailed like it&rsquo;s our own</div>' +
+        '<div class="vsmall">Real customers, real results — no shortcuts, no rushing. Book your spot below.</div>';
+    }
+  })();
+</script>
+</body>
+</html>
