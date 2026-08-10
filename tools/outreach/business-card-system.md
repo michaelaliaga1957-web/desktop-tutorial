@@ -3,6 +3,20 @@
 Not a "nice card." A physical conversion asset with **one job**:
 **Conversation → Scan → Booking.** Everything below serves that.
 
+## 🔄 CURRENT VERSION (bilingual coupon)
+The card is now **two full faces — English on one side, Spanish on the other** — and doubles as a
+**$10-off coupon** (a coupon is what makes someone *keep* a card instead of tossing it). Each side has:
+logo · tagline · `★★★★★ 5-Star` · **`$10 OFF your first detail`** (hero) · its own tracked QR · phone · site
+· a cross-reference (`Español al reverso` / `English on reverse`).
+- **English QR →** `/card?utm_content=en` · **Spanish QR →** `/card?lang=es&utm_content=es`
+  (so we also learn which language pulls more, and Spanish scanners land in Spanish).
+- **Redemption:** "scan or show this card when we confirm — one per customer." Michael applies the $10
+  at confirmation; the booking is already tagged `source=business_card` for tracking.
+- **Note on offer coherence:** card coupon = **$10**; A-frame Version A = **$25**. Different amounts per
+  channel is fine (card is a broad giveaway, the sign is a bigger hook) — just decide if you want them aligned.
+
+The strategy sections below still apply; the only changes are the two-language layout and the printed $10 coupon.
+
 ---
 
 ## 1. The single objective

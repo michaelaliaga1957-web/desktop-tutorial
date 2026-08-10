@@ -7,24 +7,22 @@
 <title>Esplendor Detailing — Book</title>
 <!--
   BUSINESS-CARD SMART LINK  (esplendordetailing.com/card)
-  This is the destination encoded in the printed business-card QR code.
-  It instantly forwards to the booking section with UTM tracking attached.
+  Destination encoded in the printed business-card QR codes.
+  Forwards to booking with UTM tracking + language handling.
 
-  WHY THIS EXISTS: the printed QR points here, NOT directly at the homepage.
-  That means you can change WHERE the card sends people at any time by editing
-  the DEST line below — WITHOUT reprinting a single card. (Free "dynamic" QR.)
-
-  To repoint later, change DEST (e.g. to a seasonal offer page). Keep the UTM.
+  - English side QR  -> /card?utm_content=en
+  - Spanish side QR  -> /card?lang=es&utm_content=es
+  Change WHERE the card sends people any time by editing DEST below — no reprint.
+  The printed card is a $10-off coupon (applied when the first detail is confirmed).
 -->
 <script>
   (function () {
-    var DEST = '/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking';
-    // Preserve the language if the scanner previously chose Spanish.
-    try {
-      if (localStorage.getItem('esplendor-lang') === 'es') {
-        DEST = '/?lang=es&utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking';
-      }
-    } catch (e) {}
+    var p = new URLSearchParams(location.search);
+    var es = (p.get('lang') === 'es');
+    try { if (!es && localStorage.getItem('esplendor-lang') === 'es') es = true; } catch (e) {}
+    var content = p.get('utm_content') || (es ? 'es' : 'en');
+    var DEST = '/?' + (es ? 'lang=es&' : '') +
+      'utm_source=business_card&utm_medium=print&utm_campaign=card_2026&utm_content=' + content + '#booking';
     location.replace(DEST);
   })();
 </script>
