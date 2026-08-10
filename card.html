@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>Esplendor Detailing — Book</title>
+<!--
+  BUSINESS-CARD SMART LINK  (esplendordetailing.com/card)
+  Destination encoded in the printed business-card QR codes.
+  Forwards to booking with UTM tracking + language handling.
+
+  - English side QR  -> /card?utm_content=en
+  - Spanish side QR  -> /card?lang=es&utm_content=es
+  Change WHERE the card sends people any time by editing DEST below — no reprint.
+  The printed card is a $10-off coupon (applied when the first detail is confirmed).
+-->
+<script>
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var es = (p.get('lang') === 'es');
+    try { if (!es && localStorage.getItem('esplendor-lang') === 'es') es = true; } catch (e) {}
+    var content = p.get('utm_content') || (es ? 'es' : 'en');
+    var DEST = '/?' + (es ? 'lang=es&' : '') +
+      'utm_source=business_card&utm_medium=print&utm_campaign=card_2026&utm_content=' + content + '#booking';
+    location.replace(DEST);
+  })();
+</script>
+<meta http-equiv="refresh" content="0; url=/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking" />
+<style>
+  html,body{margin:0;height:100%;background:#0b0b0b;color:#c9a84c;
+    font-family:Georgia,serif;display:flex;align-items:center;justify-content:center;}
+  .m{text-align:center;letter-spacing:3px;font-size:14px}
+</style>
+</head>
+<body>
+  <div class="m">ESPLENDOR DETAILING<br><span style="font-size:11px;color:#8a6d2f;letter-spacing:2px;">Taking you to booking…</span>
+  <noscript><br><a style="color:#e2c97e" href="/?utm_source=business_card&utm_medium=print&utm_campaign=card_2026#booking">Tap here to book</a></noscript></div>
+</body>
+</html>

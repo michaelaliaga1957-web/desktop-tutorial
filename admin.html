@@ -853,7 +853,8 @@ function getPrice(lead) {
   if (lead.amount && lead.amount > 0) return parseFloat(lead.amount);
   const p = (lead.package || '').toLowerCase();
   let base = 0;
-  if (p.includes('124')) base = 124.99;
+  if (p.includes('moto')) base = 124.99;
+  else if (p.includes('124')) base = 124.99;
   else if (p.includes('superwash') || p.includes('149') || p.includes('129')) base = 149.99;
   else if (p.includes('exterior') || p.includes('interior')) base = 69.99;
   const a = (lead.addons || '').toLowerCase();
@@ -861,6 +862,8 @@ function getPrice(lead) {
   if (a.includes('stain')) base += 49.99;
   if (a.includes('shampoo')) base += 49.99;
   if (a.includes('ceramic')) base += 59.99;
+  if (a.includes('steam')) base += 39.99;
+  if (a.includes('paint shield') || a.includes('6-month')) base += 29.99;
   return base;
 }
 

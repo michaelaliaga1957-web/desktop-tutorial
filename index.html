@@ -1359,6 +1359,7 @@
       <p class="pkg-price-old">$149.99</p>
       <p class="pkg-price"><sup>$</sup>124<sub>.99</sub></p>
       <p class="pkg-promo"><span class="en">⚡ $25 off your first SuperWash</span><span class="es">⚡ $25 de descuento en tu primer SuperWash</span></p>
+      <p style="font-size:0.72rem;letter-spacing:0.5px;color:var(--muted);margin-top:-2px;"><span class="en">🚚 Trucks &amp; large SUVs — $149.99</span><span class="es">🚚 Camionetas y SUVs grandes — $149.99</span></p>
       <div class="pkg-rule-bottom"></div>
       <ul class="pkg-features">
         <li><span class="en">Hand wash &amp; foam bath treatment</span><span class="es">Lavado con espuma a mano</span></li>
@@ -1436,6 +1437,11 @@
       <span class="addon-icon">💨</span>
       <p class="addon-name"><span class="en">Deep Steam Refresh</span><span class="es">Renovación a Vapor Profundo</span></p>
       <p class="addon-price">$39.99</p>
+    </div>
+    <div class="addon-card">
+      <span class="addon-icon">✨</span>
+      <p class="addon-name"><span class="en">6-Month Paint Shield</span><span class="es">Protector de Pintura 6 Meses</span></p>
+      <p class="addon-price">$29.99</p>
     </div>
   </div>
 </section>
@@ -1515,8 +1521,10 @@
               Select a package / Selecciona un paquete
             </option>
             <option value="Exterior Focused — $69.99">Exterior Focused — $69.99</option>
-            <option value="SuperWash (Inside & Out) — $149.99">SuperWash (Inside &amp; Out) — $149.99 ⭐ Best Value</option>
+            <option value="SuperWash — Car (Inside & Out) — $124.99">SuperWash — Car (Inside &amp; Out) — $124.99 ⭐ Best Value</option>
+            <option value="SuperWash — Truck/Large SUV (Inside & Out) — $149.99">SuperWash — Truck/Large SUV — $149.99 ⭐ Best Value</option>
             <option value="Interior Focused — $69.99">Interior Focused — $69.99</option>
+            <option value="Moto Detail — $124.99">Moto Detail (Motorcycle) — $124.99 🏍️</option>
             <option value="Not sure — need a quote">Not sure — I need a quote / No estoy seguro</option>
           </select>
         </div>
@@ -1529,6 +1537,7 @@
             <option value="Shampoo Carpets & Seats +$49.99">Shampoo Carpets &amp; Seats +$49.99</option>
             <option value="1-Year Ceramic Protection +$59.99">1-Year Ceramic Protection +$59.99</option>
             <option value="Deep Steam Refresh +$39.99">Deep Steam Refresh +$39.99</option>
+            <option value="6-Month Paint Shield +$29.99">6-Month Paint Shield +$29.99</option>
           </select>
         </div>
         <div class="form-group">
@@ -2053,8 +2062,27 @@
   // ── Language toggle
   const html = document.documentElement;
   const langToggle = document.getElementById('langToggle');
-  const savedLang = localStorage.getItem('esplendor-lang') || 'en';
+  const urlLang = new URLSearchParams(location.search).get('lang');
+  const savedLang = (urlLang === 'es' || urlLang === 'en')
+    ? urlLang
+    : (localStorage.getItem('esplendor-lang') || 'en');
   html.className = 'lang-' + savedLang;
+  document.documentElement.lang = savedLang;
+  if (urlLang === 'es' || urlLang === 'en') localStorage.setItem('esplendor-lang', savedLang);
+
+  // ── Capture campaign source (business-card QR, flyer, etc.) for lead attribution
+  (function () {
+    var p = new URLSearchParams(location.search);
+    if (p.get('utm_source')) {
+      try {
+        localStorage.setItem('esplendor-utm', JSON.stringify({
+          source: p.get('utm_source') || '',
+          campaign: p.get('utm_campaign') || '',
+          ts: new Date().toISOString()
+        }));
+      } catch (e) {}
+    }
+  })();
   langToggle.addEventListener('click', () => {
     const isEn = html.classList.contains('lang-en');
     const newLang = isEn ? 'es' : 'en';
@@ -2091,6 +2119,41 @@
     dateInput.setAttribute('min', today);
   }
 
+  // ── Dynamic time slots: duration depends on package + add-on
+  // SuperWash (inside & out) = 3 hours. Interior/Exterior = 2 hours,
+  // but bump to 3 hours when any add-on is selected.
+  var SLOTS_2H = ['7:00 AM – 9:00 AM','9:00 AM – 11:00 AM','11:00 AM – 1:00 PM','1:00 PM – 3:00 PM','3:00 PM – 5:00 PM','5:00 PM – 7:00 PM'];
+  var SLOTS_3H = ['7:00 AM – 10:00 AM','10:00 AM – 1:00 PM','1:00 PM – 4:00 PM','4:00 PM – 7:00 PM'];
+  function updateTimeSlots() {
+    var pkgSel = document.getElementById('fpackage');
+    var addSel = document.getElementById('faddons');
+    var timeSel = document.getElementById('ftime');
+    if (!pkgSel || !timeSel) return;
+    var pkg = pkgSel.value || '';
+    var addon = addSel ? (addSel.value || 'None') : 'None';
+    var hasAddon = addon && addon !== 'None';
+    var need3h = pkg.indexOf('SuperWash') !== -1 ||
+      ((pkg.indexOf('Interior') !== -1 || pkg.indexOf('Exterior') !== -1) && hasAddon);
+    var slots = need3h ? SLOTS_3H : SLOTS_2H;
+    var prev = timeSel.value;
+    timeSel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = ''; ph.disabled = true; ph.selected = true; ph.textContent = 'Select / Selecciona';
+    timeSel.appendChild(ph);
+    slots.forEach(function(s){ var o = document.createElement('option'); o.value = s; o.textContent = s; timeSel.appendChild(o); });
+    var flex = document.createElement('option');
+    flex.value = 'Flexible / Flexible'; flex.textContent = 'Flexible';
+    timeSel.appendChild(flex);
+    if (prev && Array.prototype.some.call(timeSel.options, function(o){ return o.value === prev; })) {
+      timeSel.value = prev;
+    }
+  }
+  var _pkgEl = document.getElementById('fpackage');
+  var _addEl = document.getElementById('faddons');
+  if (_pkgEl) _pkgEl.addEventListener('change', updateTimeSlots);
+  if (_addEl) _addEl.addEventListener('change', updateTimeSlots);
+  updateTimeSlots();
+
   // ── Booking form submit (Formspree AJAX)
   const bookingForm = document.getElementById('bookingForm');
   const formSuccess = document.getElementById('formSuccess');
@@ -2121,6 +2184,14 @@
 
     const data = new FormData(bookingForm);
 
+    // Attribute the lead's source (card / flyer / etc.) so it shows in your inbox + Sheet
+    let _utm = {};
+    try { _utm = JSON.parse(localStorage.getItem('esplendor-utm') || '{}'); } catch (e) {}
+    const _p = new URLSearchParams(location.search);
+    const leadSource = _p.get('utm_source') || _utm.source || 'website';
+    const leadCampaign = _p.get('utm_campaign') || _utm.campaign || '';
+    data.append('source', leadSource + (leadCampaign ? ' / ' + leadCampaign : ''));
+
     // Save lead locally
     const lead = {
       id: Date.now(),
@@ -2130,6 +2201,7 @@
       date, time,
       email: document.getElementById('femail').value,
       notes: document.getElementById('fnotes').value,
+      source: leadSource + (leadCampaign ? ' / ' + leadCampaign : ''),
       status: 'new',
       created: new Date().toISOString()
     };
