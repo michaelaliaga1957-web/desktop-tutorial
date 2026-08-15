@@ -2,6 +2,13 @@
 
 > Record significant technical and business decisions here: what was decided, why, and what was rejected. Newest first.
 
+## 2026-08-14 — Premium reprice: Focused $79.99, SuperWash Car $164.99/$139.99, Truck $189.99/$164.99
+**Decision:** Raised all pricing to a premium tier. Exterior & Interior Focused **$69.99 → $79.99** (trucks/large SUVs **$89.99**). SuperWash — Car **$149.99 → $164.99 regular**, first-wash **$139.99** ($25 off first). Added an explicit **SuperWash — Truck/Large SUV** tier at **$189.99 regular / $164.99 first wash**. Ceramic add-on unchanged ($59.99). Card/A-frame unaffected (no dollar figures — only "$25 off").
+**Why:** Owner decision — a SuperWash is 2.5–4 hrs of labor; the old $124.99 netted ~$35/hr before water/power/product/gas and attracted price-shoppers. Premium pricing pays fairly and filters for better clients. First-wash prices kept under psychological lines ($129.99 range was considered but owner chose $139.99; trucks kept under $200).
+**Rejected:** A gentler tier (Car $154.99/$129.99, Truck $179.99/$154.99) and a bolder one (Car $189.99/$164.99) — owner picked the middle.
+**Updated in-repo:** index.html (package cards incl. per-package truck rates, booking dropdown, hero + meta), admin.html (getPrice + lead form + outreach scripts), outreach templates (classified-ads, facebook-groups-guide, google-business-optimization, outreach-playbook, flyer.html, FIRST_20_CUSTOMERS), ARCHITECTURE pricing table. Google Ads price assets updated in-platform.
+**Owner action (off-repo):** update **Square catalog** and **Google Business Profile** services to the new prices. **Open question:** Moto Detail still $124.99 (index.html + admin.html) — unpriced in this round.
+
 ## 2026-08-01 — SuperWash reprice: $149.99 regular / $124.99 founding
 **Decision:** Raised SuperWash from a flat $129.99 "Grand Opening Special" to **$149.99 regular**, with the Founding Client $25-off bringing first-timers to **$124.99**. Removed the "Grand Opening Special" framing; the card now shows ~~$149.99~~ → $124.99 anchored on the $25 founding discount. Also added a **Deep Steam Refresh add-on ($39.99)** and a soft **distance/travel fee** for the outer service area.
 **Why:** At $129.99 the full detail netted ~$105 before gas + products — not sustainable, especially on distant jobs. $149.99 restores margin on repeat customers while keeping a comparable intro price for founding clients.

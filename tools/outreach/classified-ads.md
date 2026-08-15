@@ -6,13 +6,13 @@ Post these on free marketplaces. Refresh/repost weekly (listings sink fast). Att
 
 ## Facebook Marketplace (Category: Services → Automotive)
 **Title:** Mobile Car Detailing — We Come To You | $25 Off First Detail
-**Price:** $69.99
+**Price:** $79.99
 **Description:**
 > Esplendor Detailing brings premium car detailing right to your driveway anywhere in greater Houston — home, work, or apartment. Fully self-contained (we bring our own water & power).
 >
-> 🚗 Exterior Detail — $69.99
-> 🚗 Interior Detail — $69.99
-> ⭐ SuperWash (full inside & out) — $149.99
+> 🚗 Exterior Detail — $79.99
+> 🚗 Interior Detail — $79.99
+> ⭐ SuperWash (full inside & out) — $164.99
 > Add-ons: pet hair, stain removal, carpet shampoo, ceramic protection.
 >
 > ✨ FOUNDING OFFER: $25 off your first SuperWash (full detail) (first 25 clients).
@@ -39,12 +39,12 @@ Post these on free marketplaces. Refresh/repost weekly (listings sink fast). Att
 > Esplendor Detailing — premium mobile detailing that comes to your driveway anywhere in greater Houston. We're fully self-contained (own water + power), so all you provide is the vehicle.
 >
 > PACKAGES:
-> - Exterior Detail — $69.99
-> - Interior Detail — $69.99
-> - SuperWash (full inside & out) — $149.99
+> - Exterior Detail — $79.99
+> - Interior Detail — $79.99
+> - SuperWash (full inside & out) — $164.99
 > - Add-ons: pet hair removal, stain removal, carpet/seat shampoo, 1-yr ceramic protection
 >
-> FOUNDING OFFER: $25 off your first SuperWash (full detail) — just $124.99 (first 25 clients). English & Español.
+> FOUNDING OFFER: $25 off your first SuperWash (full detail) — just $139.99 (first 25 clients). English & Español.
 >
 > Book online: esplendordetailing.com
 > Call/text: 713-501-0461
