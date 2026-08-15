@@ -4,7 +4,7 @@ GBP is your #1 free discovery channel. Every improvement raises your Maps rankin
 
 ## ✅ Completion checklist (business.google.com → Edit profile)
 - [ ] **Categories** — Primary: `Car detailing service`. Add secondary: `Auto detailing shop`, `Car wash`, `Mobile hairdresser`... no — use: `Auto detailing shop`, `Car wash`. More categories = more searches you appear in.
-- [ ] **Services** — add every one with a price + description: Exterior Detail $69.99, Interior Detail $69.99, SuperWash Full Detail $149.99, Pet Hair Removal $39.99, Stain Removal $49.99, Carpet & Seat Shampoo $49.99, 1-Year Ceramic Protection $59.99.
+- [ ] **Services** — add every one with a price + description: Exterior Detail $79.99, Interior Detail $79.99, SuperWash Full Detail $164.99, Pet Hair Removal $39.99, Stain Removal $49.99, Carpet & Seat Shampoo $49.99, 1-Year Ceramic Protection $59.99.
 - [ ] **Service areas** — add all 8: Houston, Sugar Land, Katy, Cypress, Richmond, Sienna, Pearland, Missouri City.
 - [ ] **Description** (750 chars) — paste the one below.
 - [ ] **Photos** — upload 10+: your logo, your work (the mats/interior shots), your setup/equipment, you working (face optional). Businesses with 10+ photos get far more calls. Add new photos weekly.
@@ -14,13 +14,13 @@ GBP is your #1 free discovery channel. Every improvement raises your Maps rankin
 - [ ] **Products** — add your 3 packages as Products with the photos (extra real estate on your listing).
 
 ## Business description (paste into GBP)
-> Esplendor Detailing is Houston's premium mobile car detailing service — we come to you. Whether you're at home, work, or your apartment, our fully self-contained team brings professional detailing right to your driveway (we supply our own water and power). From a quick exterior refresh to our full SuperWash inside-and-out detail, every vehicle is treated with meticulous care — hand wash, deep interior cleaning, tire shine, and more. Bilingual service (English & Español). Packages start at $69.99, with no payment required to book and no charge until you've inspected the work. Serving Houston, Sugar Land, Katy, Cypress, Richmond, Sienna, Pearland, and Missouri City. Book online or text 713-501-0461.
+> Esplendor Detailing is Houston's premium mobile car detailing service — we come to you. Whether you're at home, work, or your apartment, our fully self-contained team brings professional detailing right to your driveway (we supply our own water and power). From a quick exterior refresh to our full SuperWash inside-and-out detail, every vehicle is treated with meticulous care — hand wash, deep interior cleaning, tire shine, and more. Bilingual service (English & Español). Packages start at $79.99, with no payment required to book and no charge until you've inspected the work. Serving Houston, Sugar Land, Katy, Cypress, Richmond, Sienna, Pearland, and Missouri City. Book online or text 713-501-0461.
 
 ## Google Posts (Create → Add update / Offer — post one per week)
 
 **POST 1 — Offer (make it an "Offer" type post):**
 > 🚗 **Founding Client Offer — $25 off your first SuperWash (full detail)!**
-> We're a new Houston mobile detailer bringing premium service right to your driveway. Our first 25 clients get founding pricing. Packages from $69.99, we come to you, and you don't pay until you're thrilled. Book online or text 713-501-0461.
+> We're a new Houston mobile detailer bringing premium service right to your driveway. Our first 25 clients get founding pricing. Packages from $79.99, we come to you, and you don't pay until you're thrilled. Book online or text 713-501-0461.
 > *Button: Book online → esplendordetailing.com/#booking*
 
 **POST 2 — What's New:**
