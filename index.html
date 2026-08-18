@@ -2181,6 +2181,22 @@
       return;
     }
 
+    // Honeypot: real people never fill the hidden _gotcha field — bots do.
+    // Silently drop them so they never fire a conversion or reach your inbox.
+    const _hp = bookingForm.querySelector('[name="_gotcha"]');
+    if (_hp && _hp.value) return;
+
+    // Email is optional, but if one is entered it must be a valid address —
+    // a bad one (e.g. "u") used to crash the confirmation email. Catch it here.
+    const emailVal = document.getElementById('femail').value.trim();
+    if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      alert(html.classList.contains('lang-es')
+        ? 'El correo no es válido. Corrígelo o déjalo en blanco.'
+        : "That email doesn't look right — please fix it or leave it blank.");
+      document.getElementById('femail').focus();
+      return;
+    }
+
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="en">Sending...</span><span class="es">Enviando...</span>';
 
