@@ -67,10 +67,10 @@ Tap **"Write something…"** in the group → paste this → attach your **flyer
 > 🚗 **Mobile Car Detailing — We Come To YOU (Houston + suburbs)**
 > Hey everyone! I'm Michael, I run Esplendor Detailing — premium mobile detailing that comes right to your driveway. I bring my own water & power, so you provide nothing but the car.
 >
-> ⭐ SuperWash full detail (inside & out) — $164.99
-> 🚗 Exterior or Interior — $79.99
+> ⭐ SuperWash full detail (inside & out) — $189.99
+> 🚗 Exterior $89.99 · Interior $99.99
 >
-> ✨ Founding offer: **$25 off your first SuperWash** — just $139.99 (first 25 clients).
+> ✨ Founding offer: **$25 off your first SuperWash** — just $164.99 (first 25 clients).
 >
 > 📱 Text me: 713-501-0461 · 📅 esplendordetailing.com
 > Serving Houston, Katy, Sugar Land, Cypress, Richmond, Pearland, Missouri City. English & Español 🇲🇽
@@ -87,7 +87,7 @@ Most jobs come from replying to people **already asking**, not from your own pos
 1. In each group, tap the **magnifying glass / "Search this group"**.
 2. Search: `detail`, then `car cleaning`, then `mobile detail`.
 3. Anyone who posted "who does mobile detailing?" in the last few weeks → **comment**:
-> "Hey! I do mobile detailing — Esplendor Detailing. I come to you, full detail is $164.99 and I'm doing $25 off for new clients ($139.99). Text me 713-501-0461 and I'll take great care of your car 🚗"
+> "Hey! I do mobile detailing — Esplendor Detailing. I come to you, full detail is $189.99 and I'm doing $25 off for new clients ($164.99). Text me 713-501-0461 and I'll take great care of your car 🚗"
 4. Also reply to it and **send them a DM** (Message).
 5. **Turn on notifications** for your best 5 groups (tap the group → bell icon → "All posts") so you see new "recommendation" requests fast and reply first. First to reply usually wins.
 

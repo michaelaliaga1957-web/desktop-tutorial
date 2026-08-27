@@ -2,6 +2,13 @@
 
 > Record significant technical and business decisions here: what was decided, why, and what was rejected. Newest first.
 
+## 2026-08-27 — Reprice to Thumbtack-validated rates (margin correction)
+**Decision:** Raised all pricing to match what the business is actually charging and profitably closing on Thumbtack. Exterior Focused **$79.99 → $89.99** (trucks/large SUV **$109.99**); Interior Focused **$79.99 → $99.99** (trucks/large SUV **$119.99**); SuperWash — Car **$189.99 reg / $164.99 first wash** (was $164.99/$139.99); SuperWash — Truck/Large SUV **$214.99 reg / $189.99 first wash** (was $189.99/$164.99). Moto unchanged ($124.99). Add-ons unchanged. $25-off first-SuperWash founding offer retained.
+**Why:** The prior site prices were well below the rates customers were paying on Thumbtack (full details closing at $150–190+), so the website was under-quoting and eroding margin — especially the SuperWash, where the true first-wash cost of service warranted $164.99, not $139.99. Thumbtack's live booking data (dozens of closes in one week) validated the higher tier before it was applied to the site.
+**Updated in-repo:** index.html (package cards incl. truck/SUV tiers, booking dropdown, hero "starting at", meta description), admin.html (getPrice tiers), outreach templates (classified-ads, facebook-groups-guide, google-business-optimization, outreach-playbook, flyer.html, FIRST_20_CUSTOMERS), ARCHITECTURE pricing table.
+**Owner action (off-repo):** Google Business Profile services + description updated to new prices (done). Still to do: **Square catalog**. Google Ads is paused (no price change needed while off). Google's cached search snippet will refresh on re-crawl.
+**Note:** Truck/Large SUV tier lines re-introduced on the Focused cards (removed 2026-08-18) — justified by real cost + Thumbtack-proven willingness to pay.
+
 ## 2026-08-14 — Premium reprice: Focused $79.99, SuperWash Car $164.99/$139.99, Truck $189.99/$164.99
 **Decision:** Raised all pricing to a premium tier. Exterior & Interior Focused **$69.99 → $79.99** (trucks/large SUVs **$89.99**). SuperWash — Car **$149.99 → $164.99 regular**, first-wash **$139.99** ($25 off first). Added an explicit **SuperWash — Truck/Large SUV** tier at **$189.99 regular / $164.99 first wash**. Ceramic add-on unchanged ($59.99). Card/A-frame unaffected (no dollar figures — only "$25 off").
 **Why:** Owner decision — a SuperWash is 2.5–4 hrs of labor; the old $124.99 netted ~$35/hr before water/power/product/gas and attracted price-shoppers. Premium pricing pays fairly and filters for better clients. First-wash prices kept under psychological lines ($129.99 range was considered but owner chose $139.99; trucks kept under $200).

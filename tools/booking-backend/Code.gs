@@ -256,7 +256,7 @@ function _toast(msg) {
 function testSystem() {
   const fake = {
     timestamp: new Date(), name: 'TEST — System Check', phone: '000-000-0000',
-    email: OWNER_EMAIL, vehicle: '2020 Test Car', pkg: 'SuperWash (Inside & Out) — $149.99',
+    email: OWNER_EMAIL, vehicle: '2020 Test Car', pkg: 'SuperWash (Inside & Out) — $164.99',
     addons: 'None', date: '2026-07-10', time: '9:00 AM – 11:00 AM',
     address: '123 Test St, Houston TX', notes: 'If you got this, the system works.'
   };
