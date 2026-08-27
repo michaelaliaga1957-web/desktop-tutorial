@@ -854,10 +854,11 @@ function getPrice(lead) {
   if (lead.amount && lead.amount > 0) return parseFloat(lead.amount);
   const p = (lead.package || '').toLowerCase();
   let base = 0;
+  const truck = p.includes('truck') || p.includes('large suv');
   if (p.includes('moto')) base = 124.99;
-  else if (p.includes('truck') || p.includes('large suv') || p.includes('189')) base = 189.99;
-  else if (p.includes('superwash') || p.includes('164') || p.includes('139')) base = 164.99;
-  else if (p.includes('exterior') || p.includes('interior')) base = 79.99;
+  else if (p.includes('superwash')) base = (truck || p.includes('189')) ? 189.99 : 164.99;
+  else if (p.includes('exterior')) base = truck ? 109.99 : 89.99;
+  else if (p.includes('interior')) base = truck ? 119.99 : 99.99;
   const a = (lead.addons || '').toLowerCase();
   if (a.includes('pet hair')) base += 39.99;
   if (a.includes('stain')) base += 49.99;
