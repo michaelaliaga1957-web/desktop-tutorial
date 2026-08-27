@@ -79,10 +79,10 @@ Project overview and pointers to this documentation.
 
 | Offering | Price |
 |---|---|
-| Exterior Focused | $79.99 (trucks/large SUV $89.99) |
-| Interior Focused | $79.99 (trucks/large SUV $89.99) |
-| SuperWash — Car (inside & out) | $164.99 reg · $139.99 first wash ($25 off first) |
-| SuperWash — Truck/Large SUV | $189.99 reg · $164.99 first wash ($25 off first) |
+| Exterior Focused | $89.99 (trucks/large SUV $109.99) |
+| Interior Focused | $99.99 (trucks/large SUV $119.99) |
+| SuperWash — Car (inside & out) | $189.99 reg · $164.99 first wash ($25 off first) |
+| SuperWash — Truck/Large SUV | $214.99 reg · $189.99 first wash ($25 off first) |
 | Add-on: Pet Hair Removal | +$39.99 |
 | Add-on: Stain Removal | +$49.99 |
 | Add-on: Shampoo Carpets & Seats | +$49.99 |
