@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Book Your Detail — Esplendor Detailing</title>
+<link rel="icon" href="/assets/brand/logo-square.webp" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+/* ── booking page: calmer than the homepage ── */
+.bk-wrap{max-width:760px;margin:0 auto;padding:0 var(--pad)}
+.bk-head{padding:calc(82px + clamp(38px,7vh,74px)) 0 clamp(26px,4vh,40px);text-align:center}
+.bk-head h1{font-size:clamp(2.2rem,5.6vw,3.9rem);line-height:1.04;letter-spacing:-.025em;font-weight:300}
+.bk-head p{color:var(--paper-2);margin-top:14px;font-size:1rem}
+.bk-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:9px 22px;margin-top:22px}
+.bk-trust>span{display:flex;align-items:center;gap:8px;font-size:.75rem;color:var(--mute)}
+.bk-trust svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.5}
+
+/* stepper */
+.steps-bar{display:flex;align-items:center;gap:6px;margin:0 auto clamp(24px,4vh,38px);max-width:620px;padding:0 var(--pad)}
+.sb{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;position:relative}
+.sb .dot{width:31px;height:31px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  font-size:.73rem;color:var(--mute);background:var(--ink);transition:all .38s var(--e);z-index:2}
+.sb.on .dot{border-color:var(--gold);color:var(--gold)}
+.sb.done .dot{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.sb label{font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);transition:color .38s;text-align:center}
+.sb.on label,.sb.done label{color:var(--paper-2)}
+.sb::before{content:"";position:absolute;top:15px;left:-50%;width:100%;height:1px;background:var(--line);z-index:1}
+.sb:first-child::before{display:none}
+.sb.done::before,.sb.on::before{background:var(--gold-lo)}
+
+/* panel */
+.card{border:1px solid var(--line);border-radius:5px;background:linear-gradient(180deg,var(--ink-2),var(--ink));
+  padding:clamp(24px,4vw,40px);margin-bottom:26px}
+.pane{display:none}
+.pane.on{display:block;animation:pIn .42s var(--eo)}
+@keyframes pIn{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.pane h2{font-size:1.06rem;font-weight:600;letter-spacing:.01em;margin-bottom:5px}
+.pane .hint{font-size:.82rem;color:var(--mute);margin-bottom:24px}
+
+.row{display:grid;gap:15px;grid-template-columns:1fr 1fr}
+.row.one{grid-template-columns:1fr}
+.fld{display:flex;flex-direction:column;gap:7px}
+.fld label{font-size:.7rem;letter-spacing:.11em;text-transform:uppercase;color:var(--paper-2)}
+.fld label i{color:var(--mute);font-style:normal;text-transform:none;letter-spacing:0;font-size:.74rem}
+.fld input,.fld select,.fld textarea{
+  background:var(--ink);border:1px solid var(--line);border-radius:3px;color:var(--paper);
+  padding:14px 15px;font:inherit;font-size:.93rem;font-weight:400;transition:border-color .28s,background .28s;
+  width:100%;min-height:50px}
+.fld textarea{min-height:104px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--gold);background:#0e0e0f}
+.fld select option{background:#111;color:var(--paper)}
+.fld input::placeholder,.fld textarea::placeholder{color:#5d5b57}
+
+/* vehicle type chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{border:1px solid var(--line);border-radius:3px;padding:12px 20px;font-size:.83rem;color:var(--paper-2);
+  cursor:pointer;transition:all .28s var(--e);min-height:46px;display:flex;align-items:center}
+.chip:hover{border-color:var(--gold-lo)}
+.chip.on{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600}
+
+/* package picker */
+.picks{display:grid;gap:11px}
+.pick{border:1px solid var(--line);border-radius:4px;padding:17px 19px;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;transition:all .28s var(--e)}
+.pick:hover{border-color:var(--gold-lo)}
+.pick.on{border-color:var(--gold);background:rgba(201,168,76,.06)}
+.pick .nm{font-size:.95rem;font-weight:500}
+.pick .sub{font-size:.75rem;color:var(--mute);margin-top:3px}
+.pick .pr{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.45rem;color:var(--gold);white-space:nowrap}
+
+/* add-on checks */
+.checks{display:grid;gap:9px}
+.chk{border:1px solid var(--line);border-radius:4px;padding:14px 17px;cursor:pointer;
+  display:flex;align-items:center;gap:14px;transition:all .28s var(--e)}
+.chk:hover{border-color:var(--gold-lo)}
+.chk.on{border-color:var(--gold);background:rgba(201,168,76,.06)}
+.chk .bx{width:19px;height:19px;border:1px solid var(--line);border-radius:3px;flex-shrink:0;
+  display:grid;place-items:center;transition:all .28s}
+.chk.on .bx{background:var(--gold);border-color:var(--gold)}
+.chk .bx svg{width:12px;height:12px;stroke:var(--ink);fill:none;stroke-width:2.6;opacity:0;transition:opacity .2s}
+.chk.on .bx svg{opacity:1}
+.chk .nm{flex:1;font-size:.89rem}
+.chk .pr{color:var(--gold);font-size:.86rem;white-space:nowrap}
+
+/* summary */
+.sum{border:1px solid var(--gold-lo);border-radius:4px;padding:19px 21px;margin-bottom:22px;
+  background:rgba(201,168,76,.05)}
+.sum h3{font-size:.65rem;letter-spacing:.17em;text-transform:uppercase;color:var(--gold);margin-bottom:13px}
+.sum-row{display:flex;justify-content:space-between;gap:14px;font-size:.87rem;padding:5px 0;color:var(--paper-2)}
+.sum-row b{color:var(--paper);font-weight:500;text-align:right}
+.sum-tot{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  margin-top:13px;padding-top:13px;border-top:1px solid rgba(201,168,76,.28)}
+.sum-tot span{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--mute)}
+.sum-tot b{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;color:var(--gold);font-weight:400}
+.sum-note{font-size:.72rem;color:var(--mute);margin-top:9px}
+
+/* nav buttons */
+.bk-nav{display:flex;gap:11px;justify-content:space-between;align-items:center;margin-top:8px}
+.bk-nav .sp{flex:1}
+.ghost{border:1px solid var(--line);border-radius:3px;padding:0 24px;min-height:50px;display:inline-flex;
+  align-items:center;gap:9px;font-size:.73rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;
+  color:var(--paper-2);transition:all .3s var(--e)}
+.ghost:hover{border-color:var(--paper);color:var(--paper)}
+.solid{background:var(--gold);color:var(--ink);border-radius:3px;padding:0 30px;min-height:50px;
+  display:inline-flex;align-items:center;gap:10px;font-size:.73rem;letter-spacing:.13em;
+  text-transform:uppercase;font-weight:700;transition:background .3s var(--e),transform .3s var(--e)}
+.solid:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.solid:disabled{opacity:.4;cursor:default;transform:none}
+
+.err{color:#e06a5a;font-size:.79rem;margin-top:12px;display:none}
+.err.on{display:block}
+.bk-foot{text-align:center;padding:26px 0 clamp(70px,10vh,110px);font-size:.78rem;color:var(--mute)}
+.bk-foot a{color:var(--paper-2)}
+.bk-back{position:fixed;top:0;left:0;right:0;z-index:300;height:82px;display:flex;align-items:center;
+  gap:18px;padding:0 var(--pad);background:rgba(11,11,12,.8);backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line)}
+.bk-back .nav-logo img{height:32px}
+.bk-back a.rt{margin-left:auto;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper-2);
+  display:flex;align-items:center;gap:9px;transition:color .3s}
+.bk-back a.rt:hover{color:var(--gold)}
+
+/* success */
+.done-wrap{display:none;text-align:center;padding:clamp(30px,6vh,60px) 0}
+.done-wrap.on{display:block;animation:pIn .5s var(--eo)}
+.done-ic{width:66px;height:66px;border-radius:50%;border:1px solid var(--gold);display:grid;place-items:center;margin:0 auto 26px}
+.done-ic svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.done-wrap h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:300;letter-spacing:-.02em}
+.done-wrap p{color:var(--paper-2);margin-top:14px;max-width:44ch;margin-inline:auto}
+
+@media (max-width:620px){
+  .row{grid-template-columns:1fr}
+  .sb label{display:none}
+  .steps-bar{max-width:340px}
+  .bk-nav{flex-wrap:wrap}
+  .bk-nav .solid,.bk-nav .ghost{flex:1;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<div class="bk-back">
+  <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="Esplendor Detailing" /></a>
+  <a href="index.html" class="rt">← <span class="en">Back to home</span><span class="es">Volver</span></a>
+</div>
+
+<div class="bk-head">
+  <div class="bk-wrap">
+    <h1 class="serif"><span class="en">Book Your Detail</span><span class="es">Reserva Tu Detallado</span></h1>
+    <p><span class="en">Simple. Fast. We come to you — and we'll confirm within 1 hour.</span>
+       <span class="es">Simple. Rápido. Vamos a ti — confirmamos en 1 hora.</span></p>
+    <div class="bk-trust">
+      <span><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span class="en">No payment to book</span><span class="es">Sin pago para reservar</span></span>
+      <span><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span class="en">100% mobile</span><span class="es">100% móvil</span></span>
+      <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="en">Confirmed within 1 hour</span><span class="es">Confirmado en 1 hora</span></span>
+    </div>
+  </div>
+</div>
+
+<div class="steps-bar" id="bar">
+  <div class="sb on" data-s="1"><span class="dot">1</span><label><span class="en">Vehicle</span><span class="es">Vehículo</span></label></div>
+  <div class="sb" data-s="2"><span class="dot">2</span><label><span class="en">Package</span><span class="es">Paquete</span></label></div>
+  <div class="sb" data-s="3"><span class="dot">3</span><label><span class="en">Add-Ons</span><span class="es">Extras</span></label></div>
+  <div class="sb" data-s="4"><span class="dot">4</span><label><span class="en">Date &amp; Time</span><span class="es">Fecha</span></label></div>
+  <div class="sb" data-s="5"><span class="dot">5</span><label><span class="en">Your Info</span><span class="es">Tus Datos</span></label></div>
+</div>
+
+<div class="bk-wrap">
+<form id="bkForm" action="https://formspree.io/f/mojokqde" method="POST" novalidate>
+  <input type="hidden" name="_subject" value="🚗 NEW BOOKING — Esplendor Detailing" />
+  <input type="hidden" name="_next" value="https://esplendordetailing.com/thanks.html" />
+  <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+  <!-- 1 VEHICLE -->
+  <section class="pane on card" data-p="1">
+    <h2><span class="en">Vehicle Information</span><span class="es">Información del Vehículo</span></h2>
+    <p class="hint"><span class="en">This helps us bring the right equipment and set aside enough time.</span>
+      <span class="es">Esto nos ayuda a traer el equipo correcto y reservar el tiempo necesario.</span></p>
+    <div class="row">
+      <div class="fld"><label for="vYear"><span class="en">Year</span><span class="es">Año</span></label>
+        <input id="vYear" placeholder="2020" inputmode="numeric" /></div>
+      <div class="fld"><label for="vMake"><span class="en">Make</span><span class="es">Marca</span></label>
+        <input id="vMake" placeholder="Toyota" /></div>
+    </div>
+    <div class="row one" style="margin-top:15px">
+      <div class="fld"><label for="vModel"><span class="en">Model</span><span class="es">Modelo</span></label>
+        <input id="vModel" placeholder="Land Cruiser" /></div>
+    </div>
+    <input type="hidden" name="vehicle" id="vehicle" />
+    <div class="fld" style="margin-top:20px">
+      <label><span class="en">Vehicle type</span><span class="es">Tipo de vehículo</span> <i>— <span class="en">sets your price</span><span class="es">define tu precio</span></i></label>
+      <div class="chips" id="vType">
+        <div class="chip on" data-t="std"><span class="en">Sedan / Standard</span><span class="es">Sedán / Estándar</span></div>
+        <div class="chip" data-t="lrg"><span class="en">Truck / Large SUV</span><span class="es">Camioneta / SUV Grande</span></div>
+        <div class="chip" data-t="moto"><span class="en">Motorcycle</span><span class="es">Motocicleta</span></div>
+      </div>
+    </div>
+    <p class="err" id="e1"><span class="en">Please tell us the vehicle.</span><span class="es">Indícanos el vehículo.</span></p>
+    <div class="bk-nav"><span class="sp"></span>
+      <button type="button" class="solid nx"><span class="en">Continue</span><span class="es">Continuar</span> →</button></div>
+  </section>
+
+  <!-- 2 PACKAGE -->
+  <section class="pane card" data-p="2">
+    <h2><span class="en">Choose Your Package</span><span class="es">Elige Tu Paquete</span></h2>
+    <p class="hint" id="pkHint"></p>
+    <div class="picks" id="picks"></div>
+    <input type="hidden" name="package" id="package" />
+    <p class="err" id="e2"><span class="en">Please choose a package.</span><span class="es">Elige un paquete.</span></p>
+    <div class="bk-nav">
+      <button type="button" class="ghost pv">← <span class="en">Back</span><span class="es">Atrás</span></button><span class="sp"></span>
+      <button type="button" class="solid nx"><span class="en">Continue</span><span class="es">Continuar</span> →</button></div>
+  </section>
+
+  <!-- 3 ADD-ONS -->
+  <section class="pane card" data-p="3">
+    <h2><span class="en">Add-On Services</span><span class="es">Servicios Adicionales</span></h2>
+    <p class="hint"><span class="en">Optional. Skip this if you're not sure — we'll advise in person.</span>
+      <span class="es">Opcional. Omítelo si no estás seguro — te asesoramos en persona.</span></p>
+    <div class="checks" id="checks">
+      <div class="chk" data-n="Pet Hair Removal" data-p="39.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">Pet Hair Removal</span><span class="pr">+$39.99</span></div>
+      <div class="chk" data-n="Stain Removal" data-p="49.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">Stain Removal</span><span class="pr">+$49.99</span></div>
+      <div class="chk" data-n="Shampoo Carpets &amp; Seats" data-p="49.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">Shampoo Carpets &amp; Seats</span><span class="pr">+$49.99</span></div>
+      <div class="chk" data-n="1-Year Ceramic Protection" data-p="59.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">1-Year Ceramic Protection</span><span class="pr">+$59.99</span></div>
+      <div class="chk" data-n="Deep Steam Refresh" data-p="39.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">Deep Steam Refresh</span><span class="pr">+$39.99</span></div>
+      <div class="chk" data-n="6-Month Paint Shield" data-p="29.99"><span class="bx"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></span><span class="nm">6-Month Paint Shield</span><span class="pr">+$29.99</span></div>
+    </div>
+    <input type="hidden" name="addons" id="addons" />
+    <div class="bk-nav">
+      <button type="button" class="ghost pv">← <span class="en">Back</span><span class="es">Atrás</span></button><span class="sp"></span>
+      <button type="button" class="solid nx"><span class="en">Continue</span><span class="es">Continuar</span> →</button></div>
+  </section>
+
+  <!-- 4 DATE & TIME -->
+  <section class="pane card" data-p="4">
+    <h2><span class="en">Date &amp; Time</span><span class="es">Fecha y Hora</span></h2>
+    <p class="hint"><span class="en">Pick what works for you. We'll confirm the exact arrival window within the hour.</span>
+      <span class="es">Elige lo que te funcione. Confirmaremos la hora exacta en menos de una hora.</span></p>
+    <div class="row">
+      <div class="fld"><label for="fdate"><span class="en">Preferred date</span><span class="es">Fecha preferida</span></label>
+        <input type="date" id="fdate" name="preferred_date" /></div>
+      <div class="fld"><label for="ftime"><span class="en">Preferred time</span><span class="es">Hora preferida</span></label>
+        <select id="ftime" name="preferred_time">
+          <option value="">—</option>
+          <option>7:00 AM – 9:00 AM</option><option>9:00 AM – 11:00 AM</option>
+          <option>11:00 AM – 1:00 PM</option><option>1:00 PM – 3:00 PM</option>
+          <option>3:00 PM – 5:00 PM</option><option>5:00 PM – 7:00 PM</option>
+          <option>Flexible / Flexible</option>
+        </select></div>
+    </div>
+    <p class="err" id="e4"><span class="en">Please pick a date and time.</span><span class="es">Elige fecha y hora.</span></p>
+    <div class="bk-nav">
+      <button type="button" class="ghost pv">← <span class="en">Back</span><span class="es">Atrás</span></button><span class="sp"></span>
+      <button type="button" class="solid nx"><span class="en">Continue</span><span class="es">Continuar</span> →</button></div>
+  </section>
+
+  <!-- 5 YOUR INFO -->
+  <section class="pane card" data-p="5">
+    <h2><span class="en">Your Information</span><span class="es">Tus Datos</span></h2>
+    <p class="hint"><span class="en">Last step — then we'll reach out to confirm.</span>
+      <span class="es">Último paso — luego te contactamos para confirmar.</span></p>
+    <div class="sum" id="sum"></div>
+    <div class="row">
+      <div class="fld"><label for="fname"><span class="en">Name</span><span class="es">Nombre</span></label>
+        <input id="fname" name="name" placeholder="Michael A." autocomplete="name" /></div>
+      <div class="fld"><label for="fphone"><span class="en">Phone</span><span class="es">Teléfono</span></label>
+        <input id="fphone" name="phone" type="tel" placeholder="713-555-0100" autocomplete="tel" /></div>
+    </div>
+    <div class="row" style="margin-top:15px">
+      <div class="fld"><label for="femail">Email <i>— <span class="en">optional</span><span class="es">opcional</span></i></label>
+        <input id="femail" name="email" type="email" placeholder="you@email.com" autocomplete="email" /></div>
+      <div class="fld"><label for="faddr"><span class="en">Service address</span><span class="es">Dirección</span> <i>— <span class="en">optional, we confirm by phone</span><span class="es">opcional</span></i></label>
+        <input id="faddr" name="address" placeholder="1234 Main St, Houston TX" autocomplete="street-address" /></div>
+    </div>
+    <div class="row one" style="margin-top:15px">
+      <div class="fld"><label for="fnotes"><span class="en">Anything we should know?</span><span class="es">¿Algo que debamos saber?</span></label>
+        <textarea id="fnotes" name="notes" placeholder="Pet hair, stains, odor, gate code, parking notes…"></textarea></div>
+    </div>
+    <p class="err" id="e5"><span class="en">Please add your name and phone so we can confirm.</span><span class="es">Agrega tu nombre y teléfono.</span></p>
+    <div class="bk-nav">
+      <button type="button" class="ghost pv">← <span class="en">Back</span><span class="es">Atrás</span></button><span class="sp"></span>
+      <button type="submit" class="solid" id="sendBtn"><span class="en">Request Booking</span><span class="es">Solicitar Reserva</span> →</button></div>
+  </section>
+</form>
+
+<div class="done-wrap card" id="done">
+  <div class="done-ic"><svg viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg></div>
+  <h2 class="serif"><span class="en">Request received.</span><span class="es">Solicitud recibida.</span></h2>
+  <p><span class="en">Thanks — we've got your details. We'll text or call to confirm your exact arrival window within the hour. Nothing is due until the work is done and you've inspected it.</span>
+     <span class="es">Gracias — recibimos tus datos. Te escribiremos o llamaremos para confirmar la hora exacta dentro de una hora. No pagas nada hasta que el trabajo esté hecho.</span></p>
+  <div class="close-acts" style="margin-top:28px">
+    <a href="index.html" class="btn btn-line"><span class="en">Back to home</span><span class="es">Volver al inicio</span></a>
+    <a href="https://wa.me/17135010461" class="btn btn-wa"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15L2 22l5.2-1.4A10 10 0 1012 2zm5.5 14.2c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.3-.9-2.8-1.2-4.5-4-4.6-4.2-.1-.2-1.1-1.4-1.1-2.7s.7-1.9 1-2.2c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1l.8-1c.2-.2.3-.2.6-.1l2 1c.3.1.4.2.5.3 0 .1 0 .7-.2 1.3z"/></svg>WhatsApp</a>
+  </div>
+</div>
+
+<p class="bk-foot">
+  <span class="en">Prefer to talk? Call or text <a href="tel:7135010461">713-501-0461</a> · Se habla español</span>
+  <span class="es">¿Prefieres hablar? Llama o escribe al <a href="tel:7135010461">713-501-0461</a></span>
+</p>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PK={
+    std:[
+      {id:'Exterior Focused — $89.99',nm:'Exterior Focused',sub:'Outside, restored · 1–2 hrs',pr:89.99},
+      {id:'SuperWash — Car (Inside & Out) — $164.99 (first wash)',nm:'SuperWash — Full Detail',sub:'Inside & out · $25 off your first · 2.5–4 hrs',pr:164.99,feat:1},
+      {id:'Interior Focused — $99.99',nm:'Interior Focused',sub:'Cabin, renewed · 1.5–2.5 hrs',pr:99.99},
+      {id:'Not sure — need a quote',nm:"Not sure — need a quote",sub:"Tell us below and we'll advise",pr:0}
+    ],
+    lrg:[
+      {id:'Exterior Focused — $109.99 (Truck/Large SUV)',nm:'Exterior Focused',sub:'Trucks & large SUVs · 1–2 hrs',pr:109.99},
+      {id:'SuperWash — Truck/Large SUV (Inside & Out) — $189.99 (first wash)',nm:'SuperWash — Full Detail',sub:'Trucks & large SUVs · inside & out · 2.5–4 hrs',pr:189.99,feat:1},
+      {id:'Interior Focused — $119.99 (Truck/Large SUV)',nm:'Interior Focused',sub:'Trucks & large SUVs · 1.5–2.5 hrs',pr:119.99},
+      {id:'Not sure — need a quote',nm:"Not sure — need a quote",sub:"Tell us below and we'll advise",pr:0}
+    ],
+    moto:[
+      {id:'Moto Detail — $124.99',nm:'Moto Detail',sub:'Motorcycle detail',pr:124.99},
+      {id:'Not sure — need a quote',nm:"Not sure — need a quote",sub:"Tell us below and we'll advise",pr:0}
+    ]
+  };
+  var vt='std', pk=null, adds=[];
+  var $=function(s){return document.querySelector(s)};
+  var panes=document.querySelectorAll('.pane'), bars=document.querySelectorAll('.sb'), cur=1;
+
+  function go(n){
+    cur=n;
+    panes.forEach(function(p){p.classList.toggle('on', +p.dataset.p===n)});
+    bars.forEach(function(b){var s=+b.dataset.s;
+      b.classList.toggle('on',s===n); b.classList.toggle('done',s<n)});
+    if(n===5) sum();
+    var y=$('.steps-bar').getBoundingClientRect().top+scrollY-96;
+    scrollTo({top:Math.max(y,0),behavior:reduce?'auto':'smooth'});
+  }
+
+  // vehicle type
+  document.querySelectorAll('#vType .chip').forEach(function(c){
+    c.addEventListener('click',function(){
+      document.querySelectorAll('#vType .chip').forEach(function(x){x.classList.remove('on')});
+      c.classList.add('on'); vt=c.dataset.t; pk=null; picks();
+    });
+  });
+
+  function picks(){
+    var wrap=$('#picks'); wrap.innerHTML='';
+    $('#pkHint').textContent = vt==='lrg'
+      ? 'Showing truck & large-SUV pricing based on your vehicle type.'
+      : vt==='moto' ? 'Motorcycle pricing.' : 'Showing sedan & standard-vehicle pricing.';
+    PK[vt].forEach(function(p){
+      var d=document.createElement('div'); d.className='pick'+(pk&&pk.id===p.id?' on':'');
+      d.innerHTML='<div><div class="nm">'+p.nm+'</div><div class="sub">'+p.sub+'</div></div>'+
+                  '<div class="pr">'+(p.pr?'$'+p.pr.toFixed(2):'—')+'</div>';
+      d.addEventListener('click',function(){
+        pk=p; $('#package').value=p.id;
+        wrap.querySelectorAll('.pick').forEach(function(x){x.classList.remove('on')});
+        d.classList.add('on'); $('#e2').classList.remove('on');
+      });
+      wrap.appendChild(d);
+    });
+  }
+  picks();
+
+  // add-ons
+  document.querySelectorAll('.chk').forEach(function(c){
+    c.addEventListener('click',function(){
+      c.classList.toggle('on');
+      adds=[].slice.call(document.querySelectorAll('.chk.on')).map(function(x){
+        return {n:x.dataset.n.replace('&amp;','&'),p:parseFloat(x.dataset.p)};
+      });
+      $('#addons').value = adds.length? adds.map(function(a){return a.n+' +$'+a.p.toFixed(2)}).join(', ') : 'None';
+    });
+  });
+
+  function sum(){
+    var v=[$('#vYear').value,$('#vMake').value,$('#vModel').value].filter(Boolean).join(' ').trim();
+    var rows='';
+    if(v) rows+='<div class="sum-row"><span>Vehicle</span><b>'+v+'</b></div>';
+    if(pk) rows+='<div class="sum-row"><span>Package</span><b>'+pk.nm+'</b></div>';
+    adds.forEach(function(a){rows+='<div class="sum-row"><span>'+a.n+'</span><b>+$'+a.p.toFixed(2)+'</b></div>'});
+    var d=$('#fdate').value, t=$('#ftime').value;
+    if(d||t) rows+='<div class="sum-row"><span>When</span><b>'+[d,t].filter(Boolean).join(' · ')+'</b></div>';
+    var tot=(pk?pk.pr:0)+adds.reduce(function(s,a){return s+a.p},0);
+    $('#sum').innerHTML='<h3>Your booking</h3>'+rows+
+      (tot?'<div class="sum-tot"><span>Estimated total</span><b>$'+tot.toFixed(2)+'</b></div>'+
+      '<p class="sum-note">Final price confirmed on arrival. No payment required to book.</p>'
+      :'<p class="sum-note">We\'ll quote you directly after reviewing your request.</p>');
+  }
+
+  // step nav + validation
+  document.querySelectorAll('.nx').forEach(function(b){
+    b.addEventListener('click',function(){
+      var p=+b.closest('.pane').dataset.p;
+      if(p===1){
+        var v=[$('#vYear').value,$('#vMake').value,$('#vModel').value].filter(Boolean).join(' ').trim();
+        if(!v){$('#e1').classList.add('on');return}
+        $('#vehicle').value=v; $('#e1').classList.remove('on');
+      }
+      if(p===2 && !pk){$('#e2').classList.add('on');return}
+      if(p===4){
+        if(!$('#fdate').value||!$('#ftime').value){$('#e4').classList.add('on');return}
+        $('#e4').classList.remove('on');
+      }
+      go(p+1);
+    });
+  });
+  document.querySelectorAll('.pv').forEach(function(b){
+    b.addEventListener('click',function(){go(+b.closest('.pane').dataset.p-1)});
+  });
+
+  // min date = today
+  var fd=$('#fdate'); if(fd) fd.min=new Date().toISOString().split('T')[0];
+
+  // deep link from homepage package cards
+  var q=new URLSearchParams(location.search).get('pkg');
+  if(q){
+    var map={exterior:0,superwash:1,interior:2};
+    if(map[q]!=null){ setTimeout(function(){
+      var n=document.querySelectorAll('#picks .pick')[map[q]];
+      if(n) n.click();
+    },0);}
+  }
+
+  // submit
+  $('#bkForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=e.target;
+    if(f.querySelector('[name="_gotcha"]').value) return;      // bot
+    if(!$('#fname').value.trim()||!$('#fphone').value.trim()){
+      $('#e5').classList.add('on'); return;
+    }
+    var em=$('#femail').value.trim();
+    if(em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){ $('#e5').classList.add('on'); return; }
+    $('#e5').classList.remove('on');
+    if(!$('#addons').value) $('#addons').value='None';
+    var btn=$('#sendBtn'); btn.disabled=true;
+    btn.innerHTML='<span>Sending…</span>';
+    fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}})
+      .then(function(r){ if(!r.ok) throw 0;
+        f.style.display='none'; document.querySelector('.steps-bar').style.display='none';
+        $('#done').classList.add('on');
+        scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+      })
+      .catch(function(){
+        btn.disabled=false;
+        btn.innerHTML='<span>Request Booking</span> →';
+        $('#e5').innerHTML='Something went wrong. Please call or text 713-501-0461.';
+        $('#e5').classList.add('on');
+      });
+  });
+
+  // language
+  try{var l=localStorage.getItem('esp-lang'); if(l) document.documentElement.lang=l;}catch(e){}
+})();
+</script>
+</body>
+</html>
