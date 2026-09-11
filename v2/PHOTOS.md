@@ -8,51 +8,37 @@ Numbering follows the owner's contact sheet, left→right, top→bottom, 4 per r
 
 | Slot | Page location | Wanted photo | Status |
 |---|---|---|---|
-| `hero` | Full-bleed hero | **#11** — F-150 STX, tailgate down, pressure washer + red gas can + hoses in the bed | ⏳ need file |
-| `houston` | "Local detailing, real neighbors." band | Houston skyline — approved as licensed free stock, never captioned as Esplendor work | ⏳ need file |
-| `svc-exterior` | Exterior Focused card | **#16** — VW Golf GTI under foam in a driveway | ⏳ need file |
-| `svc-superwash` | SuperWash card (Best Value) | **#6** — Lexus interior, cream leather + wood trim | ⏳ need file |
-| `svc-interior` | Interior Focused card | **#9** — cream leather rear seats | ⏳ need file |
-| `work-1…n` | Real Work gallery | **#2, #4, #5, #8, #12, #13, #14, #10, #17** — Land Cruiser in/out, white Lexus, Harley, GTI foam, loaded tailgate | ⏳ need files |
-| before / after | Comparison slider | `originals/3.jpg` → `originals/4.jpg` | ✅ in place |
-| logo | Nav, footer, Standard watermark | `v2/img/logo.png`, `assets/brand/emblem.webp` | ✅ in place |
+| `hero` | Full-bleed hero | `IMG_4017` — F-150 STX at a customer's home, tailgate down, gear in the bed | ✅ |
+| `band` | "Local detailing, real neighbors." | `IMG_4254` — a real Houston street at golden hour | ✅ |
+| `svc-exterior` | Exterior Focused card | `IMG_3501` — Golf GTI under foam | ✅ |
+| `svc-superwash` | SuperWash card (Best Value) | `IMG_4043` — Lexus cabin, cream leather + wood | ✅ |
+| `svc-interior` | Interior Focused card | `IMG_4037` — cream leather rear seats | ✅ |
+| `work-kit` | Real Work | `IMG_3491` — tailgate loaded with generator, tank, hoses, products | ✅ |
+| `work-foam` | Real Work | `IMG_3498` — GTI under foam | ✅ |
+| `work-lexus` | Real Work | `IMG_4049` — Lexus cabin | ✅ |
+| `work-cruiser` | Real Work | `IMG_4246` — Land Cruiser in the driveway | ✅ |
+| `work-cargo` | Real Work | `IMG_4228` — Land Cruiser cargo area | ✅ |
+| `work-moto` | Real Work | `IMG_3818` — Harley-Davidson Road King | ✅ |
+| `work-doors` | Real Work | `IMG_4230` — Land Cruiser, doors open | ✅ |
+| `work-white` | Real Work | `IMG_4040` — white Lexus, doors open | ✅ |
+| before / after | Comparison slider | `3.jpg` → `4.jpg`, same footwell, same visit | ✅ |
+| logo | Nav, footer, Standard watermark | `v2/img/logo.png`, `assets/brand/emblem.webp` | ✅ |
+
+The Harley frames also give **Moto Detail — $124.99** photography it has never had.
+
+## Privacy
+
+`build-images.py` pixelates and feathers every readable customer licence plate
+and the one visible house number, so no customer's vehicle or address can be
+read off the site. The boxes live in `PLATES` — check any newly added photo and
+add a box before shipping it.
+
+## Not used
+
+`assets/stock/` holds five stock photos (BMW interiors, an M4 under foam, a wheel,
+a towel). None is wired into the page — the real photos above cover every slot,
+and none of these is the Houston skyline that was approved. Delete or keep as you like.
 
 The Harley frames (#12, #13) also back the **Moto Detail — $124.99** option in the
 booking form, which until now had no photography behind it anywhere on the site.
 
-## Interim state
-
-Slots marked ⏳ currently render one of the seven photos already in the repo, so the
-layout is reviewable. Every one of those is a genuine Esplendor job — nothing here is
-stock or generated — but they are stand-ins and get replaced the moment the real files
-land.
-
-`houston` renders with no photo at all; the band is built to look finished either way.
-
-## Files already in the repo
-
-`assets/gallery/originals/`
-
-| File | Subject |
-|---|---|
-| `1.jpg`  | Clean floor liners laid out on the driveway |
-| `2.jpg`  | Esplendor logo, gold on black |
-| `3.jpg`  | Dirty rear footwell — genuine BEFORE |
-| `4.jpg`  | Same footwell clean — genuine AFTER |
-| `5.jpg`  | F-150 front cabin, finished |
-| `6.jpg`  | Drill-brushing a liner on the driveway |
-| `7.webp` | Ford Escape foam wash; work truck with equipment at right |
-
-## Do not use
-
-- `assets/gallery/craft-*.webp` — stock (BMW, Mercedes). These are what the live site runs on today.
-- `assets/gallery/uploads/*` — Unsplash files and one `ChatGPT Image ….png`.
-
-## Adding the new photos
-
-Drop originals into `assets/gallery/originals/`, continuing the numbering
-(`8.jpg`, `9.jpg`, …), then run:
-
-    python3 v2/build-images.py
-
-which crops, grades and writes the web-sized derivatives into `v2/img/`.
