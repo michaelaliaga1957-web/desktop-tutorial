@@ -1,124 +1,94 @@
 # Esplendor — Thumbtack Lead-Response Playbook
 
-This is the owner-approved way to text Thumbtack leads. Follow it **exactly**.
-Do not improvise a different style. When in doubt, copy a template below and
+Owner-approved way to text leads. Follow it exactly. When in doubt, copy a template and
 fill in the blanks.
 
 ---
 
-## THE MODEL (quick response) — non-negotiable shape
+## THE MODEL (quick response)
 
-Every first text is **2 to 4 short lines**, in this order:
-
-1. **Greeting + name** — `Hey [Name]!` (standard) or `Quick heads up, [Name] —` (same-day / freed-up slot)
+Every first text is **2 to 4 short lines**:
+1. **Greeting + name** — `Hey [Name]!` or `Quick heads up, [Name] —` (same-day slot)
 2. **Service + vehicle + price** — `I can do a full exterior and interior detail on your [vehicle] — $[price].`
-3. **Time offer** — `Got an opening [today/tomorrow] around [time]?` or `a [time] spot just freed up — I could head straight to you after.`
+3. **Time offer** — `Got an opening [today/tomorrow] around [time]?`
 4. **Close** — `Just need your address to lock it in.`
 
-That's it. Short. Direct. Confident.
+## HARD RULES
+- **NEVER** say "penciled."
+- Keep it SHORT. No paragraphs.
+- **Answer their question FIRST**, then offer a time.
+- **Don't invent an opening when you don't know what they need** — ask first, offer time in a follow-up.
+- Offer, don't beg. Never undercut price — sell on value (mobile, no drop-off, stand behind the work).
 
----
-
-## HARD RULES (these are why past texts got rejected)
-
-- **NEVER** use the word "penciled." Ever.
-- Keep it SHORT. No paragraphs. No over-explaining. No corporate fluff.
-- **Answer their question FIRST**, then make the offer. Don't ignore what they asked.
-- **Don't invent an opening when you don't yet know what they need.** If the lead
-  is vague, ask what they're looking for first, THEN offer a time in a follow-up.
-- Offer, don't beg. Create urgency without sounding desperate.
-- **Never undercut the price** to win. Sell on value: mobile (I come to you),
-  no drop-off, stand behind every job.
-- One idea per text. If there's a question + an offer, it's fine, but don't stack
-  three asks.
-- Sound like a real person texting, not a form letter.
-
----
-
-## PRICING (settled — use these exact numbers)
-
+## PRICING
 | Service | Price |
 |---|---|
-| Car / sedan / crossover — full detail | **$164.99** (first-time rate) |
+| Car / sedan / crossover — full detail | **$164.99** (first-time) |
 | Truck / SUV — full detail | **$189.99** |
 | Moto detail | **$124.99** |
-| Basic 3-month wax | **included** with every detail |
-| 1-year wax (paint protection) | upgrade / add-on |
-| Deep Steam Refresh | add-on |
-| Shampoo focus (Carpets & Seats) | add-on ($49.99) — *light shampoo is already standard* |
+| Basic 3-month wax | **included** |
+| 1-year wax (paint protection) | add-on |
+| Deep Steam Refresh / odor | ~$39.99 add-on |
+| Shampoo focus (Carpets & Seats) | $49.99 add-on (light shampoo is standard) |
 | Pet hair removal | add-on |
 
-Notes:
-- Light shampoo is **always standard** with an interior detail. A "shampoo focus"
-  is the paid add-on on top.
-- Basic 3-month wax comes with every detail. Only quote the 1-year wax if they
-  specifically want longer paint protection.
+Adjust UP for: heavy/disaster condition (condition charge), far-out location (travel
+fee), Sunday/rush ($12 rush fee), bio-hazard (mold/rot) decontamination.
 
----
+## WHAT THE SUPERWASH INCLUDES (for reference)
+- **Inside:** vacuum (seats, carpets, mats), dash, vents, console, door panels, seats,
+  interior windows, floor mats, light shampoo, basic 3-month wax.
+- **Outside:** hand wash, wheels & tires, exterior windows, wax.
+- **Not included (add-ons):** shampoo focus, odor/steam, pet hair, 1-year wax.
 
-## FILL-IN TEMPLATES (copy, swap the [brackets], send)
+## TEMPLATES
+- **Standard:** `Hey [Name]! I can do a full exterior and interior detail on your [vehicle] — $[price]. Got an opening [today/tomorrow] around [time]? Just need your address to lock it in.`
+- **Same-day heads up:** `Quick heads up, [Name] — I'm wrapping up a detail right now and a [time] spot just freed up today. I could head straight to you after. Want it? Just need your address.`
+- **Vague lead (ask first):** `Hey [Name]! Thanks for reaching out. I do full exterior and interior detailing for your [vehicle]. What are you looking to get done — just a detail, or anything specific like wax protection or interior treatments?`
+- **Wax question:** `The basic 3-month wax is included with the detail. If you want the 1-year paint protection instead, let me know and we can adjust.`
+- **Budget too low:** Honest — "there isn't a quality full detail for $100, especially on an SUV / an hour out." Offer a scaled option (interior-only, depending on condition) or ask their budget. Never cave to an unprofitable number.
 
-### 1. Standard first outreach (you know the vehicle + service)
-```
-Hey [Name]! I can do a full exterior and interior detail on your [vehicle] — $[price].
-Got an opening [today/tomorrow] around [time]? Just need your address to lock it in.
-```
-
-### 2. Same-day "heads up" (a slot just opened after a current job)
-```
-Quick heads up, [Name] — I'm wrapping up a detail right now and a [time] spot just
-freed up today. I could head straight to you after. Want it? Just need your address.
-```
-
-### 3. Vague lead (you DON'T know what they need yet — ask first, no time offer)
-```
-Hey [Name]! Thanks for reaching out. I do full exterior and interior detailing for
-your [vehicle]. What are you looking to get done — just a detail, or anything
-specific like wax protection or interior treatments?
-```
-
-### 4. Follow-up AFTER they tell you what they need (now drop the time)
-```
-Got it. I've got an opening [today/tomorrow] around [time] if that works with your
-schedule. Just need your address to lock it in.
-```
-
-### 5. Answering a question, then offering (question first!)
-```
-[Direct answer to their question in one line.] [Optional: what's included / add-on price.]
-Got an opening [today/tomorrow] around [time]? Just need your address to lock it in.
-```
-
-### 6. Wax question
-```
-The basic 3-month wax is included with the detail to protect the paint. If you want
-the 1-year paint protection instead, let me know and we can adjust.
-```
-
----
-
-## PRE-SEND CHECKLIST (run this every time)
-
-- [ ] Did I use their name?
-- [ ] Is it 2–4 short lines? (If it's a paragraph, cut it.)
-- [ ] Did I answer their actual question before offering?
-- [ ] Right price for the vehicle type?
-- [ ] Did I ask for the address / a next step?
-- [ ] Zero use of "penciled"?
-- [ ] Does it sound like a confident person, not a brochure?
-
----
-
-## APPROVED REAL EXAMPLES (the gold standard — match this voice)
-
+## APPROVED EXAMPLES
 > Quick heads up, Kylen — I'm wrapping up a detail this morning and a 12:30 spot just
-> freed up today. I could head straight to you after. Want it? Just need your address.
-> *(truck — $144.99)*
+> freed up today. I could head straight to you after. Want it? Just need your address. *(truck — $144.99)*
 
 > Hey Brandon! I can do a full exterior and interior detail on your Taurus for $165.
-> I've got an opening tomorrow around 12:30 if that works for you. Just need your
-> address to lock it in.
+> I've got an opening tomorrow around 12:30 if that works. Just need your address to lock it in.
 
-> Hey Elizabeth! Full exterior and interior detail on your truck — $189.99. That
-> includes our basic 3-month wax. If you want the 1-year paint protection instead,
-> let me know and we can adjust.
+---
+
+## THUMBTACK REFUND POLICY (lead fees)
+
+Source of truth: Thumbtack's own "Request a refund" screen. Approved refunds go to your
+**Thumbtack balance** (credit for future leads), NOT your card/bank.
+
+### Automatic refund
+- If the customer **doesn't respond to ANY pro they contacted within 72 hours**,
+  Thumbtack **automatically** refunds the lead. Do nothing.
+
+### You do NOT get a refund if:
+- The customer **replied to at least one pro** (even once, even to say no).
+- The customer **didn't hire you** (choosing someone else isn't refundable).
+- You think the **lead price was too high**.
+
+### Valid reasons to REQUEST a refund (the options on the screen):
+1. **Location** — not in my service area
+2. **Timing** — outside my availability
+3. **Job type** — not in my line of work *(if your profile lists that service, it won't
+   refund — remove the service to stop getting those leads)*
+4. **Charged twice** — duplicate job
+5. **Phone disconnected / out of service**
+6. **Other** — reason not listed
+
+### Stay eligible / win refunds
+- **Respond fast** (minutes) and **keep ALL communication on Thumbtack** — going
+  off-platform can void eligibility.
+- Also **"Report"** a lead (not just refund) if it looks like spam/fake.
+- Denials come from a no-reply email, so pick the most accurate reason the first time.
+
+### Rule of thumb — "is this refundable?"
+- Customer **never replied to anyone** in 72h → **auto-refund**, do nothing.
+- Customer **replied to you or any pro** → **generally NOT refundable**, even if they
+  ghost after, pick someone else, or say the price is too high.
+- Lead genuinely **out of area / outside hours / wrong job type / duplicate / dead
+  phone** → **request a refund** and pick that exact reason.
